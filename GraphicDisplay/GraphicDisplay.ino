@@ -19,7 +19,7 @@ uint32_t rc = 1;
 
 void startTimer(Tc *tc, uint32_t channel, IRQn_Type irq, uint32_t frequency) 
 {
-       //pmc_set_writeprotect(false);           //Disable write protection for register
+       pmc_set_writeprotect(false);           //Disable write protection for register
        pmc_enable_periph_clk((uint32_t)irq);  //enable clock for the channel
        TC_Configure(tc, channel, TC_CMR_WAVE | TC_CMR_WAVSEL_UP_RC | TC_CMR_TCCLKS_TIMER_CLOCK4);
        rc = VARIANT_MCK/128/frequency; //128 because we selected TIMER_CLOCK4 above
@@ -29,7 +29,7 @@ void startTimer(Tc *tc, uint32_t channel, IRQn_Type irq, uint32_t frequency)
        
        tc->TC_CHANNEL[channel].TC_IER=TC_IER_CPCS;
        tc->TC_CHANNEL[channel].TC_IDR=~TC_IER_CPCS;
-       //pmc_set_writeprotect(true);
+       pmc_set_writeprotect(true);
        NVIC_EnableIRQ(irq);
 }
 
@@ -37,7 +37,6 @@ void setup()
 {
   myGLCD.InitLCD();
   myGLCD.clrScr();
-  //myGLCD.setFont(BigFont);
   myGLCD.setFont(SixteenSegment48x72Num);
 
   myTouch.InitTouch();
@@ -45,10 +44,6 @@ void setup()
   
   myButtons.setTextFont(BigFont);
 
-//  button1 = myButtons.addButton(286, 72, 144, 72, "1");
-//  button_2 = myButtons.addButton(350, 0, 350, 240, "2");
-//  button_3 = myButtons.addButton(0, 239, 350, 240, "3");
-//  button_4 = myButtons.addButton(350, 239, 350, 240, "4");
   choice1= myButtons.addButton(700, 0, 99, 96, "choice");
   choice2= myButtons.addButton(700, 96, 99, 96, "choice");
   choice3= myButtons.addButton(700, 192, 99, 96, "choice");
@@ -65,22 +60,28 @@ void loop() {
   while(myTouch.dataAvailable() == true)
   {
       selected = myButtons.checkButtons();
-      
-      if (selected == choice1){
-        label = "1";
-       }
-      else if (selected == choice2){
-        label = "2";
-      }
-      else if (selected == choice3){
-        label = "3";
-      }
-      else if (selected == choice4){
-        label = "4";
-      }
-      else if (selected == choice5){
-        label = "5";
-      }
+      switch(selected)
+	  {
+		  case choice1:
+		  label = "1";
+		  break;
+		  case choice2:
+		  label = "2";
+		  break;
+		  case choice3:
+		  label = "3";
+		  break;
+		  case choice4:
+		  label = "4";
+		  break;
+		  case choice5:
+		  label = "5";
+		  break;
+		  case default:
+		  label = "0";
+		  break;
+	  }
+
       myButtons.relabelButton(selected, label, true);
       myGLCD.print(label, 334, 216);
       delay(10);
