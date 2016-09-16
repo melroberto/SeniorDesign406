@@ -97,12 +97,12 @@ void loop() {
 	{
 		if(digitalValue != -1)
 		{
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < 15; i++)
 			{
 				val[digitalValue] += analogRead(digitalValue);
 				delay(1);
 			}
-			val[digitalValue] /= 5;
+			val[digitalValue] /= 15;
 
 			//Serial.write(val[digitalValue]);
 			Serial.write(val[digitalValue]);
