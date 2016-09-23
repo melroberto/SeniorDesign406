@@ -69,64 +69,7 @@ void startTimer(Tc *tc, uint32_t channel, IRQn_Type irq, uint32_t frequency)
   tc->TC_CHANNEL[channel].TC_IDR = ~TC_IER_CPCS;
   //pmc_set_writeprotect(true);
   NVIC_EnableIRQ(irq); 
-}
 
-void setup()
-{
-  Serial3.begin(115200);
-  myGLCD.InitLCD();
-  myGLCD.clrScr();
-  myGLCD.setFont(Ubuntu);
-  myGLCD.print("Counter: ", 100, 72);
-  myGLCD.print("Analog", 100, 144);
-  myGLCD.print("Read:", 100, 193);
-
-#if TOUCH
-  myTouch.InitTouch();
-  myTouch.setPrecision(PREC_HI);
-  myButtons.setTextFont(Ubuntu);
-  choice1 = myButtons.addButton(BASE_BUTTON1, YSTART, WIDTH, HEIGHT, "choice");
-  choice2 = myButtons.addButton(BASE_BUTTON2, YSTART, WIDTH, HEIGHT, "choice");
-  choice3 = myButtons.addButton(BASE_BUTTON3, YSTART, WIDTH, HEIGHT, "choice");
-  choice4 = myButtons.addButton(BASE_BUTTON4, YSTART, WIDTH, HEIGHT, "choice");
-  choice5 = myButtons.addButton(BASE_BUTTON5, YSTART, WIDTH, HEIGHT, "choice");
-  myButtons.drawButtons();
-#endif
-  startTimer(TC1, 1, TC4_IRQn, 1);
-  pinMode(RPM_InterruptPort, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(RPM_InterruptPort), RPM_CountInterrupt, RISING);
-
-  pinMode(POT_IN, INPUT);
-  pinMode(POT_OUT, OUTPUT);
-
-  potentiometerValue = 0;
-  full_revolutions = 0;
-  currentSpeed = 0;
-  timeold = 0;
-}
-void loop()
-{
-  
-  myGLCD.printNumI(count++, 0, 10);
-  
-  if (full_revolutions >= 10) {
-    detachInterrupt(RPM_InterruptPort);
-    int currentMillis = millis();
-    currentSpeed = (60 * 1000 * full_revolutions/(currentMillis - timeold) )*speedConversionValue;
-    timeold = currentMillis;
-    full_revolutions = 0;
-    attachInterrupt(digitalPinToInterrupt(RPM_InterruptPort), RPM_CountInterrupt, RISING);
-  }
-/*
-  if (!cruiseON)
-  {
-    sensorValue = analogRead(sensorPin);
-    sensorValue = analogRead(sensorPin);
-  }*/
-
-
-  myGLCD.printNumI(counter, 351, 72, 2, '0');
-  myGLCD.printNumI((int)currentSpeed, 327, 144);
 #if TOUCH
   if (myTouch.dataAvailable() == true)
   {
