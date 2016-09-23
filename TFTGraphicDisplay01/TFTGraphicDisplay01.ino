@@ -25,7 +25,6 @@ URTouch        myTouch(6, 5, 4, 3, 2);
 UTFT_Buttons  myButtons(&myGLCD, &myTouch);
 #endif
 int choice1, choice2, choice3, choice4, choice5, selected = -1;
-int temperaturesInt[5];
 int sensorPin = A0;
 int sensorValue = 0;
 int counter = 0;
@@ -33,13 +32,19 @@ int cruiseON = 0;
 uint32_t rc = 1;
 static int count = 0;
 
-char *clearBuffer = "    ";
+const char clearBuffer[] = "    ";
 char label[] = "0";
 char *ptr;
-char cruiseOn[] = "ON";
-char cruiseOff[] = "OFF";
+const char cruiseOn[] = "RUN";
+const char cruiseOff[] = "OFF";
 char oldLabel[] = "0";
 
+/// temperature related variables
+// temperature calibration buffer
+const float voltsPCount[5] = {0.51, 0.52, 0.53, 0.52, 0.53};
+const float calibrationScale[5] = {1.2414, 1.1603, 1.4573, 1.2508, 1.3893};
+const float calibrationOffset[5] = {20.405, 16.277, 38.226, 21.517, 32.237};
+int temperaturesInt[5];
 float temperatures[5];
 volatile int getTemperaturesBtn = 0;
 
@@ -104,6 +109,7 @@ void setup()
   currentSpeed = 0;
   timeold = 0;
 }
+
 void loop()
 {
   
@@ -226,24 +232,26 @@ void getTemperatures()
   delay(1);
   for (int j = 0; j < 5; j++)
   {
-    switch (j)
-    {
-      case 0:
-        temperatures[j] = ((temperaturesInt[j]) * 0.51) * 1.2412 - 20.405;
-        break;
-      case 1:
-        temperatures[j] = ((temperaturesInt[j]) * 0.52) * 1.1603 - 16.277;
-        break;
-      case 2:
-        temperatures[j] = ((temperaturesInt[j]) * 0.53) * 1.4573 - 38.226;
-        break;
-      case 3:
-        temperatures[j] = ((temperaturesInt[j]) * 0.52) * 1.2508 - 21.517;
-        break;
-      case 4:
-        temperatures[j] = ((temperaturesInt[j]) * 0.53) * 1.3893 - 32.237;
-        break;
-    }
+    temperatures[j] = ((temperaturesInt[j]) * voltsPCount[j]) * calibrationScale[j] - calibrationOffset[j];
+//    switch (j)
+//    {
+//      // temperature = ((integer Temperature) * (volts/count)) * CalibrationScale - CalibrationOffset
+//      case 0:
+//        temperatures[j] = ((temperaturesInt[j]) * 0.51) * 1.2412 - 20.405;
+//        break;
+//      case 1:
+//        temperatures[j] = ((temperaturesInt[j]) * 0.52) * 1.1603 - 16.277;
+//        break;
+//      case 2:
+//        temperatures[j] = ((temperaturesInt[j]) * 0.53) * 1.4573 - 38.226;
+//        break;
+//      case 3:
+//        temperatures[j] = ((temperaturesInt[j]) * 0.52) * 1.2508 - 21.517;
+//        break;
+//      case 4:
+//        temperatures[j] = ((temperaturesInt[j]) * 0.53) * 1.3893 - 32.237;
+//        break;
+//    }
     myGLCD.printNumF(temperatures[j], 1, (j * 120), 335);
   }
   getTemperaturesBtn = 0;
