@@ -11,7 +11,7 @@
 #define WIDTH 159
 #define HEIGHT 96
 #define YSTART 383
-#define TOUCH 1
+#define TOUCH 0
 
 extern uint8_t BigFont[];
 //extern uint8_t SixteenSegment48x72Num[];
@@ -35,8 +35,8 @@ static int count = 0;
 const char clearBuffer[] = "    ";
 char label[] = "0";
 char *ptr;
-const char cruiseOn[] = "RUN";
-const char cruiseOff[] = "OFF";
+char cruiseOn[] = "RUN";
+char cruiseOff[] = "OFF";
 char oldLabel[] = "0";
 
 /// temperature related variables
@@ -56,7 +56,7 @@ int POT_IN = A0;
 int POT_OUT = 10;
 int RPM_InterruptPort = 8;
 int potentiometerValue;
-float speedConversionValue = 0.064091;
+const float speedConversionValue = 0.064091;
 
 
 
@@ -78,6 +78,7 @@ void startTimer(Tc *tc, uint32_t channel, IRQn_Type irq, uint32_t frequency)
 
 void setup()
 {
+  Serial.begin(115200);
   Serial3.begin(115200);
   myGLCD.InitLCD();
   myGLCD.clrScr();
@@ -114,6 +115,11 @@ void loop()
 {
   
   myGLCD.printNumI(count++, 0, 10);
+  
+  sensorValue = analogRead(POT_IN);
+  sensorValue = analogRead(POT_IN);
+  analogWrite(POT_OUT,map(sensorValue, 0,1023,0,255));
+  
   
   if (full_revolutions >= 10) {
     detachInterrupt(RPM_InterruptPort);
@@ -176,6 +182,13 @@ void loop()
   if (getTemperaturesBtn)
   {
     getTemperatures();
+    for(int i = 0; i < 5; i++)
+    {
+      Serial.print(temperatures[i],1);
+      Serial.print('\t');
+    }
+    Serial.print(currentSpeed,1);
+    Serial.println();
   }
 
 }
@@ -261,7 +274,7 @@ void getTemperatures()
 void TC4_Handler()
 {
   counter++;
-  if (counter > 59)
+  if (counter > 9)
   {
     counter = 0;
     getTemperaturesBtn = 1;
