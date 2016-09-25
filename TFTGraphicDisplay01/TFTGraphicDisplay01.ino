@@ -50,11 +50,11 @@ volatile int getTemperaturesBtn = 0;
 
 /*Speed input variables*/
 volatile byte full_revolutions;
-unsigned int currentSpeed;
+float currentSpeed;
 unsigned long timeold;
 int POT_IN = A0;
 int POT_OUT = 10;
-int RPM_InterruptPort = 8;
+int RPM_InterruptPort = 2;
 int potentiometerValue;
 const float speedConversionValue = 0.064091;
 
@@ -100,7 +100,7 @@ void setup()
 #endif
   startTimer(TC1, 1, TC4_IRQn, 1);
   pinMode(RPM_InterruptPort, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(RPM_InterruptPort), RPM_CountInterrupt, RISING);
+  attachInterrupt(RPM_InterruptPort, RPM_CountInterrupt, FALLING);
 
   pinMode(POT_IN, INPUT);
   pinMode(POT_OUT, OUTPUT);
@@ -124,10 +124,10 @@ void loop()
   if (full_revolutions >= 10) {
     detachInterrupt(RPM_InterruptPort);
     int currentMillis = millis();
-    currentSpeed = (60 * 1000 * full_revolutions/(currentMillis - timeold) )*speedConversionValue;
+    currentSpeed = (60.0 * 1000/(currentMillis - timeold) * full_revolutions);//*speedConversionValue;
     timeold = currentMillis;
     full_revolutions = 0;
-    attachInterrupt(digitalPinToInterrupt(RPM_InterruptPort), RPM_CountInterrupt, RISING);
+    attachInterrupt(RPM_InterruptPort, RPM_CountInterrupt, FALLING);
   }
 /*
   if (!cruiseON)
@@ -181,14 +181,17 @@ void loop()
 #endif
   if (getTemperaturesBtn)
   {
-    getTemperatures();
-    for(int i = 0; i < 5; i++)
-    {
-      Serial.print(temperatures[i],1);
-      Serial.print('\t');
-    }
+    //getTemperatures();
+//    for(int i = 0; i < 5; i++)
+//    {
+//      Serial.print(temperatures[i],1);
+//      Serial.print('\t');
+//    }
     Serial.print(currentSpeed,1);
-    Serial.println();
+    Serial.print('\t');
+    Serial.print(full_revolutions);
+    Serial.print('\t');
+    Serial.println(currentSpeed*speedConversionValue);
   }
 
 }
