@@ -11,16 +11,16 @@
 #define WIDTH 159
 #define HEIGHT 96
 #define YSTART 383
-#define TOUCH 0
+#define TOUCH 1
 
 extern uint8_t BigFont[];
 //extern uint8_t SixteenSegment48x72Num[];
 //extern uint8_t Grotesk24x48[];
 extern uint8_t Ubuntu[];
 
-UTFT          myGLCD(SSD1963_800ALT, 38, 39, 40, 41);
+UTFT          myGLCD(CTE70, 25,26,27,28);
 #ifdef TOUCH
-URTouch        myTouch(6, 5, 4, 3, 2);
+URTouch        myTouch(6, 5, 32, 3, 2);
 
 UTFT_Buttons  myButtons(&myGLCD, &myTouch);
 #endif
@@ -83,9 +83,8 @@ void setup()
   myGLCD.InitLCD();
   myGLCD.clrScr();
   myGLCD.setFont(Ubuntu);
-  myGLCD.print("Counter: ", 100, 72);
-  myGLCD.print("Analog", 100, 144);
-  myGLCD.print("Read:", 100, 193);
+  myGLCD.print("RPM: ", 100, 72);
+  myGLCD.print("Speed: ", 100, 144);
 
 #if TOUCH
   myTouch.InitTouch();
@@ -137,8 +136,8 @@ void loop()
   }*/
 
 
-  myGLCD.printNumI(counter, 351, 72, 2, '0');
-  myGLCD.printNumI((int)currentSpeed, 327, 144);
+  myGLCD.printNumI(currentSpeed, 351, 72, 2, '0');
+  myGLCD.printNumF(currentSpeed*speedConversionValue,1, 327, 144);
 #if TOUCH
   if (myTouch.dataAvailable() == true)
   {

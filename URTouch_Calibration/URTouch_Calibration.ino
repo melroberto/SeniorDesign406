@@ -32,7 +32,7 @@
 // ElecHouse TFT LCD/SD Shield for Arduino Due : <display model>,22,23,31,33
 //
 // Remember to change the model parameter to suit your display module!
-UTFT    myGLCD(CTE,25,26,27,28);
+UTFT    myGLCD(CTE70,25,26,27,28);
 
 // Initialize touchscreen
 // ----------------------
@@ -44,7 +44,7 @@ UTFT    myGLCD(CTE,25,26,27,28);
 // Teensy 3.x TFT Test Board                   : 26,31,27,28,29
 // ElecHouse TFT LCD/SD Shield for Arduino Due : 25,26,27,29,30
 //
-URTouch  myTouch( 6, 5, 4, 3, 2);
+URTouch  myTouch( 6, 5, 32, 3, 2);
 
 // ************************************
 // DO NOT EDIT ANYTHING BELOW THIS LINE
