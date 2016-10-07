@@ -42,8 +42,8 @@ char oldLabel[] = "0";
 /// temperature related variables
 // temperature calibration buffer
 const float voltsPCount[5] = {0.51, 0.52, 0.53, 0.52, 0.53};
-const float calibrationScale[5] = {1.2414, 1.1603, 1.4573, 1.2508, 1.3893};
-const float calibrationOffset[5] = {20.405, 16.277, 38.226, 21.517, 32.237};
+const float calibrationScale[5] = {0.4396,0.4318,0.4465,0.4164,0.4318};
+const float calibrationOffset[5] = {27.459,27.655,29.452,21.762,26.181};
 int temperaturesInt[5];
 float temperatures[5];
 volatile int getTemperaturesBtn = 0;
@@ -54,7 +54,7 @@ float currentSpeed;
 unsigned long timeold;
 int POT_IN = A0;
 int POT_OUT = 10;
-int RPM_InterruptPort = 2;
+int RPM_InterruptPort = 8;
 int potentiometerValue;
 const float speedConversionValue = 0.064091;
 
@@ -180,12 +180,12 @@ void loop()
 #endif
   if (getTemperaturesBtn)
   {
-    //getTemperatures();
-//    for(int i = 0; i < 5; i++)
-//    {
-//      Serial.print(temperatures[i],1);
-//      Serial.print('\t');
-//    }
+    getTemperatures();
+    for(int i = 0; i < 5; i++)
+    {
+      Serial.print(temperatures[i],1);
+      Serial.print('\t');
+    }
     Serial.print(currentSpeed,1);
     Serial.print('\t');
     Serial.print(full_revolutions);
@@ -201,72 +201,11 @@ void getTemperatures()
   for (int var = 0; var < 5; var++) {
     temperaturesInt[var] = 0;
   }
-
-  /* for (int var = 0; var < 5; var++) {
-     while (temperaturesInt[var] == 0)
-     {
-       Serial3.write(var + 48);
-       delay(5);
-       if (Serial3.available())
-       {
-         temperaturesInt[var] = Serial3.read();
-       }
-     }
-    }*/
-  Serial3.write(48);
-  delay(5);
-  if (Serial3.available())
-  {
-    temperaturesInt[0] = Serial3.read();
-  }
-  Serial3.write(49);
-  delay(5);
-  if (Serial3.available())
-  {
-    temperaturesInt[1] = Serial3.read();
-  }
-  Serial3.write(50);
-  delay(5);
-  if (Serial3.available())
-  {
-    temperaturesInt[2] = Serial3.read();
-  }
-  Serial3.write(51);
-  delay(5);
-  if (Serial3.available())
-  {
-    temperaturesInt[3] = Serial3.read();
-  }
-  Serial3.write(52);
-  delay(5);
-  if (Serial3.available())
-  {
-    temperaturesInt[4] = Serial3.read();
-  }
   myGLCD.print("                         ",0, 335);
-  delay(1);
   for (int j = 0; j < 5; j++)
   {
-    temperatures[j] = ((temperaturesInt[j]) * voltsPCount[j]) * calibrationScale[j] - calibrationOffset[j];
-//    switch (j)
-//    {
-//      // temperature = ((integer Temperature) * (volts/count)) * CalibrationScale - CalibrationOffset
-//      case 0:
-//        temperatures[j] = ((temperaturesInt[j]) * 0.51) * 1.2412 - 20.405;
-//        break;
-//      case 1:
-//        temperatures[j] = ((temperaturesInt[j]) * 0.52) * 1.1603 - 16.277;
-//        break;
-//      case 2:
-//        temperatures[j] = ((temperaturesInt[j]) * 0.53) * 1.4573 - 38.226;
-//        break;
-//      case 3:
-//        temperatures[j] = ((temperaturesInt[j]) * 0.52) * 1.2508 - 21.517;
-//        break;
-//      case 4:
-//        temperatures[j] = ((temperaturesInt[j]) * 0.53) * 1.3893 - 32.237;
-//        break;
-//    }
+    Serial3.write(48 + j);
+    temperatures[j] = Serial3.parseFloat();
     myGLCD.printNumF(temperatures[j], 1, (j * 120), 335);
   }
   getTemperaturesBtn = 0;

@@ -1,6 +1,8 @@
 #include "Arduino.h"
 // set of pins on which the temperature sensors are located
 const int analogPins[] = {A0, A1, A2, A3, A4};
+const float calibrationScale[5] = {0.4396,0.4318,0.4465,0.4164,0.4318};
+const float calibrationOffset[5] = {27.459,27.655,29.452,21.762,26.181};
 //volatile int analogPin5 = A6;
 
 // outside leads to ground and +5V
@@ -17,6 +19,7 @@ volatile byte fullRev;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
+  Serial3.begin(115200);
   //pinMode(interruptPin2, INPUT_PULLUP);
   //attachInterrupt(digitalPinToInterrupt(interruptPin2), RPM_CountInterrupt, FALLING);
   count = 0;
@@ -48,9 +51,9 @@ void loop() {
   //  }
 
   // check if a temperature reading has been requested.
-  if (Serial.available())
+  if (Serial3.available())
   {
-    inByte = Serial.read();
+    inByte = Serial3.read();
   }
   else
   {
@@ -71,7 +74,9 @@ void loop() {
     }
     // divide by sixteen to average the readings
     val[digitalValue] >>= 4;
-    Serial.write(val[digitalValue]);
+    Serial3.print(val[digitalValue]*calibrationScale[digitalValue] - calibrationOffset[digitalValue],1);
+    Serial3.print('\t');
+    //Serial.println(val[digitalValue]*calibrationScale[digitalValue] - calibrationOffset[digitalValue],1);
   }
 }
 
