@@ -62,7 +62,7 @@ const float speedConversionValue = 0.064091;
 
 void startTimer(Tc *tc, uint32_t channel, IRQn_Type irq, uint32_t frequency)
 {
-  //pmc_set_writeprotect(false);           //Disable write protection for register
+  pmc_set_writeprotect(false);           //Disable write protection for register
   pmc_enable_periph_clk((uint32_t)irq);  //enable clock for the channel
   TC_Configure(tc, channel, TC_CMR_WAVE | TC_CMR_WAVSEL_UP_RC | TC_CMR_TCCLKS_TIMER_CLOCK4);
   rc = VARIANT_MCK / 128 / frequency; //128 because we selected TIMER_CLOCK4 above
@@ -72,7 +72,7 @@ void startTimer(Tc *tc, uint32_t channel, IRQn_Type irq, uint32_t frequency)
 
   tc->TC_CHANNEL[channel].TC_IER = TC_IER_CPCS;
   tc->TC_CHANNEL[channel].TC_IDR = ~TC_IER_CPCS;
-  //pmc_set_writeprotect(true);
+  pmc_set_writeprotect(true);
   NVIC_EnableIRQ(irq); 
 }
 

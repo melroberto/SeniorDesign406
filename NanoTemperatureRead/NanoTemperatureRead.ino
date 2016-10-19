@@ -1,8 +1,8 @@
 #include "Arduino.h"
 // set of pins on which the temperature sensors are located
 const int analogPins[] = {A0, A1, A2, A3, A4};
-const float calibrationScale[5] = {0.4396,0.4318,0.4465,0.4164,0.4318};
-const float calibrationOffset[5] = {27.459,27.655,29.452,21.762,26.181};
+const float calibrationScale[5] = {0.4396, 0.4318, 0.4465, 0.4164, 0.4318};
+const float calibrationOffset[5] = {27.459, 27.655, 29.452, 21.762, 26.181};
 //volatile int analogPin5 = A6;
 
 // outside leads to ground and +5V
@@ -15,6 +15,8 @@ int count;
 unsigned long lastTime;
 volatile int rpm;
 volatile byte fullRev;
+int minTemperature = 124;
+int maxTemperature = 0;
 
 void setup() {
   // put your setup code here, to run once:
@@ -26,11 +28,33 @@ void setup() {
   lastTime = 0;
   rpm = 0;
   fullRev = 0;
+  pinMode(13, OUTPUT);
+  digitalWrite(13, LOW);
 }
 
 void loop() {
   int inByte;
   bool sendData = false;
+  for (int i = 0; i <= 4; i++)
+  {
+    val[i] = analogRead(analogPins[i]);
+    val[i] += analogRead(analogPins[i]);
+    val[i] += analogRead(analogPins[i]);
+    val[i] += analogRead(analogPins[i]);
+    val[i] /= 4;
+    if (val[i] < minTemperature)
+      minTemperature = val[i];
+    if (val[i] > maxTemperature)
+      maxTemperature = val[i];
+  }
+  if (maxTemperature >= 124)
+  {
+    digitalWrite(13, HIGH);
+  }
+  else
+  {
+    digitalWrite(13, LOW);
+  }
   // put your main code here, to run repeatedly:
 
   //RPM measurement code
@@ -51,9 +75,9 @@ void loop() {
   //  }
 
   // check if a temperature reading has been requested.
-  if (Serial3.available())
+  if (Serial.available())
   {
-    inByte = Serial3.read();
+    inByte = Serial.read();
   }
   else
   {
@@ -66,17 +90,18 @@ void loop() {
     // translate the request into a port value to read from.
     digitalValue = inByte - '0';
     // clear the analog read history
-    val[digitalValue] = 0;
-    // take sixteen readings
-    for (int i = 0; i < 16; i++)
-    {
-      val[digitalValue] += analogRead(analogPins[digitalValue]);
-    }
-    // divide by sixteen to average the readings
-    val[digitalValue] >>= 4;
-    Serial3.print(val[digitalValue]*calibrationScale[digitalValue] - calibrationOffset[digitalValue],1);
+    //    val[digitalValue] = 0;
+    //    // take sixteen readings
+    //    for (int i = 0; i < 16; i++)
+    //    {
+    //      val[digitalValue] += analogRead(analogPins[digitalValue]);
+    //    }
+    //    // divide by sixteen to average the readings
+    //    val[digitalValue] >>= 4;
+    float temperature = val[digitalValue] * calibrationScale[digitalValue] - calibrationOffset[digitalValue];
+    Serial3.print(temperature, 1);
     Serial3.print('\t');
-    //Serial.println(val[digitalValue]*calibrationScale[digitalValue] - calibrationOffset[digitalValue],1);
+    Serial.println(temperature, 1);
   }
 }
 
