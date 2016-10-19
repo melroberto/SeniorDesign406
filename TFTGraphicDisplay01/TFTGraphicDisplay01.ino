@@ -50,13 +50,14 @@ volatile int getTemperaturesBtn = 0;
 
 /*Speed input variables*/
 volatile byte full_revolutions;
-float currentSpeed;
+int currentRPM;
 unsigned long timeold;
 int POT_IN = A0;
 int POT_OUT = 10;
 int RPM_InterruptPort = 8;
 int potentiometerValue;
-const float speedConversionValue = 0.064091;
+const float speedConversionValue = 0.0641;
+float currentSpeed;
 
 
 
@@ -97,7 +98,7 @@ void setup()
   choice5 = myButtons.addButton(BASE_BUTTON5, YSTART, WIDTH, HEIGHT, "choice");
   myButtons.drawButtons();
 #endif
-  startTimer(TC1, 1, TC4_IRQn, 1);
+ // startTimer(TC1, 1, TC4_IRQn, 1);
   pinMode(RPM_InterruptPort, INPUT_PULLUP);
   attachInterrupt(RPM_InterruptPort, RPM_CountInterrupt, FALLING);
 
@@ -107,6 +108,7 @@ void setup()
   potentiometerValue = 0;
   full_revolutions = 0;
   currentSpeed = 0;
+  currentRPM = 0;
   timeold = 0;
 }
 
@@ -120,13 +122,14 @@ void loop()
   analogWrite(POT_OUT,map(sensorValue, 0,1023,0,255));
   
   
-  if (full_revolutions >= 10) {
-    detachInterrupt(RPM_InterruptPort);
+  if (full_revolutions >= 1) {
+    noInterrupts();
     int currentMillis = millis();
-    currentSpeed = (60.0 * 1000/(currentMillis - timeold) * full_revolutions);//*speedConversionValue;
+    currentRPM = (30 * 1000/(currentMillis - timeold)*full_revolutions);//*speedConversionValue;
+    currentSpeed = (currentRPM*speedConversionValue);
     timeold = currentMillis;
     full_revolutions = 0;
-    attachInterrupt(RPM_InterruptPort, RPM_CountInterrupt, FALLING);
+    interrupts();
   }
 /*
   if (!cruiseON)
@@ -136,8 +139,8 @@ void loop()
   }*/
 
 
-  myGLCD.printNumI(currentSpeed, 351, 72, 2, '0');
-  myGLCD.printNumF(currentSpeed*speedConversionValue,1, 327, 144);
+  myGLCD.printNumI(currentRPM, 279, 72, 4, ' ');
+  myGLCD.printNumF(currentSpeed,1, 327, 144,'.',4,' ');
 #if TOUCH
   if (myTouch.dataAvailable() == true)
   {
@@ -186,11 +189,11 @@ void loop()
       Serial.print(temperatures[i],1);
       Serial.print('\t');
     }
-    Serial.print(currentSpeed,1);
+    Serial.print(currentRPM,1);
     Serial.print('\t');
     Serial.print(full_revolutions);
     Serial.print('\t');
-    Serial.println(currentSpeed*speedConversionValue);
+    Serial.println(currentSpeed);
   }
 
 }
@@ -227,4 +230,5 @@ void TC4_Handler()
 void RPM_CountInterrupt()
 {
   full_revolutions++;
+  Serial.println(full_revolutions);
 }
