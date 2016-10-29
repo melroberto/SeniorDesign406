@@ -27,7 +27,7 @@ UTFT_Buttons  myButtons(&myGLCD, &myTouch);
 int choice1, choice2, choice3, choice4, choice5, selected = -1;
 int sensorPin = A0;
 int sensorValue = 0;
-int counter = 0;
+
 int cruiseON = 0;
 uint32_t rc = 1;
 static int count = 0;
@@ -39,18 +39,13 @@ char cruiseOn[] = "RUN";
 char cruiseOff[] = "OFF";
 char oldLabel[] = "0";
 
-/// temperature related variables
-// temperature calibration buffer
-const float voltsPCount[5] = {0.51, 0.52, 0.53, 0.52, 0.53};
-const float calibrationScale[5] = {0.4396, 0.4318, 0.4465, 0.4164, 0.4318};
-const float calibrationOffset[5] = {27.459, 27.655, 29.452, 21.762, 26.181};
 int temperaturesInt[5];
 float temperatures[5];
 volatile int getTemperaturesBtn = 0;
 
 /*Speed input variables*/
 volatile byte full_revolutions;
-int currentRPM;
+float currentRPM;
 unsigned long timeold;
 int POT_IN = A0;
 int POT_OUT = 10;
@@ -58,7 +53,7 @@ int RPM_InterruptPort = 8;
 int potentiometerValue;
 const float speedConversionValue = 0.0641;
 float currentSpeed;
-
+volatile uint32_t milliseconds = 0;
 
 
 void startTimer(Tc *tc, uint32_t channel, IRQn_Type irq, uint32_t frequency)
@@ -100,21 +95,27 @@ void setup()
 #endif
   startTimer(TC1, 1, TC4_IRQn, 1000);
   pinMode(RPM_InterruptPort, INPUT_PULLUP);
-  attachInterrupt(RPM_InterruptPort, RPM_CountInterrupt, FALLING);
+
   analogWriteResolution(10);
 
   pinMode(POT_IN, INPUT);
   pinMode(POT_OUT, OUTPUT);
+
+  digitalWrite(12, LOW);
+  delay(1);
+  digitalWrite(12, HIGH);
 
   potentiometerValue = 0;
   full_revolutions = 0;
   currentSpeed = 0;
   currentRPM = 0;
   timeold = 0;
+  //delay(1000);
 }
 
 void loop()
 {
+  static String temps;
   static int currentPeriod;
 
   myGLCD.printNumI(count++, 0, 10);
@@ -127,7 +128,7 @@ void loop()
   analogWrite(POT_OUT, sensorValue);//map(sensorValue, 0, 1023, 0, 255));
 
   myGLCD.printNumI(sensorValue, 400, 72, 5, ' ');
-  myGLCD.printNumI(currentRPM, 279, 72, 5, ' ');
+  myGLCD.printNumF(currentRPM, 1, 279, 72, '.', 5, ' ');
   currentSpeed = (currentRPM * speedConversionValue);
   myGLCD.printNumF(currentSpeed, 1, 327, 144, '.', 5, ' ');
 #if TOUCH
@@ -152,20 +153,20 @@ void loop()
     if (selected == choice2)
     {
       *label = '+';
-      if(cruiseON)
+      if (cruiseON)
       {
         sensorValue += 10;
-      if(sensorValue > 1010)
-        sensorValue = 1020;
+        if (sensorValue > 1010)
+          sensorValue = 1020;
       }
     }
     if (selected == choice3) {
       *label = '-';
-      if(cruiseON)
+      if (cruiseON)
       {
         sensorValue -= 10;
-      if(sensorValue < 50)
-        sensorValue = 0;
+        if (sensorValue < 50)
+          sensorValue = 0;
       }
     }
     if (selected == choice4) {
@@ -179,54 +180,53 @@ void loop()
       if (selected != choice1)
         ptr = label;
       myButtons.relabelButton(selected, ptr, true);
-      
+
     }
   }
 #endif
-  if (!(count % 200))
-  {
-    getTemperatures();
-    for (int i = 0; i < 5; i++)
-    {
-      Serial.print(temperatures[i], 1);
-      Serial.print('\t');
-    }
+    Serial.print(milliseconds);
+    Serial.print('\t');
+    Serial.print(temps);
+    Serial.print('\t');
+    Serial.print(sensorValue);
+    Serial.print('\t');
     Serial.print(currentRPM, 1);
     Serial.print('\t');
-    Serial.print(full_revolutions);
-    Serial.print('\t');
-    Serial.println(currentSpeed);
+    Serial.println(currentSpeed, 1);
+  if (!(count % 100))
+  {
+    myGLCD.print("                         ", 0, 335);
+    temps = getTemperatures();
+    myGLCD.setFont(BigFont);
+    myGLCD.print(temps, 0, 335);
+    myGLCD.setFont(Ubuntu);
   }
+
 }
 
 //temperature acquisition
-void getTemperatures()
+String getTemperatures()
 {
-  for (int var = 0; var < 5; var++) {
-    temperaturesInt[var] = 0;
-  }
-  myGLCD.print("                         ", 0, 335);
-  for (int j = 0; j < 5; j++)
+  static String temperatures;
+  Serial3.write(48);
+  if (Serial3.available())
   {
-    Serial3.write(48 + j);
-    temperatures[j] = Serial3.parseFloat();
-    myGLCD.printNumF(temperatures[j], 1, (j * 120), 335);
+    temperatures = Serial3.readStringUntil('\n');
+    //Serial.print(temperatures);
   }
-  getTemperaturesBtn = 0;
+  return temperatures;
 }
 
 //Time Counter
 void TC4_Handler()
 {
-  static int oldCounter = 0;
-  static int rev = 0;
+  static uint32_t counter = 0;
+  static uint32_t oldCounter = 0xFFFFFFFF;
+  static uint32_t rev = 2;
   counter++;
-  //  if (counter > 9)
-  //  {
-  //    counter = 0;
-  //    getTemperaturesBtn = 1;
-  //  }
-  if (digitalRead(8))
+  milliseconds++;
+
+  if (!digitalRead(8))
   {
     rev += 1;
   }
@@ -235,7 +235,7 @@ void TC4_Handler()
     rev = 0;
   }
   if (rev == 1) {
-    currentRPM = ((30 * 1000) / (counter)); //*speedConversionValue;
+    currentRPM = ((30 * 1000) / (counter * 1.0)); //*speedConversionValue;
     oldCounter = counter;
     counter = 0;
   }
@@ -247,9 +247,4 @@ void TC4_Handler()
   TC_GetStatus(TC1, 1);                 //Resets Interrupt
 }
 
-//revolutions counter
-void RPM_CountInterrupt()
-{
-  full_revolutions++;
-  //Serial.println(full_revolutions);
-}
+
