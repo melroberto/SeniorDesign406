@@ -122,7 +122,7 @@ void loop()
 
   if (!cruiseON)
   {
-    sensorValue = analogRead(sensorPin);
+    analogRead(sensorPin);
     sensorValue = analogRead(sensorPin);
   }
   analogWrite(POT_OUT, sensorValue);//map(sensorValue, 0, 1023, 0, 255));
@@ -184,6 +184,9 @@ void loop()
     }
   }
 #endif
+    
+  if (!(count % 50))
+  {
     Serial.print(milliseconds);
     Serial.print('\t');
     Serial.print(temps);
@@ -193,13 +196,8 @@ void loop()
     Serial.print(currentRPM, 1);
     Serial.print('\t');
     Serial.println(currentSpeed, 1);
-  if (!(count % 100))
-  {
-    myGLCD.print("                         ", 0, 335);
     temps = getTemperatures();
-    myGLCD.setFont(BigFont);
     myGLCD.print(temps, 0, 335);
-    myGLCD.setFont(Ubuntu);
   }
 
 }
@@ -212,7 +210,6 @@ String getTemperatures()
   if (Serial3.available())
   {
     temperatures = Serial3.readStringUntil('\n');
-    //Serial.print(temperatures);
   }
   return temperatures;
 }

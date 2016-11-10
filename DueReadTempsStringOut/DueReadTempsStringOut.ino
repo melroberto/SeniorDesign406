@@ -30,11 +30,12 @@ void loop() {
 
   for (int i = 0; i <= 4; i++)
   {
+    analogRead(analogPins[i]);
     val[i] = analogRead(analogPins[i]);
     val[i] += analogRead(analogPins[i]);
     val[i] += analogRead(analogPins[i]);
     val[i] += analogRead(analogPins[i]);
-    val[i] >>= 2;
+    val[i] /= 4;
     if (val[i] < minTemperature)
       minTemperature = val[i];
     if (val[i] > 270)
@@ -45,9 +46,6 @@ void loop() {
   if (maxTemperature > 270)
   {
     digitalWrite(13, HIGH);
-#ifdef DEBUG
-    //Serial.println(maxTemperature);
-#endif
   }
   else
   {
@@ -67,32 +65,21 @@ void loop() {
     // if a reading was requested then get the desired temperature sensor and average over 16 readings
     if ((inByte == '0'))
     {
+      String temperature = "";
+      float temp;
       for (int i = 0; i < 5; i++)
       {
-        Serial3.print(i);
-        Serial3.print(' ');
-        float temp = val[i] * calibrationScale[i] - calibrationOffset[i];
-        Serial3.print(temp,1);
-        if (i == 4)
+        temp = val[i] * calibrationScale[i] - calibrationOffset[i];
+        temperature += String(temp, 1);
+        if (i < 4)
         {
-          Serial3.print('\n');
+          temperature += String('\t');
         }
-        else
-        {
-          Serial3.print(' ');
-        }
-#ifdef DEBUG
-        Serial.print(temp,1);
-        if (i == 4)
-        {
-          Serial.print('\n');
-        }
-        else
-        {
-          Serial.print(' ');
-        }
-        #endif
       }
+#ifdef DEBUG
+      Serial.print(temperature + '\n');
+#endif
+      Serial3.print(temperature + '\n');
     }
   }
 
