@@ -100,9 +100,11 @@ void setup()
 
   pinMode(POT_IN, INPUT);
   pinMode(POT_OUT, OUTPUT);
+  pinMode(12, OUTPUT);
 
+  delay(5000);
   digitalWrite(12, LOW);
-  delay(1);
+  delay(1000);
   digitalWrite(12, HIGH);
 
   potentiometerValue = 0;
@@ -110,7 +112,7 @@ void setup()
   currentSpeed = 0;
   currentRPM = 0;
   timeold = 0;
-  //delay(1000);
+  delay(5000);
 }
 
 void loop()
@@ -185,7 +187,7 @@ void loop()
   }
 #endif
     
-  if (!(count % 50))
+  if (!(count % 100))
   {
     Serial.print(milliseconds);
     Serial.print('\t');

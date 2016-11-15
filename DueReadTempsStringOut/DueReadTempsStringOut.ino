@@ -1,4 +1,4 @@
-#include "Arduino.h"
+//#include "Arduino.h"
 
 //#define DEBUG
 // set of pins on which the temperature sensors are located
@@ -20,7 +20,10 @@ void setup() {
   Serial.begin(115200);
 #endif
   Serial3.begin(115200);
-
+  for(int i = 0; i < 5; i++)
+  {
+    pinMode(analogPins[i], INPUT);
+  }
   pinMode(13, OUTPUT);
   digitalWrite(13, LOW);
 }
@@ -32,10 +35,10 @@ void loop() {
   {
     analogRead(analogPins[i]);
     val[i] = analogRead(analogPins[i]);
-    val[i] += analogRead(analogPins[i]);
-    val[i] += analogRead(analogPins[i]);
-    val[i] += analogRead(analogPins[i]);
-    val[i] /= 4;
+//    val[i] += analogRead(analogPins[i]);
+//    val[i] += analogRead(analogPins[i]);
+//    val[i] += analogRead(analogPins[i]);
+//    val[i] /= 4;
     if (val[i] < minTemperature)
       minTemperature = val[i];
     if (val[i] > 270)
