@@ -25,8 +25,7 @@ URTouch        myTouch(6, 5, 32, 3, 2);
 UTFT_Buttons  myButtons(&myGLCD, &myTouch);
 #endif
 int choice1, choice2, choice3, choice4, choice5, selected = -1;
-int sensorPin = A0;
-int sensorValue = 0;
+int sensorValue;
 
 int cruiseON = 0;
 uint32_t rc = 1;
@@ -112,6 +111,7 @@ void setup()
   currentSpeed = 0;
   currentRPM = 0;
   timeold = 0;
+  sensorValue = 0;
   delay(5000);
 }
 
@@ -124,8 +124,8 @@ void loop()
 
   if (!cruiseON)
   {
-    analogRead(sensorPin);
-    sensorValue = analogRead(sensorPin);
+    analogRead(POT_IN);
+    sensorValue = analogRead(POT_IN);
   }
   analogWrite(POT_OUT, sensorValue);//map(sensorValue, 0, 1023, 0, 255));
 
@@ -246,4 +246,58 @@ void TC4_Handler()
   TC_GetStatus(TC1, 1);                 //Resets Interrupt
 }
 
+//PID update Function
+int PIDUpdate(int range, int goal, int rate, int sampleMillis) {
+  
+  // Low speed constants
+  const double KpLow = 0;
+  const double KiLow = 0.888713724798827;
+  const double KdLow = 0;
+  
+  // Mid speed range constants
+  const double KpMid = 1.29788488073892;
+  const double KiMid = 3.88638162426819;
+  const double KdMid = -0.1521215726867;
+  
+  //High speed range constants
+  const double KpHig = 3.98733918604672;
+  const double KiHig = 11.9396735198533;
+  const double KdHig = -0.467345229779857;
+  
+  //Variables used to perform PID
+  static int error = 0;
+  double P=0;
+  static double I=0;
+  double D=0;
+  double Kp,Ki,Kd;
+  
+  switch (range){
+  case 0: //LowRange
+    Kp = KpLow;
+    Ki = KiLow;
+    Kd = KdLow;
+    break;
+  case 1: //MidRange
+    Kp = KpMid;
+    Ki = KiMid;
+    Kd = KdMid;
+    break;
+  case 2: //HighRange
+    Kp = KpHig;
+    Ki = KiHig;
+    Kd = KdHig;
+    break;
+  default:
+    Kp = 0;
+    Ki = .5;
+    Kd = 0;
+  }
+  
+  D = (goal - rate - error)*1000/sampleMillis;
+  error = goal - rate;
+  P = error*Kp;
+  I += error*Ki*sampleMillis/1000;
+  
+  return P+I+D; 
+}
 

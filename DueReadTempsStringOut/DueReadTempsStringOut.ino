@@ -8,7 +8,8 @@ const float calibrationOffset[5] = {27.459, 27.655, 29.452, 21.762, 26.181};
 //volatile int analogPin5 = A6;
 
 // outside leads to ground and +5V
-volatile int val[5] = {0};           // variable to store the value read
+static int val[5] = {0};           // variable to store the value read
+static int temperatures[5] = {0};
 int digitalValue = 0;
 float temperature = 0;
 
@@ -20,7 +21,7 @@ void setup() {
   Serial.begin(115200);
 #endif
   Serial3.begin(115200);
-  for(int i = 0; i < 5; i++)
+  for (int i = 0; i < 5; i++)
   {
     pinMode(analogPins[i], INPUT);
   }
@@ -34,11 +35,24 @@ void loop() {
   for (int i = 0; i <= 4; i++)
   {
     analogRead(analogPins[i]);
+    delay(1);
     val[i] = analogRead(analogPins[i]);
-//    val[i] += analogRead(analogPins[i]);
-//    val[i] += analogRead(analogPins[i]);
-//    val[i] += analogRead(analogPins[i]);
-//    val[i] /= 4;
+    delay(1);
+    val[i] += analogRead(analogPins[i]);
+    delay(1);
+    val[i] += analogRead(analogPins[i]);
+    delay(1);
+    val[i] += analogRead(analogPins[i]);
+    delay(1);
+    val[i] += analogRead(analogPins[i]);
+    delay(1);
+    val[i] += analogRead(analogPins[i]);
+    delay(1);
+    val[i] += analogRead(analogPins[i]);
+    delay(1);
+    val[i] += analogRead(analogPins[i]);
+    val[i] >>= 3;
+    temperatures[i] = val[i];
     if (val[i] < minTemperature)
       minTemperature = val[i];
     if (val[i] > 270)
@@ -72,7 +86,7 @@ void loop() {
       float temp;
       for (int i = 0; i < 5; i++)
       {
-        temp = val[i] * calibrationScale[i] - calibrationOffset[i];
+        temp = (temperatures[i] * calibrationScale[i]) - calibrationOffset[i];
         temperature += String(temp, 1);
         if (i < 4)
         {
