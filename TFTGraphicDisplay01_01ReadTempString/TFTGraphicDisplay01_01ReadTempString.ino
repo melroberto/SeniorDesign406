@@ -57,7 +57,7 @@ volatile uint32_t milliseconds = 0;
 
 void startTimer(Tc *tc, uint32_t channel, IRQn_Type irq, uint32_t frequency)
 {
-  ////pmc_set_writeprotect(false);           //Disable write protection for register
+  pmc_set_writeprotect(false);           //Disable write protection for register
   pmc_enable_periph_clk((uint32_t)irq);  //enable clock for the channel
   TC_Configure(tc, channel, TC_CMR_WAVE | TC_CMR_WAVSEL_UP_RC | TC_CMR_TCCLKS_TIMER_CLOCK4);
   rc = VARIANT_MCK / 128 / frequency; //128 because we selected TIMER_CLOCK4 above
@@ -75,15 +75,18 @@ void setup()
 {
   Serial.begin(115200);
   Serial3.begin(115200);
-  myGLCD.InitLCD();
+  myGLCD.InitLCD(LANDSCAPE);
   myGLCD.clrScr();
   myGLCD.setFont(Ubuntu);
-  myGLCD.print("RPM: ", 100, 72);
+  myGLCD.fillScr(VGA_WHITE);
+  myGLCD.setColor(VGA_BLACK);
+  myGLCD.setBackColor(VGA_WHITE);
+  myGLCD.print("RPM:   ", 100, 72);
   myGLCD.print("Speed: ", 100, 144);
 
 #if TOUCH
   myTouch.InitTouch();
-  myTouch.setPrecision(PREC_HI);
+  myTouch.setPrecision(PREC_MEDIUM);
   myButtons.setTextFont(Ubuntu);
   choice1 = myButtons.addButton(BASE_BUTTON1, YSTART, WIDTH, HEIGHT, "OFF");
   choice2 = myButtons.addButton(BASE_BUTTON2, YSTART, WIDTH, HEIGHT, " + ");
@@ -93,7 +96,7 @@ void setup()
   myButtons.drawButtons();
 #endif
   startTimer(TC1, 1, TC4_IRQn, 1000);
-  pinMode(RPM_InterruptPort, INPUT_PULLUP);
+  pinMode(RPM_InterruptPort, INPUT);
 
   analogWriteResolution(10);
 
@@ -101,7 +104,7 @@ void setup()
   pinMode(POT_OUT, OUTPUT);
   pinMode(12, OUTPUT);
 
-  delay(5000);
+  delay(1000);
   digitalWrite(12, LOW);
   delay(1000);
   digitalWrite(12, HIGH);
@@ -112,7 +115,7 @@ void setup()
   currentRPM = 0;
   timeold = 0;
   sensorValue = 0;
-  delay(5000);
+  delay(1000);
 }
 
 void loop()
@@ -125,7 +128,7 @@ void loop()
   if (!cruiseON)
   {
     analogRead(POT_IN);
-    sensorValue = analogRead(POT_IN);
+    sensorValue = analogRead(POT_IN) ;
   }
   analogWrite(POT_OUT, sensorValue);//map(sensorValue, 0, 1023, 0, 255));
 
@@ -187,7 +190,7 @@ void loop()
   }
 #endif
     
-  if (!(count % 100))
+  if (!(count % 200))
   {
     Serial.print(milliseconds);
     Serial.print('\t');
