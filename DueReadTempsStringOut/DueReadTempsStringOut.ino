@@ -25,6 +25,13 @@ void setup() {
   {
     pinMode(analogPins[i], INPUT);
   }
+  for (int i = 0; i <= 4; i++)
+  {
+    analogRead(analogPins[i]);
+    val[i] = analogRead(analogPins[i]);
+
+    temperatures[i] = val[i];
+  }
   pinMode(13, OUTPUT);
   digitalWrite(13, LOW);
 }
@@ -35,23 +42,16 @@ void loop() {
   for (int i = 0; i <= 4; i++)
   {
     analogRead(analogPins[i]);
-    delay(1);
     val[i] = analogRead(analogPins[i]);
-    delay(1);
     val[i] += analogRead(analogPins[i]);
-    delay(1);
     val[i] += analogRead(analogPins[i]);
-    delay(1);
     val[i] += analogRead(analogPins[i]);
-    delay(1);
     val[i] += analogRead(analogPins[i]);
-    delay(1);
     val[i] += analogRead(analogPins[i]);
-    delay(1);
     val[i] += analogRead(analogPins[i]);
-    delay(1);
     val[i] += analogRead(analogPins[i]);
     val[i] >>= 3;
+
     temperatures[i] = val[i];
     if (val[i] < minTemperature)
       minTemperature = val[i];
@@ -68,8 +68,8 @@ void loop() {
   {
     digitalWrite(13, LOW);
   }
-
-  // check if a temperature reading has been requested.
+  
+   // check if a temperature reading has been requested.
 #ifndef DEBUG
   if (Serial3.available())
   {
@@ -99,5 +99,4 @@ void loop() {
       Serial3.print(temperature + '\n');
     }
   }
-
 }
