@@ -24,7 +24,7 @@ URTouch        myTouch(6, 5, 32, 3, 2);
 
 UTFT_Buttons  myButtons(&myGLCD, &myTouch);
 #endif
-int choice1, choice2, choice3, choice4, choice5, selected = -1;
+int choice1, choice2, choice3, choice4, choice5, choice6, selected = -1;
 int sensorValue;
 
 int cruiseON = 0;
@@ -36,11 +36,17 @@ char label[] = "0";
 char *ptr;
 char cruiseOn[] = "RUN";
 char cruiseOff[] = "OFF";
+char forward[] = "FWD";
+char reverse[] = "REV";
+char increment[] = "INC";
+char decrement[] = "DEC";
+char stopButton[] = "STOP";
+char goButton[] = " GO ";
 char oldLabel[] = "0";
 
 int temperaturesInt[5];
 float temperatures[5];
-volatile int getTemperaturesBtn = 0;
+volatile int recordData = 0;
 
 /*Speed input variables*/
 volatile byte full_revolutions;
@@ -48,7 +54,10 @@ float currentRPM;
 unsigned long timeold;
 int POT_IN = A0;
 int POT_OUT = 10;
+int FWD_REVERSE = 9;
+int SAFE_STOP = 11;
 int RPM_InterruptPort = 8;
+int TEMPERATURE_RESET = 12;
 int potentiometerValue;
 const float speedConversionValue = 0.0641;
 float currentSpeed;
@@ -88,11 +97,13 @@ void setup()
   myTouch.InitTouch();
   myTouch.setPrecision(PREC_MEDIUM);
   myButtons.setTextFont(Ubuntu);
-  choice1 = myButtons.addButton(BASE_BUTTON1, YSTART, WIDTH, HEIGHT, "OFF");
-  choice2 = myButtons.addButton(BASE_BUTTON2, YSTART, WIDTH, HEIGHT, " + ");
-  choice3 = myButtons.addButton(BASE_BUTTON3, YSTART, WIDTH, HEIGHT, " - ");
-  choice4 = myButtons.addButton(BASE_BUTTON4, YSTART, WIDTH, HEIGHT, "N/A");
-  choice5 = myButtons.addButton(BASE_BUTTON5, YSTART, WIDTH, HEIGHT, "N/A");
+
+  choice1 = myButtons.addButton(BASE_BUTTON1, YSTART, WIDTH, HEIGHT, cruiseOff);
+  choice2 = myButtons.addButton(BASE_BUTTON2, YSTART, WIDTH, HEIGHT, increment);
+  choice3 = myButtons.addButton(BASE_BUTTON3, YSTART, WIDTH, HEIGHT, decrement);
+  choice4 = myButtons.addButton(BASE_BUTTON4, YSTART, WIDTH, HEIGHT, forward);
+  choice5 = myButtons.addButton(BASE_BUTTON5, YSTART, WIDTH, HEIGHT, goButton);
+  choice6 = myButtons.addButton(BASE_BUTTON5, YSTART - WIDTH -1, WIDTH, HEIGHT, goButton);
   myButtons.drawButtons();
 #endif
   startTimer(TC1, 1, TC4_IRQn, 1000);
@@ -102,12 +113,14 @@ void setup()
 
   pinMode(POT_IN, INPUT);
   pinMode(POT_OUT, OUTPUT);
-  pinMode(12, OUTPUT);
+  pinMode(FWD_REVERSE,OUTPUT);
+  pinMode(SAFE_STOP,OUTPUT);
+  pinMode(TEMPERATURE_RESET, OUTPUT);
 
   delay(1000);
-  digitalWrite(12, LOW);
+  digitalWrite(TEMPERATURE_RESET, LOW);
   delay(1000);
-  digitalWrite(12, HIGH);
+  digitalWrite(TEMPERATURE_RESET, HIGH);
 
   potentiometerValue = 0;
   full_revolutions = 0;
@@ -135,7 +148,7 @@ void loop()
   myGLCD.printNumI(sensorValue, 400, 72, 5, ' ');
   myGLCD.printNumF(currentRPM, 1, 279, 72, '.', 5, ' ');
   currentSpeed = (currentRPM * speedConversionValue);
-  myGLCD.printNumF(currentSpeed, 1, 327, 144, '.', 5, ' ');
+  myGLCD.printNumF(currentSpeed, 1, 279, 144, '.', 5, ' ');
 #if TOUCH
   if (myTouch.dataAvailable() == true)
   {
@@ -157,7 +170,7 @@ void loop()
     }
     if (selected == choice2)
     {
-      *label = '+';
+      ptr = increment;
       if (cruiseON)
       {
         sensorValue += 10;
@@ -166,7 +179,7 @@ void loop()
       }
     }
     if (selected == choice3) {
-      *label = '-';
+      ptr = decrement;
       if (cruiseON)
       {
         sensorValue -= 10;
@@ -175,15 +188,42 @@ void loop()
       }
     }
     if (selected == choice4) {
-      *label = '4';
+      static int fwdReverse = 1;
+      if(fwdReverse)
+      {
+        digitalWrite(FWD_REVERSE,HIGH); //Reverse
+        fwdReverse = 0;
+        ptr = reverse;
+      }
+      else
+      {
+        digitalWrite(FWD_REVERSE,LOW); //Forward
+        fwdReverse = 1;
+        ptr = forward;
+      }
     }
     if (selected == choice5) {
-      *label = '5';
+      static int stopGo = 1;
+      if(stopGo)
+      {
+        digitalWrite(SAFE_STOP,HIGH); //Reverse
+        stopGo = 0;
+        ptr = goButton;
+      }
+      else
+      {
+        digitalWrite(SAFE_STOP,LOW); //Forward
+        stopGo = 1;
+        ptr = stopButton;
+      }
+    }
+    if(selected == choice6)
+    {
+      
     }
     if (selected != -1)
     {
-      if (selected != choice1)
-        ptr = label;
+      //if (selected != choice1)
       myButtons.relabelButton(selected, ptr, true);
 
     }
@@ -203,6 +243,10 @@ void loop()
     Serial.println(currentSpeed, 1);
     temps = getTemperatures();
     myGLCD.print(temps, 0, 335);
+  }
+  if(recordData)
+  {
+    
   }
 
 }
@@ -249,58 +293,58 @@ void TC4_Handler()
   TC_GetStatus(TC1, 1);                 //Resets Interrupt
 }
 
-//PID update Function
-int PIDUpdate(int range, int goal, int rate, int sampleMillis) {
-  
-  // Low speed constants
-  const double KpLow = 0;
-  const double KiLow = 0.888713724798827;
-  const double KdLow = 0;
-  
-  // Mid speed range constants
-  const double KpMid = 1.29788488073892;
-  const double KiMid = 3.88638162426819;
-  const double KdMid = -0.1521215726867;
-  
-  //High speed range constants
-  const double KpHig = 3.98733918604672;
-  const double KiHig = 11.9396735198533;
-  const double KdHig = -0.467345229779857;
-  
-  //Variables used to perform PID
-  static int error = 0;
-  double P=0;
-  static double I=0;
-  double D=0;
-  double Kp,Ki,Kd;
-  
-  switch (range){
-  case 0: //LowRange
-    Kp = KpLow;
-    Ki = KiLow;
-    Kd = KdLow;
-    break;
-  case 1: //MidRange
-    Kp = KpMid;
-    Ki = KiMid;
-    Kd = KdMid;
-    break;
-  case 2: //HighRange
-    Kp = KpHig;
-    Ki = KiHig;
-    Kd = KdHig;
-    break;
-  default:
-    Kp = 0;
-    Ki = .5;
-    Kd = 0;
-  }
-  
-  D = (goal - rate - error)*1000/sampleMillis;
-  error = goal - rate;
-  P = error*Kp;
-  I += error*Ki*sampleMillis/1000;
-  
-  return P+I+D; 
-}
+////PID update Function
+//int PIDUpdate(int range, int goal, int rate, int sampleMillis) {
+//  
+//  // Low speed constants
+//  const double KpLow = 0;
+//  const double KiLow = 0.888713724798827;
+//  const double KdLow = 0;
+//  
+//  // Mid speed range constants
+//  const double KpMid = 1.29788488073892;
+//  const double KiMid = 3.88638162426819;
+//  const double KdMid = -0.1521215726867;
+//  
+//  //High speed range constants
+//  const double KpHig = 3.98733918604672;
+//  const double KiHig = 11.9396735198533;
+//  const double KdHig = -0.467345229779857;
+//  
+//  //Variables used to perform PID
+//  static int error = 0;
+//  double P=0;
+//  static double I=0;
+//  double D=0;
+//  double Kp,Ki,Kd;
+//  
+//  switch (range){
+//  case 0: //LowRange
+//    Kp = KpLow;
+//    Ki = KiLow;
+//    Kd = KdLow;
+//    break;
+//  case 1: //MidRange
+//    Kp = KpMid;
+//    Ki = KiMid;
+//    Kd = KdMid;
+//    break;
+//  case 2: //HighRange
+//    Kp = KpHig;
+//    Ki = KiHig;
+//    Kd = KdHig;
+//    break;
+//  default:
+//    Kp = 0;
+//    Ki = .5;
+//    Kd = 0;
+//  }
+//  
+//  D = (goal - rate - error)*1000/sampleMillis;
+//  error = goal - rate;
+//  P = error*Kp;
+//  I += error*Ki*sampleMillis/1000;
+//  
+//  return P+I+D; 
+//}
 
