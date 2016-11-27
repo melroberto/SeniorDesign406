@@ -12,6 +12,9 @@ RM := rm -f
 -include libraries/UTFT_Buttons/subdir.mk
 -include libraries/UTFT/subdir.mk
 -include libraries/URTouch/subdir.mk
+-include libraries/SPI/src/subdir.mk
+-include libraries/SD/src/utility/subdir.mk
+-include libraries/SD/src/subdir.mk
 -include core/variant/subdir.mk
 -include core/core/avr/subdir.mk
 -include core/core/USB/subdir.mk

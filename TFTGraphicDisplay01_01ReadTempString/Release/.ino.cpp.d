@@ -134,6 +134,15 @@
  /usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/cores/arduino/USB/USBAPI.h \
  /usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/cores/arduino/RingBuffer.h \
  /usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/cores/arduino/Stream.h \
+ /usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/SD.h \
+ /usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/utility/SdFat.h \
+ /usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/utility/Sd2Card.h \
+ /usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/utility/Sd2PinMap.h \
+ /usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/utility/SdInfo.h \
+ /usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/utility/FatStructs.h \
+ /usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/cores/arduino/Print.h \
+ /usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/utility/SdFatUtil.h \
+ /usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/libraries/SPI/src/SPI.h \
  /home/rmelendez/git/SeniorDesign406/libraries/UTFT/UTFT.h \
  /home/rmelendez/git/SeniorDesign406/libraries/UTFT/hardware/arm/HW_ARM_defines.h \
  /home/rmelendez/git/SeniorDesign406/libraries/URTouch/URTouch.h \
@@ -410,6 +419,24 @@
 /usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/cores/arduino/RingBuffer.h:
 
 /usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/cores/arduino/Stream.h:
+
+/usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/SD.h:
+
+/usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/utility/SdFat.h:
+
+/usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/utility/Sd2Card.h:
+
+/usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/utility/Sd2PinMap.h:
+
+/usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/utility/SdInfo.h:
+
+/usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/utility/FatStructs.h:
+
+/usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/cores/arduino/Print.h:
+
+/usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8/src/utility/SdFatUtil.h:
+
+/usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/libraries/SPI/src/SPI.h:
 
 /home/rmelendez/git/SeniorDesign406/libraries/UTFT/UTFT.h:
 

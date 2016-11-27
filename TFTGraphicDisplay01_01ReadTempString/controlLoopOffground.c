@@ -1,43 +1,43 @@
+float Kp = 1.0, Ki = 0, Kd = 0, P = 0, I = 0, D = 0, PID = 0;
+float feedback; 			//converted speed to potentiometer value
+int ref_input; 		//corrected Potentiometer input
+float error; //signal comming from the sumer after adding ref input and sub feedback.
+int speedIn;			//corrected RPM
+float speedIn_correction_value, refInCorrectionValue, feedbackSlope,
+      feedbackOffset;
+
+const float LOW_CORRECTION_VALUE = 0.0;
+const float MID_CORRECTION_VALUE = -71.8;
+const float HI_CORRECTION_VALUE = -301.8;
+
+const float LOW_REGION_SLOPE = 6.4728;
+const float LOW_REGION_OFFSET = -0.2515;
+const float KP_LOW = 1.04194929802543;
+const float KI_LOW = 0.957650810295902;
+const float KD_LOW = 0.0;
+
+const float MID_REGION_SLOPE = 0.6824;
+const float MID_REGION_OFFSET = -0.2437;
+const float KP_MID = 40.5301930270284;
+const float KI_MID = 88.0255905709321;
+const float KD_MID = 0.0;
+
+const float HIGH_REGION_SLOPE = 1.7171;
+const float HIGH_REGION_OFFSET = -7.254;
+const float KP_HIGH = 0.157849907129745;
+const float KI_HIGH = 8.74057396848225;
+const float KD_HIGH = 0.0;
+
+int LOW_GEAR_UPPER_REGION = 520;
+int MID_GEAR_UPPER_REGION = 620;
+int HIGH_GEAR_LOWER_REGION = 640;
+
+int INITIAL_INPUT_VALUE = 60;
+
+int correctedOutput;
+
 int PIDUpdate(int sensorValue, int currentRPM, int sampleMillis)
 {
-  float Kp = 1.0, Ki = 0, Kd = 0, P = 0, I = 0, D = 0, PID = 0;
-  float feedback; 			//converted speed to potentiometer value
-  int ref_input; 		//corrected Potentiometer input
-  float error;//signal comming from the sumer after adding ref input and sub feedback.
-  int speedIn;			//corrected RPM
-  float speedIn_correction_value, refInCorrectionValue, feedbackSlope,
-        feedbackOffset;
-
-  const float LOW_CORRECTION_VALUE = 0.0;
-  const float MID_CORRECTION_VALUE = -71.8;
-  const float HI_CORRECTION_VALUE = -301.8;
-
-  const float LOW_REGION_SLOPE = 6.4728;
-  const float LOW_REGION_OFFSET = -0.2515;
-  const float KP_LOW = 1.04194929802543;
-  const float KI_LOW = 0.957650810295902;
-  const float KD_LOW = 0.0;
-
-  const float MID_REGION_SLOPE = 0.6824;
-  const float MID_REGION_OFFSET = -0.2437;
-  const float KP_MID = 40.5301930270284;
-  const float KI_MID = 88.0255905709321;
-  const float KD_MID = 0.0;
-
-  const float HIGH_REGION_SLOPE = 1.7171;
-  const float HIGH_REGION_OFFSET = -7.254;
-  const float KP_HIGH = 0.157849907129745;
-  const float KI_HIGH = 8.74057396848225;
-  const float KD_HIGH = 0.0;
-
-  int LOW_GEAR_UPPER_REGION = 520;
-  int MID_GEAR_UPPER_REGION = 620;
-  int HIGH_GEAR_LOWER_REGION = 640;
-
-  int INITIAL_INPUT_VALUE = 60;
-
-  int correctedOutput;
-
   if (sensorValue < LOW_GEAR_UPPER_REGION)
   {
     refInCorrectionValue = INITIAL_INPUT_VALUE;
@@ -73,11 +73,12 @@ int PIDUpdate(int sensorValue, int currentRPM, int sampleMillis)
   ref_input = sensorValue - refInCorrectionValue;
   speedIn = currentRPM + speedIn_correction_value;
   feedback = feedbackSlope * speedIn + feedbackOffset;
+  D = Kd*(ref_input - feedback - error);
   error = ref_input - feedback;
 
   P = Kp * error;
   I = Ki * error;
-  D = Kd * error;
+  //D = Kd * error;
   PID = P + I + D;
 
   correctedOutput = refInCorrectionValue + PID;

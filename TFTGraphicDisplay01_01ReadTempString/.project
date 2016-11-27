@@ -42,6 +42,16 @@
 			<location>/usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x</location>
 		</link>
 		<link>
+			<name>libraries/SD</name>
+			<type>2</type>
+			<location>/usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8</location>
+		</link>
+		<link>
+			<name>libraries/SPI</name>
+			<type>2</type>
+			<location>/usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/libraries/SPI</location>
+		</link>
+		<link>
 			<name>libraries/URTouch</name>
 			<type>2</type>
 			<location>/home/rmelendez/git/SeniorDesign406/libraries/URTouch</location>

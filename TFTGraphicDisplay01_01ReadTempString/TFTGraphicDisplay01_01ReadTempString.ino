@@ -1,4 +1,6 @@
 //#include "Arduino.h"
+#include <SD.h>
+#include <SPI.h>
 #include <UTFT.h>
 #include <URTouch.h>
 #include <UTFT_Buttons.h>
@@ -14,9 +16,6 @@
 #define TOUCH 1
 #define DEBUG
 
-extern uint8_t BigFont[];
-//extern uint8_t SixteenSegment48x72Num[];
-//extern uint8_t Grotesk24x48[];
 extern uint8_t Ubuntu[];
 extern int PIDUpdate(int sensorValue, int currentRPM, int sampleMillis);
 
@@ -27,16 +26,16 @@ URTouch        myTouch(6, 5, 32, 3, 2);
 UTFT_Buttons  myButtons(&myGLCD, &myTouch);
 #endif
 int choice1, choice2, choice3, choice4, choice5, choice6, selected = -1;
-int sensorValue;
+int potentiometerValue;
 
 int cruiseON = 0;
 uint32_t rc = 1;
 static int count = 0;
+static uint8_t recordData = 0;
 static int stopGo = 1;
 static int fwdReverse = 1;
 
 const char clearBuffer[] = "    ";
-char label[] = "0";
 char *ptr;
 char cruiseOn[] = "RUN";
 char cruiseOff[] = "OFF";
@@ -46,29 +45,29 @@ char increment[] = "INC";
 char decrement[] = "DEC";
 char stopButton[] = "STOP";
 char goButton[] = " GO ";
-char oldLabel[] = "0";
 char recON[] = "REC ON";
 char recOFF[] = "REC OFF";
+char RPMLabel[] = "RPM:   ";
+char SpeedLabel[] = "Speed: ";
 
-int temperaturesInt[5];
-float temperatures[5];
-static uint8_t recordData = 0;
-
-/*Speed input variables*/
-volatile byte full_revolutions;
-float currentRPM;
-unsigned long timeold;
-int POT_IN = A0;
-int POT_OUT = 10;
-int FWD_REVERSE = 9;
-int SAFE_STOP = 11;
-int RPM_InterruptPort = 8;
-int TEMPERATURE_RESET = 12;
-int potentiometerValue;
-const float speedConversionValue = 0.0641;
-float currentSpeed;
 volatile uint32_t milliseconds = 0;
+volatile byte full_revolutions;
 
+unsigned long timeold;
+const int POT_IN = A0;
+const int POT_OUT = 10;
+const int SAFE_STOP = 11;
+const int FWD_REVERSE = 9;
+const int RPM_InterruptPort = 8;
+const int TEMPERATURE_RESET = 12;
+
+const float speedConversionValue = 0.0641;
+
+float currentSpeed;
+float currentRPM;
+float temperatures[5];
+
+File myFile;
 
 void startTimer(Tc *tc, uint32_t channel, IRQn_Type irq, uint32_t frequency)
 {
@@ -91,6 +90,7 @@ void setup()
 #ifdef DEBUG
   Serial.begin(115200);
 #endif
+
   Serial3.begin(115200);
   myGLCD.InitLCD(LANDSCAPE);
   myGLCD.clrScr();
@@ -98,12 +98,12 @@ void setup()
   myGLCD.fillScr(VGA_WHITE);
   myGLCD.setColor(VGA_BLACK);
   myGLCD.setBackColor(VGA_WHITE);
-  myGLCD.print("RPM:   ", 100, 72);
-  myGLCD.print("Speed: ", 100, 144);
+  myGLCD.print(RPMLabel, 100, 72);
+  myGLCD.print(SpeedLabel, 100, 144);
 
 #if TOUCH
-  myTouch.InitTouch();
-  myTouch.setPrecision(PREC_MEDIUM);
+  myTouch.InitTouch(LANDSCAPE);
+  myTouch.setPrecision(PREC_HI);
   myButtons.setTextFont(Ubuntu);
 
   choice1 = myButtons.addButton(BASE_BUTTON1, YSTART, WIDTH, HEIGHT, cruiseOff);
@@ -111,7 +111,7 @@ void setup()
   choice3 = myButtons.addButton(BASE_BUTTON3, YSTART, WIDTH, HEIGHT, decrement);
   choice4 = myButtons.addButton(BASE_BUTTON4, YSTART, WIDTH, HEIGHT, forward);
   choice5 = myButtons.addButton(BASE_BUTTON5, YSTART, WIDTH, HEIGHT, goButton);
-  choice6 = myButtons.addButton(BASE_BUTTON5, YSTART - WIDTH - 1, WIDTH, HEIGHT, goButton);
+  choice6 = myButtons.addButton(BASE_BUTTON5, YSTART - HEIGHT - 1, WIDTH, HEIGHT, recOFF);
   myButtons.drawButtons();
 #endif
   startTimer(TC1, 1, TC4_IRQn, 1000);
@@ -121,8 +121,8 @@ void setup()
 
   pinMode(POT_IN, INPUT);
   pinMode(POT_OUT, OUTPUT);
-  pinMode(FWD_REVERSE, OUTPUT);
   pinMode(SAFE_STOP, OUTPUT);
+  pinMode(FWD_REVERSE, OUTPUT);
   pinMode(TEMPERATURE_RESET, OUTPUT);
 
   delay(1000);
@@ -130,38 +130,36 @@ void setup()
   delay(1000);
   digitalWrite(TEMPERATURE_RESET, HIGH);
 
-  potentiometerValue = 0;
   full_revolutions = 0;
   currentSpeed = 0;
   currentRPM = 0;
   timeold = 0;
-  sensorValue = 0;
+  potentiometerValue = 0;
   delay(1000);
 }
 
 void loop()
 {
   static String temps;
-  static int currentPeriod;
 
   myGLCD.printNumI(count++, 0, 10);
 
-  if (!cruiseON && !stopGo)  //if cruise off and safety stop off 
-  {                          //allow reading on analog input
+  if (!cruiseON && !stopGo)  //if cruise off and safety stop off
+  { //allow reading on analog input
     analogRead(POT_IN);
-    sensorValue = analogRead(POT_IN) ;
+    potentiometerValue = analogRead(POT_IN) ;
   }
-  if(sensorValue > 1010)
+  if (potentiometerValue > 1010)
   {
-    sensorValue = 1020;
+	  potentiometerValue = 1020;
   }
-  else if(sensorValue < 70)
+  else if (potentiometerValue < 70)
   {
-    sensorValue = 0;
+	  potentiometerValue = 0;
   }
-  analogWrite(POT_OUT, sensorValue);//map(sensorValue, 0, 1023, 0, 255));
+  analogWrite(POT_OUT, potentiometerValue);//map(sensorValue, 0, 1023, 0, 255));
 
-  myGLCD.printNumI(sensorValue, 400, 72, 5, ' ');
+  myGLCD.printNumI(potentiometerValue, 400, 72, 5, ' ');
   myGLCD.printNumF(currentRPM, 1, 279, 72, '.', 5, ' ');
   currentSpeed = (currentRPM * speedConversionValue);
   myGLCD.printNumF(currentSpeed, 1, 279, 144, '.', 5, ' ');
@@ -170,7 +168,6 @@ void loop()
   if (myTouch.dataAvailable() == true)
   {
     selected = myButtons.checkButtons();
-    *oldLabel = *label;
 
     if (selected == choice1) {
       if (cruiseON)
@@ -190,18 +187,18 @@ void loop()
       ptr = increment;
       if (cruiseON && !stopGo) //if safety stop off and cruise on, run command.
       {
-        sensorValue += 10;
-        if (sensorValue > 1010)
-          sensorValue = 1020;
+    	  potentiometerValue += 10;
+        if (potentiometerValue > 1010)
+        	potentiometerValue = 1020;
       }
     }
     if (selected == choice3) {
       ptr = decrement;
       if (cruiseON)
       {
-        sensorValue -= 10;
-        if (sensorValue < 50)
-          sensorValue = 0;
+    	  potentiometerValue -= 10;
+        if (potentiometerValue < 50)
+        	potentiometerValue = 0;
       }
     }
     if (selected == choice4) {
@@ -240,8 +237,8 @@ void loop()
         ptr = goButton;
       }
     }
-    if (selected == choice6)
-    {
+    if (selected == choice6)		//Will work as enable/disable button to record
+    {								//to the SD card.
       if (recordData)
       {
         recordData = 0;
@@ -267,7 +264,7 @@ void loop()
     Serial.print('\t');
     Serial.print(temps);
     Serial.print('\t');
-    Serial.print(sensorValue);
+    Serial.print(potentiometerValue);
     Serial.print('\t');
     Serial.print(currentRPM, 1);
     Serial.print('\t');
@@ -276,10 +273,10 @@ void loop()
     temps = getTemperatures();
     myGLCD.print(temps, 0, 335);
   }
-  if (recordData)
-  {
-
-  }
+//  if (recordData)
+//  {
+//
+//  }
 
 }
 

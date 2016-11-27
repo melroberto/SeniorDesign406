@@ -40,6 +40,9 @@ core/core \
 core/core/USB \
 core/core/avr \
 core/variant \
+libraries/SD/src \
+libraries/SD/src/utility \
+libraries/SPI/src \
 libraries/URTouch \
 libraries/UTFT \
 libraries/UTFT_Buttons \

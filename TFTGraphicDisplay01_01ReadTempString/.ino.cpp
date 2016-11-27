@@ -2,9 +2,11 @@
 //This is a automatic generated file
 //Please do not modify this file
 //If you touch this file your change will be overwritten during the next build
-//This file has been generated on 2016-11-26 20:55:43
+//This file has been generated on 2016-11-26 22:46:51
 
 #include "Arduino.h"
+#include <SD.h>
+#include <SPI.h>
 #include <UTFT.h>
 #include <URTouch.h>
 #include <UTFT_Buttons.h>
