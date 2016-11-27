@@ -12,11 +12,13 @@
 #define HEIGHT 96
 #define YSTART 383
 #define TOUCH 1
+#define DEBUG
 
 extern uint8_t BigFont[];
 //extern uint8_t SixteenSegment48x72Num[];
 //extern uint8_t Grotesk24x48[];
 extern uint8_t Ubuntu[];
+extern int PIDUpdate(int sensorValue, int currentRPM, int sampleMillis);
 
 UTFT          myGLCD(CTE70, 25, 26, 27, 28);
 #ifdef TOUCH
@@ -30,6 +32,8 @@ int sensorValue;
 int cruiseON = 0;
 uint32_t rc = 1;
 static int count = 0;
+static int stopGo = 1;
+static int fwdReverse = 1;
 
 const char clearBuffer[] = "    ";
 char label[] = "0";
@@ -43,10 +47,12 @@ char decrement[] = "DEC";
 char stopButton[] = "STOP";
 char goButton[] = " GO ";
 char oldLabel[] = "0";
+char recON[] = "REC ON";
+char recOFF[] = "REC OFF";
 
 int temperaturesInt[5];
 float temperatures[5];
-volatile int recordData = 0;
+static uint8_t recordData = 0;
 
 /*Speed input variables*/
 volatile byte full_revolutions;
@@ -82,7 +88,9 @@ void startTimer(Tc *tc, uint32_t channel, IRQn_Type irq, uint32_t frequency)
 
 void setup()
 {
+#ifdef DEBUG
   Serial.begin(115200);
+#endif
   Serial3.begin(115200);
   myGLCD.InitLCD(LANDSCAPE);
   myGLCD.clrScr();
@@ -103,7 +111,7 @@ void setup()
   choice3 = myButtons.addButton(BASE_BUTTON3, YSTART, WIDTH, HEIGHT, decrement);
   choice4 = myButtons.addButton(BASE_BUTTON4, YSTART, WIDTH, HEIGHT, forward);
   choice5 = myButtons.addButton(BASE_BUTTON5, YSTART, WIDTH, HEIGHT, goButton);
-  choice6 = myButtons.addButton(BASE_BUTTON5, YSTART - WIDTH -1, WIDTH, HEIGHT, goButton);
+  choice6 = myButtons.addButton(BASE_BUTTON5, YSTART - WIDTH - 1, WIDTH, HEIGHT, goButton);
   myButtons.drawButtons();
 #endif
   startTimer(TC1, 1, TC4_IRQn, 1000);
@@ -113,8 +121,8 @@ void setup()
 
   pinMode(POT_IN, INPUT);
   pinMode(POT_OUT, OUTPUT);
-  pinMode(FWD_REVERSE,OUTPUT);
-  pinMode(SAFE_STOP,OUTPUT);
+  pinMode(FWD_REVERSE, OUTPUT);
+  pinMode(SAFE_STOP, OUTPUT);
   pinMode(TEMPERATURE_RESET, OUTPUT);
 
   delay(1000);
@@ -138,10 +146,18 @@ void loop()
 
   myGLCD.printNumI(count++, 0, 10);
 
-  if (!cruiseON)
-  {
+  if (!cruiseON && !stopGo)  //if cruise off and safety stop off 
+  {                          //allow reading on analog input
     analogRead(POT_IN);
     sensorValue = analogRead(POT_IN) ;
+  }
+  if(sensorValue > 1010)
+  {
+    sensorValue = 1020;
+  }
+  else if(sensorValue < 70)
+  {
+    sensorValue = 0;
   }
   analogWrite(POT_OUT, sensorValue);//map(sensorValue, 0, 1023, 0, 255));
 
@@ -149,6 +165,7 @@ void loop()
   myGLCD.printNumF(currentRPM, 1, 279, 72, '.', 5, ' ');
   currentSpeed = (currentRPM * speedConversionValue);
   myGLCD.printNumF(currentSpeed, 1, 279, 144, '.', 5, ' ');
+
 #if TOUCH
   if (myTouch.dataAvailable() == true)
   {
@@ -171,7 +188,7 @@ void loop()
     if (selected == choice2)
     {
       ptr = increment;
-      if (cruiseON)
+      if (cruiseON && !stopGo) //if safety stop off and cruise on, run command.
       {
         sensorValue += 10;
         if (sensorValue > 1010)
@@ -188,50 +205,64 @@ void loop()
       }
     }
     if (selected == choice4) {
-      static int fwdReverse = 1;
-      if(fwdReverse)
+
+      if (fwdReverse)
       {
-        digitalWrite(FWD_REVERSE,HIGH); //Reverse
+        digitalWrite(FWD_REVERSE, HIGH); //Reverse
         fwdReverse = 0;
         ptr = reverse;
       }
       else
       {
-        digitalWrite(FWD_REVERSE,LOW); //Forward
+        digitalWrite(FWD_REVERSE, LOW); //Forward
         fwdReverse = 1;
         ptr = forward;
       }
     }
     if (selected == choice5) {
-      static int stopGo = 1;
-      if(stopGo)
+
+      if (stopGo)
       {
-        digitalWrite(SAFE_STOP,HIGH); //Reverse
+        digitalWrite(SAFE_STOP, HIGH); //Stop
         stopGo = 0;
-        ptr = goButton;
+        ptr = stopButton;
+        myButtons.disableButton(choice1, true);
+        myButtons.disableButton(choice2, true);
+        myButtons.disableButton(choice3, true);
       }
       else
       {
-        digitalWrite(SAFE_STOP,LOW); //Forward
+        digitalWrite(SAFE_STOP, LOW); //Go
+        myButtons.enableButton(choice1, true);
+        myButtons.enableButton(choice2, true);
+        myButtons.enableButton(choice3, true);
         stopGo = 1;
-        ptr = stopButton;
+        ptr = goButton;
       }
     }
-    if(selected == choice6)
+    if (selected == choice6)
     {
-      
+      if (recordData)
+      {
+        recordData = 0;
+        ptr = recOFF;
+      }
+      else
+      {
+        recordData = 1;
+        ptr = recON;
+      }
     }
     if (selected != -1)
     {
-      //if (selected != choice1)
       myButtons.relabelButton(selected, ptr, true);
-
     }
   }
 #endif
-    
+
   if (!(count % 200))
   {
+#ifdef DEBUG
     Serial.print(milliseconds);
     Serial.print('\t');
     Serial.print(temps);
@@ -241,12 +272,13 @@ void loop()
     Serial.print(currentRPM, 1);
     Serial.print('\t');
     Serial.println(currentSpeed, 1);
+#endif
     temps = getTemperatures();
     myGLCD.print(temps, 0, 335);
   }
-  if(recordData)
+  if (recordData)
   {
-    
+
   }
 
 }
@@ -295,29 +327,29 @@ void TC4_Handler()
 
 ////PID update Function
 //int PIDUpdate(int range, int goal, int rate, int sampleMillis) {
-//  
+//
 //  // Low speed constants
 //  const double KpLow = 0;
 //  const double KiLow = 0.888713724798827;
 //  const double KdLow = 0;
-//  
+//
 //  // Mid speed range constants
 //  const double KpMid = 1.29788488073892;
 //  const double KiMid = 3.88638162426819;
 //  const double KdMid = -0.1521215726867;
-//  
+//
 //  //High speed range constants
 //  const double KpHig = 3.98733918604672;
 //  const double KiHig = 11.9396735198533;
 //  const double KdHig = -0.467345229779857;
-//  
+//
 //  //Variables used to perform PID
 //  static int error = 0;
 //  double P=0;
 //  static double I=0;
 //  double D=0;
 //  double Kp,Ki,Kd;
-//  
+//
 //  switch (range){
 //  case 0: //LowRange
 //    Kp = KpLow;
@@ -339,12 +371,12 @@ void TC4_Handler()
 //    Ki = .5;
 //    Kd = 0;
 //  }
-//  
+//
 //  D = (goal - rate - error)*1000/sampleMillis;
 //  error = goal - rate;
 //  P = error*Kp;
 //  I += error*Ki*sampleMillis/1000;
-//  
-//  return P+I+D; 
+//
+//  return P+I+D;
 //}
 
