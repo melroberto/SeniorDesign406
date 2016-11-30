@@ -36,14 +36,15 @@ CPP_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 . \
-core/core \
-core/core/USB \
-core/core/avr \
-core/variant \
-libraries/SD/src \
-libraries/SD/src/utility \
-libraries/SPI/src \
-libraries/URTouch \
-libraries/UTFT \
-libraries/UTFT_Buttons \
+core\core \
+core\core\USB \
+core\core\avr \
+core\variant \
+libraries\SD\src \
+libraries\SD\src\utility \
+libraries\SPI\src \
+libraries\URTouch \
+libraries\UTFT \
+libraries\UTFT_Buttons \
+libraries\br3ttb-Arduino-PID-Library-fb095d8 \
 

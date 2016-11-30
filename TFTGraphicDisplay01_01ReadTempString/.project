@@ -34,37 +34,42 @@
 		<link>
 			<name>core/core</name>
 			<type>2</type>
-			<location>/usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/cores/arduino</location>
+			<location>C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/cores/arduino</location>
 		</link>
 		<link>
 			<name>core/variant</name>
 			<type>2</type>
-			<location>/usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x</location>
+			<location>C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x</location>
 		</link>
 		<link>
 			<name>libraries/SD</name>
 			<type>2</type>
-			<location>/usr/lib64/eclipse/arduinoPlugin/libraries/SD/1.0.8</location>
+			<location>C:/Users/Roberto/eclipse/arduinoPlugin/libraries/SD/1.0.8</location>
 		</link>
 		<link>
 			<name>libraries/SPI</name>
 			<type>2</type>
-			<location>/usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/libraries/SPI</location>
+			<location>C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/libraries/SPI</location>
 		</link>
 		<link>
 			<name>libraries/URTouch</name>
 			<type>2</type>
-			<location>/home/rmelendez/git/SeniorDesign406/libraries/URTouch</location>
+			<location>C:/Users/Roberto/Documents/GitHub/SeniorDesign406/libraries/URTouch</location>
 		</link>
 		<link>
 			<name>libraries/UTFT</name>
 			<type>2</type>
-			<location>/home/rmelendez/git/SeniorDesign406/libraries/UTFT</location>
+			<location>C:/Users/Roberto/Documents/GitHub/SeniorDesign406/libraries/UTFT</location>
 		</link>
 		<link>
 			<name>libraries/UTFT_Buttons</name>
 			<type>2</type>
-			<location>/home/rmelendez/git/SeniorDesign406/libraries/UTFT_Buttons</location>
+			<location>C:/Users/Roberto/Documents/GitHub/SeniorDesign406/libraries/UTFT_Buttons</location>
+		</link>
+		<link>
+			<name>libraries/br3ttb-Arduino-PID-Library-fb095d8</name>
+			<type>2</type>
+			<location>C:/Users/Roberto/Documents/GitHub/SeniorDesign406/libraries/br3ttb-Arduino-PID-Library-fb095d8</location>
 		</link>
 	</linkedResources>
 </projectDescription>

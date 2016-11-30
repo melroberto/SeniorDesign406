@@ -25,9 +25,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/URTouch}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/UTFT_Buttons}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/SPI}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/SPI/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/SD}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/SPI/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/SD/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/br3ttb-Arduino-PID-Library-fb095d8}&quot;"/>
 								</option>
 								<inputType id="it.baeyens.arduino.compiler.cpp.sketch.input.1817611563" name="CPP source files" superClass="it.baeyens.arduino.compiler.cpp.sketch.input"/>
 							</tool>
@@ -39,9 +40,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/URTouch}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/UTFT_Buttons}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/SPI}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/SPI/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/SD}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/SPI/src}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/SD/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TFTGraphicDisplay01_01ReadTempString/libraries/br3ttb-Arduino-PID-Library-fb095d8}&quot;"/>
 								</option>
 								<inputType id="it.baeyens.arduino.compiler.c.sketch.input.305910010" name="C Source Files" superClass="it.baeyens.arduino.compiler.c.sketch.input"/>
 							</tool>
@@ -68,4 +70,5 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>

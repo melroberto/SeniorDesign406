@@ -4,21 +4,22 @@
 
 -include ../makefile.init
 
-RM := rm -f
+RM := del 
 
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir.mk
--include libraries/UTFT_Buttons/subdir.mk
--include libraries/UTFT/subdir.mk
--include libraries/URTouch/subdir.mk
--include libraries/SPI/src/subdir.mk
--include libraries/SD/src/utility/subdir.mk
--include libraries/SD/src/subdir.mk
--include core/variant/subdir.mk
--include core/core/avr/subdir.mk
--include core/core/USB/subdir.mk
--include core/core/subdir.mk
+-include libraries\br3ttb-Arduino-PID-Library-fb095d8/subdir.mk
+-include libraries\UTFT_Buttons/subdir.mk
+-include libraries\UTFT/subdir.mk
+-include libraries\URTouch/subdir.mk
+-include libraries\SPI\src/subdir.mk
+-include libraries\SD\src\utility/subdir.mk
+-include libraries\SD\src/subdir.mk
+-include core\variant/subdir.mk
+-include core\core\avr/subdir.mk
+-include core\core\USB/subdir.mk
+-include core\core/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -74,19 +75,19 @@ all: TFTGraphicDisplay01_01ReadTempString
 TFTGraphicDisplay01_01ReadTempString: $(HEX)
 	@echo 'Building target: $@'
 	@echo 'Printing size:'
-	"/usr/lib64/eclipse/arduinoPlugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-size" -A "/home/rmelendez/git/SeniorDesign406/TFTGraphicDisplay01_01ReadTempString/Release/TFTGraphicDisplay01_01ReadTempString.elf"
+	"C:\Users\Roberto\eclipse\arduinoPlugin\tools\arduino\arm-none-eabi-gcc\4.8.3-2014q1/bin/arm-none-eabi-size" -A "C:/Users/Roberto/Documents/GitHub/SeniorDesign406/TFTGraphicDisplay01_01ReadTempString/Release/TFTGraphicDisplay01_01ReadTempString.elf"
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 arduino.ar: $(AR_OBJ)
 	@echo 'Starting archiver'
-	"/usr/lib64/eclipse/arduinoPlugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-ar" rcs "/home/rmelendez/git/SeniorDesign406/TFTGraphicDisplay01_01ReadTempString/Release/arduino.ar"  arduino.ar $(AR_OBJ)
+	"C:\Users\Roberto\eclipse\arduinoPlugin\tools\arduino\arm-none-eabi-gcc\4.8.3-2014q1/bin/arm-none-eabi-ar" rcs "C:/Users/Roberto/Documents/GitHub/SeniorDesign406/TFTGraphicDisplay01_01ReadTempString/Release/arduino.ar"  arduino.ar $(AR_OBJ)
 	@echo 'Finished building: $@'
 	@echo ' '
 
 TFTGraphicDisplay01_01ReadTempString.elf: $(LINK_OBJ) $(AR)
 	@echo 'Starting combiner'
-	"/usr/lib64/eclipse/arduinoPlugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/arm-none-eabi-gcc" -mcpu=cortex-m3 -mthumb -Os -Wl,--gc-sections "-T/usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/linker_scripts/gcc/flash.ld" "-Wl,-Map,/home/rmelendez/git/SeniorDesign406/TFTGraphicDisplay01_01ReadTempString/Release/TFTGraphicDisplay01_01ReadTempString.map" -o "/home/rmelendez/git/SeniorDesign406/TFTGraphicDisplay01_01ReadTempString/Release/TFTGraphicDisplay01_01ReadTempString.elf" "-L/home/rmelendez/git/SeniorDesign406/TFTGraphicDisplay01_01ReadTempString/Release" -Wl,--cref -Wl,--check-sections -Wl,--gc-sections -Wl,--entry=Reset_Handler -Wl,--unresolved-symbols=report-all -Wl,--warn-common -Wl,--warn-section-align -Wl,--start-group "/home/rmelendez/git/SeniorDesign406/TFTGraphicDisplay01_01ReadTempString/Release/core/syscalls_sam3.c.o"  $(LINK_OBJ) $(AR) "/usr/lib64/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a"  -Wl,--end-group -lm -gcc
+	"C:\Users\Roberto\eclipse\arduinoPlugin\tools\arduino\arm-none-eabi-gcc\4.8.3-2014q1/bin/arm-none-eabi-gcc" -mcpu=cortex-m3 -mthumb -Os -Wl,--gc-sections "-TC:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/linker_scripts/gcc/flash.ld" "-Wl,-Map,C:/Users/Roberto/Documents/GitHub/SeniorDesign406/TFTGraphicDisplay01_01ReadTempString/Release/TFTGraphicDisplay01_01ReadTempString.map" -o "C:/Users/Roberto/Documents/GitHub/SeniorDesign406/TFTGraphicDisplay01_01ReadTempString/Release/TFTGraphicDisplay01_01ReadTempString.elf" "-LC:/Users/Roberto/Documents/GitHub/SeniorDesign406/TFTGraphicDisplay01_01ReadTempString/Release" -Wl,--cref -Wl,--check-sections -Wl,--gc-sections -Wl,--entry=Reset_Handler -Wl,--unresolved-symbols=report-all -Wl,--warn-common -Wl,--warn-section-align -Wl,--start-group "C:/Users/Roberto/Documents/GitHub/SeniorDesign406/TFTGraphicDisplay01_01ReadTempString/Release/core/syscalls_sam3.c.o"  $(LINK_OBJ) $(AR) "C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a"  -Wl,--end-group -lm -gcc
 	@echo 'Finished building: $@'
 	@echo ' '
 
