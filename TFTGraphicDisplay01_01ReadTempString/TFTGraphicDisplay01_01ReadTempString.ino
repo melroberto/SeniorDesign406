@@ -208,6 +208,11 @@ void loop() {
 			} else {
 				cruiseON = 1;
 				potValue = currentRPM * 3.232;
+        if (potValue > 1020){
+          potValue = 1020;
+        }else if (potValue < 60){
+          potValue = 60;
+        }
 				ptr = cruiseOn;
 			}
 			myGLCD.print(ptr, 334, 216);
@@ -216,17 +221,23 @@ void loop() {
 			ptr = increment;
 			if (cruiseON) //if safety stop off and cruise on, run command.
 			{
-				potValue += 5;
-				if (potValue > 1010)
+				potValue += 50;
+				if (potValue > 1020){
 					potValue = 1020;
+				}else if (potValue < 50){
+          potValue = 50;
+				}
 			}
 		}
 		if (selected == choice3) {
 			ptr = decrement;
 			if (cruiseON) {
-				potValue -= 5;
-				if (potValue < 65)
-					potValue = 60;
+				potValue -= 50;
+				if (potValue < 50){
+					potValue = 50;
+				}else if(potValue > 1020) {
+          potValue = 1020;
+				}
 			}
 		}
 		if (selected == choice4) {
@@ -275,7 +286,7 @@ void loop() {
 	}
 #endif
 
-	if (!(count % 100) && stopGo) {
+	if (!(count % 1) && stopGo) {
 #ifdef DEBUG
 		String streamData = "";
 		streamData += String(milliseconds) + '\t';
@@ -308,6 +319,7 @@ String getTemperatures() {
 }
 
 void TC3_Handler() {
+  static float oldRPM;
 	static int potVals[10];
 	static int index = 0;
 	if (!cruiseON)  //if cruise off and safety stop off
@@ -325,7 +337,7 @@ void TC3_Handler() {
 		potVals[index++] = potentiometerValue;
 		
 		// clear out the record of error.
-		I = potValue;
+		I = currentRPM * 3.232;
 		// re-scale the input before sending to the motor
 		if((potValue) < 260)
 		{
@@ -339,22 +351,24 @@ void TC3_Handler() {
 
 		if(potentiometerValue < 30) potentiometerValue = 0; //kill noise on the potentiometer
 
-		Kp = 1.04/3.232; //KP_LOW;
-		Ki = 0.95/3.232; //KI_LOW;
-		Kd = 0.00/3.232; //KD_LOW;
+		Kp = 1.0; //KP_LOW;
+		Ki = 0.05; //KI_LOW;
+		Kd = -0.10; //KD_LOW;
 		
 		D = Kd * (potentiometerValue - (currentRPM*3.232) - error) * 10;
 		
 		error = potentiometerValue - (currentRPM*3.232);
 		
 		P = Kp * error;
-		
-		I += Ki * error * 0.1;
-		if (I > 1020) I = 1020;
-		if (I < 0) I = 0;
-		
+
+    if((abs(oldRPM - currentRPM))>1) {
+		  I += Ki * error * 0.1;
+		  if (I > 1020) I = 1020;
+		  if (I < 0) I = 0;
+    }
+    
 		// re-scale the input before sending to the motor
-		if((P + I) < 260)
+		if((P + I + D) < 260)
 		{
 			pidValue = floor((P + I + D) * 2);
 		} else {
