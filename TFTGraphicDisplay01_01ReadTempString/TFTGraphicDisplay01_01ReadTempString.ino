@@ -339,13 +339,20 @@ void TC3_Handler() {
 
 		if(potentiometerValue < 30) potentiometerValue = 0; //kill noise on the potentiometer
 
-		Kp = 0.52; //KP_LOW;
-		Ki = 0.48; //KI_LOW;
-		Kd = 0.00; //KD_LOW;
+		Kp = 1.04/3.232; //KP_LOW;
+		Ki = 0.95/3.232; //KI_LOW;
+		Kd = 0.00/3.232; //KD_LOW;
+		
 		D = Kd * (potentiometerValue - (currentRPM*3.232) - error) * 10;
+		
 		error = potentiometerValue - (currentRPM*3.232);
+		
 		P = Kp * error;
+		
 		I += Ki * error * 0.1;
+		if (I > 1020) I = 1020;
+		if (I < 0) I = 0;
+		
 		// re-scale the input before sending to the motor
 		if((P + I) < 260)
 		{
@@ -354,12 +361,14 @@ void TC3_Handler() {
 			pidValue = floor(((P + I + D - 260) * 500)/(1020 - 260) + 520);
 		}
 	}
+	
 	// Guard the output from out of range values.
 	if (pidValue > 1010) {
 		pidValue = 1010;
 	} else if (pidValue < 5) {
 		pidValue = 0;
 	}
+	
 	analogWrite(POT_OUT, pidValue);
 	TC_GetStatus(TC1, 0);
 }
