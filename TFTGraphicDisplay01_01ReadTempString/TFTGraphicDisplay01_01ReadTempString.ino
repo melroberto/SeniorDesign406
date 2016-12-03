@@ -112,75 +112,7 @@ float currentRPM;
 float temperatures[5];
 
 File myFile;
-int PIDUpdate(int sensorValue, float currentRPM, int sampleMillis) {
-	if ((sensorValue <= LOW_GEAR_UPPER_REGION) && sensorValue >= 60) {
-		refInCorrectionValue = INITIAL_INPUT_VALUE;
-		speedIn_correction_value = LOW_CORRECTION_VALUE;
-		feedbackSlope = LOW_REGION_SLOPE;
-		feedbackOffset = LOW_REGION_OFFSET;
-//		Kp = KP_LOW;
-//		Ki = KI_LOW;
-//		Kd = KD_LOW;
-	} else if ((sensorValue > LOW_GEAR_UPPER_REGION)
-			&& (sensorValue <= MID_GEAR_UPPER_REGION)) {
-		refInCorrectionValue = LOW_GEAR_UPPER_REGION;
-		speedIn_correction_value = MID_CORRECTION_VALUE;
-		feedbackSlope = MID_REGION_SLOPE;
-		feedbackOffset = MID_REGION_OFFSET;
-//		Kp = KP_MID;
-//		Ki = KI_MID;
-//		Kd = KD_MID;
-	} else {
-		refInCorrectionValue = MID_GEAR_UPPER_REGION;
-		speedIn_correction_value = HI_CORRECTION_VALUE;
-		feedbackSlope = HIGH_REGION_SLOPE;
-		feedbackOffset = HIGH_REGION_OFFSET;
-//		Kp = KP_HIGH;
-//		Ki = KI_HIGH;
-//		Kd = KD_HIGH;
-	}
-	Kp = KP_LOW;
-	Ki = KI_LOW;
-	Kd = KD_LOW;
 
-	ref_input = sensorValue; //- refInCorrectionValue;
-	if (sensorValue < 60)
-		ref_input = 0;
-	speedIn = currentRPM;// + speedIn_correction_value;
-	feedback = speedIn;//feedbackSlope * speedIn + feedbackOffset;
-	//D = Kd * (ref_input - feedback - error);
-	error = ref_input - feedback;
-
-	P = Kp * error;
-	I += Ki * error * 0.1;
-	//D = Kd * error;
-	PID = P + I + D;
-
-	correctedOutput = refInCorrectionValue + PID;
-	if(correctedOutput < 260)
-	{
-		correctedOutput *= 2;
-	}
-	else
-	{
-		correctedOutput = ((correctedOutput - 260) * 500)/(1020 - 260) + 520;
-	}
-	pidValues = "";
-	pidValues += String(sensorValue) + "\t";
-	pidValues += String(ref_input) + "\t";
-	pidValues += String(speedIn) + "\t";
-	pidValues += String(feedback, 1) + "\t";
-	pidValues += String(error, 4) + "\t";
-	pidValues += String(P, 1) + "\t";
-	pidValues += String(I, 1) + "\t";
-	pidValues += String(PID, 1) + "\t";
-	pidValues += correctedOutput;
-	//sensorValue	ref_input	speedIn	feedback	error	P	I	PID correctedOutput
-#ifndef DEBUG
-	Serial.println(pidValues);
-#endif
-	return correctedOutput;
-}
 void startTimer(Tc *tc, uint32_t channel, IRQn_Type irq, uint32_t frequency) {
 	pmc_set_writeprotect(false);         //Disable write protection for register
 	pmc_enable_periph_clk((uint32_t) irq);  //enable clock for the channel
@@ -257,7 +189,6 @@ void setup() {
 }
 
 void loop() {
-
 	myGLCD.printNumI(count++, 0, 10);
 
 	myGLCD.printNumI(potValue, 400, 72, 5, ' ');
@@ -276,6 +207,7 @@ void loop() {
 				cruiseON = 0;
 			} else {
 				cruiseON = 1;
+				potValue = currentRPM * 3.232;
 				ptr = cruiseOn;
 			}
 			myGLCD.print(ptr, 334, 216);
@@ -391,35 +323,44 @@ void TC3_Handler() {
 			potValue /= 10;
 		}
 		potVals[index++] = potentiometerValue;
+		
+		// clear out the record of error.
+		I = 0;
+		// re-scale the input before sending to the motor
+		if((potValue) < 260)
+		{
+			pidValue = floor((potValue) * 2);
+		} else {
+			pidValue = floor(((potValue - 260) * 500)/(1020 - 260) + 520);
+		}
+		
 	} else {
 		potentiometerValue = potValue;
-	}
 
-	if(potentiometerValue < 30) potentiometerValue = 0; //kill noise on the potentiometer
+		if(potentiometerValue < 30) potentiometerValue = 0; //kill noise on the potentiometer
 
-	Kp = 0; //KP_LOW;
-	Ki = 0.05;//KI_LOW;
-	Kd = KD_LOW;
-	error = potentiometerValue - (currentRPM*3.232);
-	P = Kp * error;
-	I += Ki * error * 0.1;
+		Kp = 0; //KP_LOW;
+		Ki = 0.05;//KI_LOW;
+		Kd = KD_LOW;
+		D = Kd * (potentiometerValue - (currentRPM*3.232) - error) * 10;
+		error = potentiometerValue - (currentRPM*3.232);
+		P = Kp * error;
+		I += Ki * error * 0.1;
+		// re-scale the input before sending to the motor
 		if((P + I) < 260)
 		{
 			pidValue = floor((P + I) * 2);
-		}
-		else
-		{
+		} else {
 			pidValue = floor(((P + I - 260) * 500)/(1020 - 260) + 520);
 		}
-
-	//pidValue = PIDUpdate(potValue, currentRPM, milliseconds);
+	}
+	// Guard the output from out of range values.
 	if (pidValue > 1010) {
 		pidValue = 1010;
 	} else if (pidValue < 5) {
 		pidValue = 0;
 	}
 	analogWrite(POT_OUT, pidValue);
-
 	TC_GetStatus(TC1, 0);
 }
 
@@ -447,59 +388,3 @@ void TC4_Handler() {
 	}
 	TC_GetStatus(TC1, 1);                 //Resets Interrupt
 }
-
-////PID update Function
-//int PIDUpdate(int range, int goal, int rate, int sampleMillis) {
-//
-//  // Low speed constants
-//  const double KpLow = 0;
-//  const double KiLow = 0.888713724798827;
-//  const double KdLow = 0;
-//
-//  // Mid speed range constants
-//  const double KpMid = 1.29788488073892;
-//  const double KiMid = 3.88638162426819;
-//  const double KdMid = -0.1521215726867;
-//
-//  //High speed range constants
-//  const double KpHig = 3.98733918604672;
-//  const double KiHig = 11.9396735198533;
-//  const double KdHig = -0.467345229779857;
-//
-//  //Variables used to perform PID
-//  static int error = 0;
-//  double P=0;
-//  static double I=0;
-//  double D=0;
-//  double Kp,Ki,Kd;
-//
-//  switch (range){
-//  case 0: //LowRange
-//    Kp = KpLow;
-//    Ki = KiLow;
-//    Kd = KdLow;
-//    break;
-//  case 1: //MidRange
-//    Kp = KpMid;
-//    Ki = KiMid;
-//    Kd = KdMid;
-//    break;
-//  case 2: //HighRange
-//    Kp = KpHig;
-//    Ki = KiHig;
-//    Kd = KdHig;
-//    break;
-//  default:
-//    Kp = 0;
-//    Ki = .5;
-//    Kd = 0;
-//  }
-//
-//  D = (goal - rate - error)*1000/sampleMillis;
-//  error = goal - rate;
-//  P = error*Kp;
-//  I += error*Ki*sampleMillis/1000;
-//
-//  return P+I+D;
-//}
-
