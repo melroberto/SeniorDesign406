@@ -1,10 +1,14 @@
 //#include "Arduino.h"
 
-//#define DEBUG
+#define DEBUG
 // set of pins on which the temperature sensors are located
 const int analogPins[] = {A0, A1, A2, A3, A4};
-const float calibrationScale[5] = {0.4396, 0.4318, 0.4465, 0.4164, 0.4318};
-const float calibrationOffset[5] = {27.459, 27.655, 29.452, 21.762, 26.181};
+const int fanPins[] = {8,9,10,11};
+const int HIGH_TEMP_DIGITAL_PIN = 13;
+const float calibrationScale[5] = {0.328,0.328,0.328,0.328,0.328};//{0.4396, 0.4318, 0.4465, 0.4164, 0.4318};
+const float calibrationOffset[5] = {0,0,0,0,0};//{27.459, 27.655, 29.452, 21.762, 26.181};
+const int MIN_TEMP_DIGITAL_VALUE = 240;
+const int MAX_TEMP_DIGITAL_VALUE = 265;
 //volatile int analogPin5 = A6;
 
 // outside leads to ground and +5V
@@ -32,8 +36,15 @@ void setup() {
 
     temperatures[i] = val[i];
   }
-  pinMode(13, OUTPUT);
-  digitalWrite(13, LOW);
+
+//  for (int i = 0; i < 2; i++)
+//  {
+//	  pinMode(fanPins[i], OUTPUT);
+//  }
+
+  pinMode(HIGH_TEMP_DIGITAL_PIN, OUTPUT);
+
+  digitalWrite(HIGH_TEMP_DIGITAL_PIN, LOW);
 }
 
 void loop() {
@@ -55,20 +66,22 @@ void loop() {
     temperatures[i] = val[i];
     if (val[i] < minTemperature)
       minTemperature = val[i];
-    if (val[i] > 270)
+    if (val[i] > MAX_TEMP_DIGITAL_VALUE)
       maxTemperature = val[i];
     else
       maxTemperature = 0;
   }
-  if (maxTemperature > 270)
+
+  if (maxTemperature > MAX_TEMP_DIGITAL_VALUE)
   {
-    digitalWrite(13, HIGH);
+    digitalWrite(HIGH_TEMP_DIGITAL_PIN, HIGH);
   }
   else
   {
-    digitalWrite(13, LOW);
+    digitalWrite(HIGH_TEMP_DIGITAL_PIN, LOW);
   }
   
+
    // check if a temperature reading has been requested.
 #ifndef DEBUG
   if (Serial3.available())
@@ -99,4 +112,10 @@ void loop() {
       Serial3.print(temperature + '\n');
     }
   }
+
+  for(int i = 2; i <= 3; i++)
+    {
+          int output = map(temperatures[i],MIN_TEMP_DIGITAL_VALUE, MAX_TEMP_DIGITAL_VALUE, 0, 255);
+  	  analogWrite(fanPins[i],output);
+    }
 }
