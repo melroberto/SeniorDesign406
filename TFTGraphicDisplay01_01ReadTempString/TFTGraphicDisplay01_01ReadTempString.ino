@@ -325,7 +325,7 @@ void TC3_Handler() {
 		potVals[index++] = potentiometerValue;
 		
 		// clear out the record of error.
-		I = 0;
+		I = potValue;
 		// re-scale the input before sending to the motor
 		if((potValue) < 260)
 		{
@@ -339,9 +339,9 @@ void TC3_Handler() {
 
 		if(potentiometerValue < 30) potentiometerValue = 0; //kill noise on the potentiometer
 
-		Kp = 0; //KP_LOW;
-		Ki = 0.05;//KI_LOW;
-		Kd = KD_LOW;
+		Kp = 0.52; //KP_LOW;
+		Ki = 0.48; //KI_LOW;
+		Kd = 0.00; //KD_LOW;
 		D = Kd * (potentiometerValue - (currentRPM*3.232) - error) * 10;
 		error = potentiometerValue - (currentRPM*3.232);
 		P = Kp * error;
@@ -349,9 +349,9 @@ void TC3_Handler() {
 		// re-scale the input before sending to the motor
 		if((P + I) < 260)
 		{
-			pidValue = floor((P + I) * 2);
+			pidValue = floor((P + I + D) * 2);
 		} else {
-			pidValue = floor(((P + I - 260) * 500)/(1020 - 260) + 520);
+			pidValue = floor(((P + I + D - 260) * 500)/(1020 - 260) + 520);
 		}
 	}
 	// Guard the output from out of range values.
