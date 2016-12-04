@@ -224,7 +224,7 @@ void loop() {
 			ptr = increment;
 			if (cruiseON) //if safety stop off and cruise on, run command.
 			{
-				potValue += 50;
+				potValue += 10;
 				if (potValue > MAX_PWM_REQUEST){
 					potValue = MAX_PWM_REQUEST;
 				}else if (potValue < MIN_PWM_REQUEST){
@@ -235,7 +235,7 @@ void loop() {
 		if (selected == choice3) {
 			ptr = decrement;
 			if (cruiseON) {
-				potValue -= 50;
+				potValue -= 10;
 				if (potValue < MIN_PWM_REQUEST){
 					potValue = MIN_PWM_REQUEST;
 				}else if(potValue > MAX_PWM_REQUEST) {
@@ -289,7 +289,7 @@ void loop() {
 	}
 #endif
 
-	if (!(count % 1) && stopGo) {
+	if (!(count % 100) && stopGo) {
 #ifdef DEBUG
 		String streamData = "";
 		streamData += String(milliseconds) + '\t';
@@ -328,7 +328,7 @@ void TC3_Handler() {
 	if (!cruiseON)  //if cruise off and safety stop off
 	{ //allow reading on analog input
 		analogRead(POT_IN);
-		potentiometerValue = 0;//analogRead(POT_IN);
+		potentiometerValue = analogRead(POT_IN);
 		if (index >= 9) {
 			index = 0;
 			potValue = 0;

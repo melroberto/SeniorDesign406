@@ -1436,7 +1436,7 @@ END GROUP
 LOAD c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtend.o
 LOAD c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtn.o
 
-.text           0x00080000     0xa254
+.text           0x00080000     0xa1f4
                 0x00080000                . = ALIGN (0x4)
                 0x00080000                _sfixed = .
  *(.vectors .vectors.*)
@@ -1464,1042 +1464,1039 @@ LOAD c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.
                 0x000801b4                _kill
  .text._getpid  0x000801b6        0x6 C:/Users/Roberto/Documents/GitHub/SeniorDesign406/DueReadTempsStringOut/Release/core/syscalls_sam3.c.o
                 0x000801b6                _getpid
- .text.setup    0x000801bc       0x90 .\.ino.cpp.o
+ .text.setup    0x000801bc       0x60 .\.ino.cpp.o
                 0x000801bc                setup
- .text.loop     0x0008024c      0x1b4 .\.ino.cpp.o
-                0x0008024c                loop
+ .text.loop     0x0008021c      0x198 .\.ino.cpp.o
+                0x0008021c                loop
  .text._Z11serialEventv
-                0x00080400        0x2 arduino.ar(variant.cpp.o)
-                0x00080400                serialEvent()
- *fill*         0x00080402        0x2 
+                0x000803b4        0x2 arduino.ar(variant.cpp.o)
+                0x000803b4                serialEvent()
+ *fill*         0x000803b6        0x2 
  .text.UART_Handler
-                0x00080404        0xc arduino.ar(variant.cpp.o)
-                0x00080404                UART_Handler
+                0x000803b8        0xc arduino.ar(variant.cpp.o)
+                0x000803b8                UART_Handler
  .text._Z12serialEvent1v
-                0x00080410        0x2 arduino.ar(variant.cpp.o)
-                0x00080410                serialEvent1()
+                0x000803c4        0x2 arduino.ar(variant.cpp.o)
+                0x000803c4                serialEvent1()
  .text._Z12serialEvent2v
-                0x00080412        0x2 arduino.ar(variant.cpp.o)
-                0x00080412                serialEvent2()
+                0x000803c6        0x2 arduino.ar(variant.cpp.o)
+                0x000803c6                serialEvent2()
  .text._Z12serialEvent3v
-                0x00080414        0x2 arduino.ar(variant.cpp.o)
-                0x00080414                serialEvent3()
- *fill*         0x00080416        0x2 
+                0x000803c8        0x2 arduino.ar(variant.cpp.o)
+                0x000803c8                serialEvent3()
+ *fill*         0x000803ca        0x2 
  .text.USART0_Handler
-                0x00080418        0xc arduino.ar(variant.cpp.o)
-                0x00080418                USART0_Handler
+                0x000803cc        0xc arduino.ar(variant.cpp.o)
+                0x000803cc                USART0_Handler
  .text.USART1_Handler
-                0x00080424        0xc arduino.ar(variant.cpp.o)
-                0x00080424                USART1_Handler
+                0x000803d8        0xc arduino.ar(variant.cpp.o)
+                0x000803d8                USART1_Handler
  .text.USART3_Handler
-                0x00080430        0xc arduino.ar(variant.cpp.o)
-                0x00080430                USART3_Handler
- .text.init     0x0008043c      0x128 arduino.ar(variant.cpp.o)
-                0x0008043c                init
+                0x000803e4        0xc arduino.ar(variant.cpp.o)
+                0x000803e4                USART3_Handler
+ .text.init     0x000803f0      0x128 arduino.ar(variant.cpp.o)
+                0x000803f0                init
  .text.startup._GLOBAL__sub_I_g_APinDescription
-                0x00080564       0xd4 arduino.ar(variant.cpp.o)
+                0x00080518       0xd4 arduino.ar(variant.cpp.o)
  .text._Z14serialEventRunv
-                0x00080638       0x44 arduino.ar(variant.cpp.o)
-                0x00080638                serialEventRun()
+                0x000805ec       0x44 arduino.ar(variant.cpp.o)
+                0x000805ec                serialEventRun()
  .text._ZN5Print5writeEPKhj
-                0x0008067c       0x22 arduino.ar(Print.cpp.o)
-                0x0008067c                Print::write(unsigned char const*, unsigned int)
+                0x00080630       0x22 arduino.ar(Print.cpp.o)
+                0x00080630                Print::write(unsigned char const*, unsigned int)
  .text._ZN5Print5printERK6String
-                0x0008069e       0x10 arduino.ar(Print.cpp.o)
-                0x0008069e                Print::print(String const&)
+                0x00080652       0x10 arduino.ar(Print.cpp.o)
+                0x00080652                Print::print(String const&)
  .text._ZN10RingBufferC2Ev
-                0x000806ae       0x1a arduino.ar(RingBuffer.cpp.o)
-                0x000806ae                RingBuffer::RingBuffer()
-                0x000806ae                RingBuffer::RingBuffer()
+                0x00080662       0x1a arduino.ar(RingBuffer.cpp.o)
+                0x00080662                RingBuffer::RingBuffer()
+                0x00080662                RingBuffer::RingBuffer()
  .text._ZN10RingBuffer10store_charEh
-                0x000806c8       0x1e arduino.ar(RingBuffer.cpp.o)
-                0x000806c8                RingBuffer::store_char(unsigned char)
+                0x0008067c       0x1e arduino.ar(RingBuffer.cpp.o)
+                0x0008067c                RingBuffer::store_char(unsigned char)
  .text._ZN9UARTClasscvbEv
-                0x000806e6        0x4 arduino.ar(UARTClass.cpp.o)
-                0x000806e6                UARTClass::operator bool()
+                0x0008069a        0x4 arduino.ar(UARTClass.cpp.o)
+                0x0008069a                UARTClass::operator bool()
  .text._ZN9UARTClass9availableEv
-                0x000806ea       0x12 arduino.ar(UARTClass.cpp.o)
-                0x000806ea                UARTClass::available()
+                0x0008069e       0x12 arduino.ar(UARTClass.cpp.o)
+                0x0008069e                UARTClass::available()
  .text._ZN9UARTClass4peekEv
-                0x000806fc       0x1c arduino.ar(UARTClass.cpp.o)
-                0x000806fc                UARTClass::peek()
+                0x000806b0       0x1c arduino.ar(UARTClass.cpp.o)
+                0x000806b0                UARTClass::peek()
  .text._ZN9UARTClass4readEv
-                0x00080718       0x2a arduino.ar(UARTClass.cpp.o)
-                0x00080718                UARTClass::read()
+                0x000806cc       0x2a arduino.ar(UARTClass.cpp.o)
+                0x000806cc                UARTClass::read()
  .text._ZN9UARTClass5flushEv
-                0x00080742       0x18 arduino.ar(UARTClass.cpp.o)
-                0x00080742                UARTClass::flush()
- *fill*         0x0008075a        0x2 
+                0x000806f6       0x18 arduino.ar(UARTClass.cpp.o)
+                0x000806f6                UARTClass::flush()
+ *fill*         0x0008070e        0x2 
  .text._ZN9UARTClass5writeEh
-                0x0008075c       0x54 arduino.ar(UARTClass.cpp.o)
-                0x0008075c                UARTClass::write(unsigned char)
+                0x00080710       0x54 arduino.ar(UARTClass.cpp.o)
+                0x00080710                UARTClass::write(unsigned char)
  .text._ZN9UARTClass3endEv
-                0x000807b0       0x3c arduino.ar(UARTClass.cpp.o)
-                0x000807b0                UARTClass::end()
+                0x00080764       0x3c arduino.ar(UARTClass.cpp.o)
+                0x00080764                UARTClass::end()
  .text._ZN9UARTClassC2EP4Uart4IRQnmP10RingBufferS4_
-                0x000807ec       0x24 arduino.ar(UARTClass.cpp.o)
-                0x000807ec                UARTClass::UARTClass(Uart*, IRQn, unsigned long, RingBuffer*, RingBuffer*)
-                0x000807ec                UARTClass::UARTClass(Uart*, IRQn, unsigned long, RingBuffer*, RingBuffer*)
+                0x000807a0       0x24 arduino.ar(UARTClass.cpp.o)
+                0x000807a0                UARTClass::UARTClass(Uart*, IRQn, unsigned long, RingBuffer*, RingBuffer*)
+                0x000807a0                UARTClass::UARTClass(Uart*, IRQn, unsigned long, RingBuffer*, RingBuffer*)
  .text._ZN9UARTClass4initEmm
-                0x00080810       0x70 arduino.ar(UARTClass.cpp.o)
-                0x00080810                UARTClass::init(unsigned long, unsigned long)
+                0x000807c4       0x70 arduino.ar(UARTClass.cpp.o)
+                0x000807c4                UARTClass::init(unsigned long, unsigned long)
  .text._ZN9UARTClass5beginEm
-                0x00080880        0x8 arduino.ar(UARTClass.cpp.o)
-                0x00080880                UARTClass::begin(unsigned long)
+                0x00080834        0x8 arduino.ar(UARTClass.cpp.o)
+                0x00080834                UARTClass::begin(unsigned long)
  .text._ZN9UARTClass10IrqHandlerEv
-                0x00080888       0x5a arduino.ar(UARTClass.cpp.o)
-                0x00080888                UARTClass::IrqHandler()
+                0x0008083c       0x5a arduino.ar(UARTClass.cpp.o)
+                0x0008083c                UARTClass::IrqHandler()
  .text._ZN10USARTClass5beginEm
-                0x000808e2        0x8 arduino.ar(USARTClass.cpp.o)
-                0x000808e2                USARTClass::begin(unsigned long)
- *fill*         0x000808ea        0x2 
+                0x00080896        0x8 arduino.ar(USARTClass.cpp.o)
+                0x00080896                USARTClass::begin(unsigned long)
+ *fill*         0x0008089e        0x2 
  .text._ZN10USARTClassC2EP5Usart4IRQnmP10RingBufferS4_
-                0x000808ec       0x24 arduino.ar(USARTClass.cpp.o)
-                0x000808ec                USARTClass::USARTClass(Usart*, IRQn, unsigned long, RingBuffer*, RingBuffer*)
-                0x000808ec                USARTClass::USARTClass(Usart*, IRQn, unsigned long, RingBuffer*, RingBuffer*)
+                0x000808a0       0x24 arduino.ar(USARTClass.cpp.o)
+                0x000808a0                USARTClass::USARTClass(Usart*, IRQn, unsigned long, RingBuffer*, RingBuffer*)
+                0x000808a0                USARTClass::USARTClass(Usart*, IRQn, unsigned long, RingBuffer*, RingBuffer*)
  .text._Z3maplllll
-                0x00080910       0x14 arduino.ar(WMath.cpp.o)
-                0x00080910                map(long, long, long, long, long)
+                0x000808c4       0x14 arduino.ar(WMath.cpp.o)
+                0x000808c4                map(long, long, long, long, long)
  .text._ZN6StringD2Ev
-                0x00080924        0xe arduino.ar(WString.cpp.o)
-                0x00080924                String::~String()
-                0x00080924                String::~String()
+                0x000808d8        0xe arduino.ar(WString.cpp.o)
+                0x000808d8                String::~String()
+                0x000808d8                String::~String()
  .text._ZN6String10invalidateEv
-                0x00080932       0x16 arduino.ar(WString.cpp.o)
-                0x00080932                String::invalidate()
+                0x000808e6       0x16 arduino.ar(WString.cpp.o)
+                0x000808e6                String::invalidate()
  .text._ZN6String12changeBufferEj
-                0x00080948       0x18 arduino.ar(WString.cpp.o)
-                0x00080948                String::changeBuffer(unsigned int)
+                0x000808fc       0x18 arduino.ar(WString.cpp.o)
+                0x000808fc                String::changeBuffer(unsigned int)
  .text._ZN6String7reserveEj
-                0x00080960       0x22 arduino.ar(WString.cpp.o)
-                0x00080960                String::reserve(unsigned int)
+                0x00080914       0x22 arduino.ar(WString.cpp.o)
+                0x00080914                String::reserve(unsigned int)
  .text._ZN6String4copyEPKcj
-                0x00080982       0x26 arduino.ar(WString.cpp.o)
-                0x00080982                String::copy(char const*, unsigned int)
+                0x00080936       0x26 arduino.ar(WString.cpp.o)
+                0x00080936                String::copy(char const*, unsigned int)
  .text._ZN6StringC2EPKc
-                0x000809a8       0x24 arduino.ar(WString.cpp.o)
-                0x000809a8                String::String(char const*)
-                0x000809a8                String::String(char const*)
+                0x0008095c       0x24 arduino.ar(WString.cpp.o)
+                0x0008095c                String::String(char const*)
+                0x0008095c                String::String(char const*)
  .text._ZN6StringaSERKS_
-                0x000809cc       0x1e arduino.ar(WString.cpp.o)
-                0x000809cc                String::operator=(String const&)
+                0x00080980       0x1e arduino.ar(WString.cpp.o)
+                0x00080980                String::operator=(String const&)
  .text._ZN6StringC2ERKS_
-                0x000809ea       0x14 arduino.ar(WString.cpp.o)
-                0x000809ea                String::String(String const&)
-                0x000809ea                String::String(String const&)
+                0x0008099e       0x14 arduino.ar(WString.cpp.o)
+                0x0008099e                String::String(String const&)
+                0x0008099e                String::String(String const&)
  .text._ZN6StringaSEPKc
-                0x000809fe       0x22 arduino.ar(WString.cpp.o)
-                0x000809fe                String::operator=(char const*)
+                0x000809b2       0x22 arduino.ar(WString.cpp.o)
+                0x000809b2                String::operator=(char const*)
  .text._ZN6StringC2Ec
-                0x00080a20       0x20 arduino.ar(WString.cpp.o)
-                0x00080a20                String::String(char)
-                0x00080a20                String::String(char)
+                0x000809d4       0x20 arduino.ar(WString.cpp.o)
+                0x000809d4                String::String(char)
+                0x000809d4                String::String(char)
  .text._ZN6StringC2Efh
-                0x00080a40       0x32 arduino.ar(WString.cpp.o)
-                0x00080a40                String::String(float, unsigned char)
-                0x00080a40                String::String(float, unsigned char)
+                0x000809f4       0x32 arduino.ar(WString.cpp.o)
+                0x000809f4                String::String(float, unsigned char)
+                0x000809f4                String::String(float, unsigned char)
  .text._ZN6String6concatEPKcj
-                0x00080a72       0x2e arduino.ar(WString.cpp.o)
-                0x00080a72                String::concat(char const*, unsigned int)
+                0x00080a26       0x2e arduino.ar(WString.cpp.o)
+                0x00080a26                String::concat(char const*, unsigned int)
  .text._ZN6String6concatERKS_
-                0x00080aa0        0xa arduino.ar(WString.cpp.o)
-                0x00080aa0                String::concat(String const&)
+                0x00080a54        0xa arduino.ar(WString.cpp.o)
+                0x00080a54                String::concat(String const&)
  .text._ZN6String6concatEc
-                0x00080aaa       0x1a arduino.ar(WString.cpp.o)
-                0x00080aaa                String::concat(char)
+                0x00080a5e       0x1a arduino.ar(WString.cpp.o)
+                0x00080a5e                String::concat(char)
  .text._ZplRK15StringSumHelperc
-                0x00080ac4       0x14 arduino.ar(WString.cpp.o)
-                0x00080ac4                operator+(StringSumHelper const&, char)
+                0x00080a78       0x14 arduino.ar(WString.cpp.o)
+                0x00080a78                operator+(StringSumHelper const&, char)
  .text.initVariant
-                0x00080ad8        0x2 arduino.ar(main.cpp.o)
-                0x00080ad8                initVariant
- *fill*         0x00080ada        0x2 
+                0x00080a8c        0x2 arduino.ar(main.cpp.o)
+                0x00080a8c                initVariant
+ *fill*         0x00080a8e        0x2 
  .text.startup.main
-                0x00080adc       0x38 arduino.ar(main.cpp.o)
-                0x00080adc                main
+                0x00080a90       0x38 arduino.ar(main.cpp.o)
+                0x00080a90                main
  .text._watchdogDefaultSetup
-                0x00080b14        0xc arduino.ar(watchdog.cpp.o)
-                0x00080b14                _watchdogDefaultSetup
-                0x00080b14                watchdogSetup()
- .text.delay    0x00080b20       0x1c arduino.ar(wiring.c.o)
-                0x00080b20                delay
+                0x00080ac8        0xc arduino.ar(watchdog.cpp.o)
+                0x00080ac8                _watchdogDefaultSetup
+                0x00080ac8                watchdogSetup()
+ .text.delay    0x00080ad4       0x1c arduino.ar(wiring.c.o)
+                0x00080ad4                delay
  .text.mapResolution
-                0x00080b3c       0x12 arduino.ar(wiring_analog.c.o)
- *fill*         0x00080b4e        0x2 
+                0x00080af0       0x12 arduino.ar(wiring_analog.c.o)
+ *fill*         0x00080b02        0x2 
  .text.analogRead
-                0x00080b50       0x9c arduino.ar(wiring_analog.c.o)
-                0x00080b50                analogRead
+                0x00080b04       0x9c arduino.ar(wiring_analog.c.o)
+                0x00080b04                analogRead
  .text.analogOutputInit
-                0x00080bec        0x2 arduino.ar(wiring_analog.c.o)
-                0x00080bec                analogOutputInit
- *fill*         0x00080bee        0x2 
+                0x00080ba0        0x2 arduino.ar(wiring_analog.c.o)
+                0x00080ba0                analogOutputInit
+ *fill*         0x00080ba2        0x2 
  .text.analogWrite
-                0x00080bf0      0x2c0 arduino.ar(wiring_analog.c.o)
-                0x00080bf0                analogWrite
- .text.pinMode  0x00080eb0      0x108 arduino.ar(wiring_digital.c.o)
-                0x00080eb0                pinMode
+                0x00080ba4      0x2c0 arduino.ar(wiring_analog.c.o)
+                0x00080ba4                analogWrite
+ .text.pinMode  0x00080e64      0x108 arduino.ar(wiring_digital.c.o)
+                0x00080e64                pinMode
  .text.digitalWrite
-                0x00080fb8       0x70 arduino.ar(wiring_digital.c.o)
-                0x00080fb8                digitalWrite
- .text.dtostrf  0x00081028       0x28 arduino.ar(dtostrf.c.o)
-                0x00081028                dtostrf
+                0x00080f6c       0x70 arduino.ar(wiring_digital.c.o)
+                0x00080f6c                digitalWrite
+ .text.dtostrf  0x00080fdc       0x28 arduino.ar(dtostrf.c.o)
+                0x00080fdc                dtostrf
  .text.unlikely._ZL11USB_SendZlpv
-                0x00081050       0x20 arduino.ar(USBCore.cpp.o)
+                0x00081004       0x20 arduino.ar(USBCore.cpp.o)
  .text._Z14USBD_Availablem
-                0x00081070       0x2c arduino.ar(USBCore.cpp.o)
-                0x00081070                USBD_Available(unsigned long)
+                0x00081024       0x2c arduino.ar(USBCore.cpp.o)
+                0x00081024                USBD_Available(unsigned long)
  .text._Z9USBD_RecvmPvm
-                0x0008109c       0x7c arduino.ar(USBCore.cpp.o)
-                0x0008109c                USBD_Recv(unsigned long, void*, unsigned long)
+                0x00081050       0x7c arduino.ar(USBCore.cpp.o)
+                0x00081050                USBD_Recv(unsigned long, void*, unsigned long)
  .text._Z9USBD_Recvm
-                0x00081118       0x22 arduino.ar(USBCore.cpp.o)
-                0x00081118                USBD_Recv(unsigned long)
- *fill*         0x0008113a        0x2 
+                0x000810cc       0x22 arduino.ar(USBCore.cpp.o)
+                0x000810cc                USBD_Recv(unsigned long)
+ *fill*         0x000810ee        0x2 
  .text._Z9USBD_SendmPKvm
-                0x0008113c       0x4c arduino.ar(USBCore.cpp.o)
-                0x0008113c                USBD_Send(unsigned long, void const*, unsigned long)
+                0x000810f0       0x4c arduino.ar(USBCore.cpp.o)
+                0x000810f0                USBD_Send(unsigned long, void const*, unsigned long)
  .text._Z16USBD_SendControlhPKvm
-                0x00081188       0x40 arduino.ar(USBCore.cpp.o)
-                0x00081188                USBD_SendControl(unsigned char, void const*, unsigned long)
+                0x0008113c       0x40 arduino.ar(USBCore.cpp.o)
+                0x0008113c                USBD_SendControl(unsigned char, void const*, unsigned long)
  .text.unlikely._ZL24USB_SendStringDescriptorPKhi
-                0x000811c8       0x64 arduino.ar(USBCore.cpp.o)
+                0x0008117c       0x64 arduino.ar(USBCore.cpp.o)
  .text._Z16USBD_RecvControlPvm
-                0x0008122c       0x1c arduino.ar(USBCore.cpp.o)
-                0x0008122c                USBD_RecvControl(void*, unsigned long)
+                0x000811e0       0x1c arduino.ar(USBCore.cpp.o)
+                0x000811e0                USBD_RecvControl(void*, unsigned long)
  .text._Z26USBD_ClassInterfaceRequestR8USBSetup
-                0x00081248       0x1e arduino.ar(USBCore.cpp.o)
-                0x00081248                USBD_ClassInterfaceRequest(USBSetup&)
+                0x000811fc       0x1e arduino.ar(USBCore.cpp.o)
+                0x000811fc                USBD_ClassInterfaceRequest(USBSetup&)
  .text._Z19USBD_SendInterfacesv
-                0x00081266       0x22 arduino.ar(USBCore.cpp.o)
-                0x00081266                USBD_SendInterfaces()
+                0x0008121a       0x22 arduino.ar(USBCore.cpp.o)
+                0x0008121a                USBD_SendInterfaces()
  .text._Z24USBD_SendOtherInterfacesv
-                0x00081288       0x22 arduino.ar(USBCore.cpp.o)
-                0x00081288                USBD_SendOtherInterfaces()
+                0x0008123c       0x22 arduino.ar(USBCore.cpp.o)
+                0x0008123c                USBD_SendOtherInterfaces()
  .text._Z10USBD_Flushm
-                0x000812aa       0x16 arduino.ar(USBCore.cpp.o)
-                0x000812aa                USBD_Flush(unsigned long)
+                0x0008125e       0x16 arduino.ar(USBCore.cpp.o)
+                0x0008125e                USBD_Flush(unsigned long)
  .text._ZN10USBDevice_C2Ev
-                0x000812c0       0x24 arduino.ar(USBCore.cpp.o)
-                0x000812c0                USBDevice_::USBDevice_()
-                0x000812c0                USBDevice_::USBDevice_()
+                0x00081274       0x24 arduino.ar(USBCore.cpp.o)
+                0x00081274                USBDevice_::USBDevice_()
+                0x00081274                USBDevice_::USBDevice_()
  .text._ZN10USBDevice_6attachEv
-                0x000812e4       0x20 arduino.ar(USBCore.cpp.o)
-                0x000812e4                USBDevice_::attach()
+                0x00081298       0x20 arduino.ar(USBCore.cpp.o)
+                0x00081298                USBDevice_::attach()
  .text.startup._GLOBAL__sub_I_EndPoints
-                0x00081304        0xc arduino.ar(USBCore.cpp.o)
+                0x000812b8        0xc arduino.ar(USBCore.cpp.o)
  .text._ZL7USB_ISRv
-                0x00081310      0x454 arduino.ar(USBCore.cpp.o)
- .text.__empty  0x00081764        0x2 arduino.ar(hooks.c.o)
-                0x00081764                yield
- .text.__false  0x00081766        0x4 arduino.ar(hooks.c.o)
-                0x00081766                sysTickHook
- .text.__halt   0x0008176a        0x2 arduino.ar(hooks.c.o)
-                0x0008176a                svcHook
-                0x0008176a                pendSVHook
+                0x000812c4      0x454 arduino.ar(USBCore.cpp.o)
+ .text.__empty  0x00081718        0x2 arduino.ar(hooks.c.o)
+                0x00081718                yield
+ .text.__false  0x0008171a        0x4 arduino.ar(hooks.c.o)
+                0x0008171a                sysTickHook
+ .text.__halt   0x0008171e        0x2 arduino.ar(hooks.c.o)
+                0x0008171e                svcHook
+                0x0008171e                pendSVHook
  .text._ZN7Serial_9availableEv
-                0x0008176c       0x18 arduino.ar(CDC.cpp.o)
-                0x0008176c                Serial_::available()
+                0x00081720       0x18 arduino.ar(CDC.cpp.o)
+                0x00081720                Serial_::available()
  .text._ZN7Serial_4peekEv
-                0x00081784       0x20 arduino.ar(CDC.cpp.o)
-                0x00081784                Serial_::peek()
+                0x00081738       0x20 arduino.ar(CDC.cpp.o)
+                0x00081738                Serial_::peek()
  .text._ZN7Serial_5writeEh
-                0x000817a4       0x16 arduino.ar(CDC.cpp.o)
-                0x000817a4                Serial_::write(unsigned char)
- *fill*         0x000817ba        0x2 
+                0x00081758       0x16 arduino.ar(CDC.cpp.o)
+                0x00081758                Serial_::write(unsigned char)
+ *fill*         0x0008176e        0x2 
  .text._ZN7Serial_4readEv
-                0x000817bc       0x44 arduino.ar(CDC.cpp.o)
-                0x000817bc                Serial_::read()
+                0x00081770       0x44 arduino.ar(CDC.cpp.o)
+                0x00081770                Serial_::read()
  .text._ZN7Serial_5flushEv
-                0x00081800        0x6 arduino.ar(CDC.cpp.o)
-                0x00081800                Serial_::flush()
- *fill*         0x00081806        0x2 
+                0x000817b4        0x6 arduino.ar(CDC.cpp.o)
+                0x000817b4                Serial_::flush()
+ *fill*         0x000817ba        0x2 
  .text._ZN7Serial_6acceptEv
-                0x00081808       0x70 arduino.ar(CDC.cpp.o)
-                0x00081808                Serial_::accept()
+                0x000817bc       0x70 arduino.ar(CDC.cpp.o)
+                0x000817bc                Serial_::accept()
  .text._ZN7Serial_5writeEPKhj
-                0x00081878       0x2c arduino.ar(CDC.cpp.o)
-                0x00081878                Serial_::write(unsigned char const*, unsigned int)
+                0x0008182c       0x2c arduino.ar(CDC.cpp.o)
+                0x0008182c                Serial_::write(unsigned char const*, unsigned int)
  .text._Z16CDC_GetInterfacePh
-                0x000818a4       0x14 arduino.ar(CDC.cpp.o)
-                0x000818a4                CDC_GetInterface(unsigned char*)
+                0x00081858       0x14 arduino.ar(CDC.cpp.o)
+                0x00081858                CDC_GetInterface(unsigned char*)
  .text._Z21CDC_GetOtherInterfacePh
-                0x000818b8       0x14 arduino.ar(CDC.cpp.o)
-                0x000818b8                CDC_GetOtherInterface(unsigned char*)
+                0x0008186c       0x14 arduino.ar(CDC.cpp.o)
+                0x0008186c                CDC_GetOtherInterface(unsigned char*)
  .text._Z9CDC_SetupR8USBSetup
-                0x000818cc       0x78 arduino.ar(CDC.cpp.o)
-                0x000818cc                CDC_Setup(USBSetup&)
+                0x00081880       0x78 arduino.ar(CDC.cpp.o)
+                0x00081880                CDC_Setup(USBSetup&)
  .text.startup._GLOBAL__sub_I_cdc_rx_buffer
-                0x00081944       0x1c arduino.ar(CDC.cpp.o)
+                0x000818f8       0x1c arduino.ar(CDC.cpp.o)
  .text._ZN13PluggableUSB_12getInterfaceEPh
-                0x00081960       0x28 arduino.ar(PluggableUSB.cpp.o)
-                0x00081960                PluggableUSB_::getInterface(unsigned char*)
+                0x00081914       0x28 arduino.ar(PluggableUSB.cpp.o)
+                0x00081914                PluggableUSB_::getInterface(unsigned char*)
  .text._ZN13PluggableUSB_13getDescriptorER8USBSetup
-                0x00081988       0x1c arduino.ar(PluggableUSB.cpp.o)
-                0x00081988                PluggableUSB_::getDescriptor(USBSetup&)
+                0x0008193c       0x1c arduino.ar(PluggableUSB.cpp.o)
+                0x0008193c                PluggableUSB_::getDescriptor(USBSetup&)
  .text._ZN13PluggableUSB_12getShortNameEPc
-                0x000819a4       0x1c arduino.ar(PluggableUSB.cpp.o)
-                0x000819a4                PluggableUSB_::getShortName(char*)
+                0x00081958       0x1c arduino.ar(PluggableUSB.cpp.o)
+                0x00081958                PluggableUSB_::getShortName(char*)
  .text._ZN13PluggableUSB_5setupER8USBSetup
-                0x000819c0       0x20 arduino.ar(PluggableUSB.cpp.o)
-                0x000819c0                PluggableUSB_::setup(USBSetup&)
+                0x00081974       0x20 arduino.ar(PluggableUSB.cpp.o)
+                0x00081974                PluggableUSB_::setup(USBSetup&)
  .text._Z12PluggableUSBv
-                0x000819e0       0x28 arduino.ar(PluggableUSB.cpp.o)
-                0x000819e0                PluggableUSB()
+                0x00081994       0x28 arduino.ar(PluggableUSB.cpp.o)
+                0x00081994                PluggableUSB()
  .text.initiateReset
-                0x00081a08        0xc arduino.ar(Reset.cpp.o)
-                0x00081a08                initiateReset
+                0x000819bc        0xc arduino.ar(Reset.cpp.o)
+                0x000819bc                initiateReset
  .text.cancelReset
-                0x00081a14       0x10 arduino.ar(Reset.cpp.o)
-                0x00081a14                cancelReset
+                0x000819c8       0x10 arduino.ar(Reset.cpp.o)
+                0x000819c8                cancelReset
  .text.tickReset
-                0x00081a24       0x20 arduino.ar(Reset.cpp.o)
-                0x00081a24                tickReset
+                0x000819d8       0x20 arduino.ar(Reset.cpp.o)
+                0x000819d8                tickReset
  .text.PIO_PullUp
-                0x00081a44        0xa C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pio.o)
-                0x00081a44                PIO_PullUp
+                0x000819f8        0xa C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pio.o)
+                0x000819f8                PIO_PullUp
  .text.PIO_SetPeripheral
-                0x00081a4e       0x26 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pio.o)
-                0x00081a4e                PIO_SetPeripheral
+                0x00081a02       0x26 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pio.o)
+                0x00081a02                PIO_SetPeripheral
  .text.PIO_SetInput
-                0x00081a74       0x26 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pio.o)
-                0x00081a74                PIO_SetInput
+                0x00081a28       0x26 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pio.o)
+                0x00081a28                PIO_SetInput
  .text.PIO_SetOutput
-                0x00081a9a       0x24 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pio.o)
-                0x00081a9a                PIO_SetOutput
- *fill*         0x00081abe        0x2 
+                0x00081a4e       0x24 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pio.o)
+                0x00081a4e                PIO_SetOutput
+ *fill*         0x00081a72        0x2 
  .text.PIO_Configure
-                0x00081ac0       0x64 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pio.o)
-                0x00081ac0                PIO_Configure
+                0x00081a74       0x64 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pio.o)
+                0x00081a74                PIO_Configure
  .text.PIO_GetOutputDataStatus
-                0x00081b24       0x14 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pio.o)
-                0x00081b24                PIO_GetOutputDataStatus
+                0x00081ad8       0x14 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pio.o)
+                0x00081ad8                PIO_GetOutputDataStatus
  .text.pmc_enable_upll_clock
-                0x00081b38       0x14 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pmc.o)
-                0x00081b38                pmc_enable_upll_clock
+                0x00081aec       0x14 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pmc.o)
+                0x00081aec                pmc_enable_upll_clock
  .text.pmc_enable_periph_clk
-                0x00081b4c       0x44 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pmc.o)
-                0x00081b4c                pmc_enable_periph_clk
+                0x00081b00       0x44 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pmc.o)
+                0x00081b00                pmc_enable_periph_clk
  .text.pmc_disable_periph_clk
-                0x00081b90       0x40 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pmc.o)
-                0x00081b90                pmc_disable_periph_clk
+                0x00081b44       0x40 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pmc.o)
+                0x00081b44                pmc_disable_periph_clk
  .text.pmc_switch_udpck_to_upllck
-                0x00081bd0       0x14 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pmc.o)
-                0x00081bd0                pmc_switch_udpck_to_upllck
+                0x00081b84       0x14 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pmc.o)
+                0x00081b84                pmc_switch_udpck_to_upllck
  .text.pmc_enable_udpck
-                0x00081be4        0xc C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pmc.o)
-                0x00081be4                pmc_enable_udpck
+                0x00081b98        0xc C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pmc.o)
+                0x00081b98                pmc_enable_udpck
  .text.FindClockConfiguration
-                0x00081bf0       0x7c C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
+                0x00081ba4       0x7c C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
  .text.PWMC_ConfigureChannel
-                0x00081c6c       0x60 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
-                0x00081c6c                PWMC_ConfigureChannel
+                0x00081c20       0x60 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
+                0x00081c20                PWMC_ConfigureChannel
  .text.PWMC_ConfigureClocks
-                0x00081ccc       0x54 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
-                0x00081ccc                PWMC_ConfigureClocks
+                0x00081c80       0x54 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
+                0x00081c80                PWMC_ConfigureClocks
  .text.PWMC_SetPeriod
-                0x00081d20       0x1a C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
-                0x00081d20                PWMC_SetPeriod
- *fill*         0x00081d3a        0x2 
+                0x00081cd4       0x1a C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
+                0x00081cd4                PWMC_SetPeriod
+ *fill*         0x00081cee        0x2 
  .text.PWMC_SetDutyCycle
-                0x00081d3c       0x44 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
-                0x00081d3c                PWMC_SetDutyCycle
+                0x00081cf0       0x44 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
+                0x00081cf0                PWMC_SetDutyCycle
  .text.PWMC_EnableChannel
-                0x00081d80        0xa C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
-                0x00081d80                PWMC_EnableChannel
- *fill*         0x00081d8a        0x2 
+                0x00081d34        0xa C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
+                0x00081d34                PWMC_EnableChannel
+ *fill*         0x00081d3e        0x2 
  .text.TC_Configure
-                0x00081d8c       0x38 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
-                0x00081d8c                TC_Configure
+                0x00081d40       0x38 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
+                0x00081d40                TC_Configure
  .text.TC_Start
-                0x00081dc4       0x2c C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
-                0x00081dc4                TC_Start
+                0x00081d78       0x2c C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
+                0x00081d78                TC_Start
  .text.TC_SetRA
-                0x00081df0        0x8 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
-                0x00081df0                TC_SetRA
+                0x00081da4        0x8 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
+                0x00081da4                TC_SetRA
  .text.TC_SetRB
-                0x00081df8        0x8 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
-                0x00081df8                TC_SetRB
+                0x00081dac        0x8 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
+                0x00081dac                TC_SetRB
  .text.TC_SetRC
-                0x00081e00        0x8 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
-                0x00081e00                TC_SetRC
+                0x00081db4        0x8 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
+                0x00081db4                TC_SetRC
  .text.TimeTick_Increment
-                0x00081e08       0x10 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(timetick.o)
-                0x00081e08                TimeTick_Increment
+                0x00081dbc       0x10 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(timetick.o)
+                0x00081dbc                TimeTick_Increment
  .text.GetTickCount
-                0x00081e18        0xc C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(timetick.o)
-                0x00081e18                GetTickCount
+                0x00081dcc        0xc C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(timetick.o)
+                0x00081dcc                GetTickCount
  .text.WDT_Disable
-                0x00081e24        0x8 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(wdt.o)
-                0x00081e24                WDT_Disable
+                0x00081dd8        0x8 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(wdt.o)
+                0x00081dd8                WDT_Disable
  .text.SystemInit
-                0x00081e2c       0x88 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(system_sam3xa.o)
-                0x00081e2c                SystemInit
+                0x00081de0       0x88 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(system_sam3xa.o)
+                0x00081de0                SystemInit
  .text.Reset_Handler
-                0x00081eb4       0x78 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(startup_sam3xa.o)
-                0x00081eb4                Reset_Handler
+                0x00081e68       0x78 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(startup_sam3xa.o)
+                0x00081e68                Reset_Handler
  .text.adc_init
-                0x00081f2c       0x98 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
-                0x00081f2c                adc_init
+                0x00081ee0       0x98 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
+                0x00081ee0                adc_init
  .text.adc_configure_trigger
-                0x00081fc4        0xe C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
-                0x00081fc4                adc_configure_trigger
+                0x00081f78        0xe C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
+                0x00081f78                adc_configure_trigger
  .text.adc_configure_timing
-                0x00081fd2       0x1a C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
-                0x00081fd2                adc_configure_timing
+                0x00081f86       0x1a C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
+                0x00081f86                adc_configure_timing
  .text.adc_start
-                0x00081fec        0x6 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
-                0x00081fec                adc_start
+                0x00081fa0        0x6 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
+                0x00081fa0                adc_start
  .text.adc_enable_channel
-                0x00081ff2        0xa C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
-                0x00081ff2                adc_enable_channel
+                0x00081fa6        0xa C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
+                0x00081fa6                adc_enable_channel
  .text.adc_disable_channel
-                0x00081ffc        0xa C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
-                0x00081ffc                adc_disable_channel
+                0x00081fb0        0xa C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
+                0x00081fb0                adc_disable_channel
  .text.adc_disable_all_channel
-                0x00082006        0x8 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
-                0x00082006                adc_disable_all_channel
+                0x00081fba        0x8 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
+                0x00081fba                adc_disable_all_channel
  .text.adc_get_channel_status
-                0x0008200e        0xa C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
-                0x0008200e                adc_get_channel_status
+                0x00081fc2        0xa C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
+                0x00081fc2                adc_get_channel_status
  .text.adc_get_latest_value
-                0x00082018        0x4 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
-                0x00082018                adc_get_latest_value
+                0x00081fcc        0x4 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
+                0x00081fcc                adc_get_latest_value
  .text.adc_disable_interrupt
-                0x0008201c        0x4 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
-                0x0008201c                adc_disable_interrupt
+                0x00081fd0        0x4 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
+                0x00081fd0                adc_disable_interrupt
  .text.adc_get_status
-                0x00082020        0x4 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
-                0x00082020                adc_get_status
+                0x00081fd4        0x4 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
+                0x00081fd4                adc_get_status
  .text.UOTGHS_Handler
-                0x00082024       0x10 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs.o)
-                0x00082024                UOTGHS_Handler
+                0x00081fd8       0x10 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs.o)
+                0x00081fd8                UOTGHS_Handler
  .text.UDD_SetStack
-                0x00082034        0xc C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x00082034                UDD_SetStack
+                0x00081fe8        0xc C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x00081fe8                UDD_SetStack
  .text.UDD_Init
-                0x00082040       0xd0 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x00082040                UDD_Init
+                0x00081ff4       0xd0 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x00081ff4                UDD_Init
  .text.UDD_Attach
-                0x00082110       0x50 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x00082110                UDD_Attach
+                0x000820c4       0x50 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x000820c4                UDD_Attach
  .text.UDD_InitEP
-                0x00082160       0x2c C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x00082160                UDD_InitEP
+                0x00082114       0x2c C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x00082114                UDD_InitEP
  .text.UDD_InitEndpoints
-                0x0008218c       0x3c C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x0008218c                UDD_InitEndpoints
+                0x00082140       0x3c C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x00082140                UDD_InitEndpoints
  .text.UDD_WaitIN
-                0x000821c8       0x10 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x000821c8                UDD_WaitIN
+                0x0008217c       0x10 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x0008217c                UDD_WaitIN
  .text.UDD_WaitOUT
-                0x000821d8       0x10 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x000821d8                UDD_WaitOUT
+                0x0008218c       0x10 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x0008218c                UDD_WaitOUT
  .text.UDD_ClearIN
-                0x000821e8       0x18 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x000821e8                UDD_ClearIN
+                0x0008219c       0x18 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x0008219c                UDD_ClearIN
  .text.UDD_ClearOUT
-                0x00082200       0x18 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x00082200                UDD_ClearOUT
+                0x000821b4       0x18 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x000821b4                UDD_ClearOUT
  .text.UDD_ReceivedSetupInt
-                0x00082218       0x10 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x00082218                UDD_ReceivedSetupInt
+                0x000821cc       0x10 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x000821cc                UDD_ReceivedSetupInt
  .text.UDD_ClearSetupInt
-                0x00082228       0x10 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x00082228                UDD_ClearSetupInt
+                0x000821dc       0x10 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x000821dc                UDD_ClearSetupInt
  .text.UDD_Send
-                0x00082238       0x88 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x00082238                UDD_Send
+                0x000821ec       0x88 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x000821ec                UDD_Send
  .text.UDD_Send8
-                0x000822c0       0x24 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x000822c0                UDD_Send8
+                0x00082274       0x24 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x00082274                UDD_Send8
  .text.UDD_Recv8
-                0x000822e4       0x28 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x000822e4                UDD_Recv8
+                0x00082298       0x28 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x00082298                UDD_Recv8
  .text.UDD_Recv
-                0x0008230c       0x34 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x0008230c                UDD_Recv
+                0x000822c0       0x34 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x000822c0                UDD_Recv
  .text.UDD_Stall
-                0x00082340       0x14 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x00082340                UDD_Stall
+                0x000822f4       0x14 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x000822f4                UDD_Stall
  .text.UDD_FifoByteCount
-                0x00082354       0x14 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x00082354                UDD_FifoByteCount
+                0x00082308       0x14 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x00082308                UDD_FifoByteCount
  .text.UDD_ReleaseRX
-                0x00082368       0x28 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x00082368                UDD_ReleaseRX
+                0x0008231c       0x28 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x0008231c                UDD_ReleaseRX
  .text.UDD_ReleaseTX
-                0x00082390       0x28 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x00082390                UDD_ReleaseTX
+                0x00082344       0x28 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x00082344                UDD_ReleaseTX
  .text.UDD_SetAddress
-                0x000823b8       0x20 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
-                0x000823b8                UDD_SetAddress
+                0x0008236c       0x20 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(uotghs_device.o)
+                0x0008236c                UDD_SetAddress
  .text.dacc_reset
-                0x000823d8        0x6 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
-                0x000823d8                dacc_reset
+                0x0008238c        0x6 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
+                0x0008238c                dacc_reset
  .text.dacc_set_transfer_mode
-                0x000823de       0x14 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
-                0x000823de                dacc_set_transfer_mode
+                0x00082392       0x14 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
+                0x00082392                dacc_set_transfer_mode
  .text.dacc_get_interrupt_status
-                0x000823f2        0x4 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
-                0x000823f2                dacc_get_interrupt_status
+                0x000823a6        0x4 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
+                0x000823a6                dacc_get_interrupt_status
  .text.dacc_write_conversion_data
-                0x000823f6        0x4 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
-                0x000823f6                dacc_write_conversion_data
+                0x000823aa        0x4 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
+                0x000823aa                dacc_write_conversion_data
  .text.dacc_set_channel_selection
-                0x000823fa       0x18 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
-                0x000823fa                dacc_set_channel_selection
+                0x000823ae       0x18 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
+                0x000823ae                dacc_set_channel_selection
  .text.dacc_set_power_save
-                0x00082412       0x24 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
-                0x00082412                dacc_set_power_save
+                0x000823c6       0x24 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
+                0x000823c6                dacc_set_power_save
  .text.dacc_set_timing
-                0x00082436       0x2c C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
-                0x00082436                dacc_set_timing
+                0x000823ea       0x2c C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
+                0x000823ea                dacc_set_timing
  .text.dacc_enable_channel
-                0x00082462       0x12 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
-                0x00082462                dacc_enable_channel
+                0x00082416       0x12 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
+                0x00082416                dacc_enable_channel
  .text.dacc_get_channel_status
-                0x00082474        0x4 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
-                0x00082474                dacc_get_channel_status
+                0x00082428        0x4 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
+                0x00082428                dacc_get_channel_status
  .text.dacc_set_analog_control
-                0x00082478        0x8 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
-                0x00082478                dacc_set_analog_control
+                0x0008242c        0x8 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(dacc.o)
+                0x0008242c                dacc_set_analog_control
  .text.PIOA_Handler
-                0x00082480       0x38 arduino.ar(WInterrupts.c.o)
-                0x00082480                PIOA_Handler
+                0x00082434       0x38 arduino.ar(WInterrupts.c.o)
+                0x00082434                PIOA_Handler
  .text.PIOB_Handler
-                0x000824b8       0x38 arduino.ar(WInterrupts.c.o)
-                0x000824b8                PIOB_Handler
+                0x0008246c       0x38 arduino.ar(WInterrupts.c.o)
+                0x0008246c                PIOB_Handler
  .text.PIOC_Handler
-                0x000824f0       0x38 arduino.ar(WInterrupts.c.o)
-                0x000824f0                PIOC_Handler
+                0x000824a4       0x38 arduino.ar(WInterrupts.c.o)
+                0x000824a4                PIOC_Handler
  .text.PIOD_Handler
-                0x00082528       0x38 arduino.ar(WInterrupts.c.o)
-                0x00082528                PIOD_Handler
- .text.__halt   0x00082560        0x2 arduino.ar(cortex_handlers.c.o)
-                0x00082560                DACC_Handler
-                0x00082560                DebugMon_Handler
-                0x00082560                DMAC_Handler
-                0x00082560                TRNG_Handler
-                0x00082560                HardFault_Handler
-                0x00082560                TC2_Handler
-                0x00082560                TWI1_Handler
-                0x00082560                NMI_Handler
-                0x00082560                TC7_Handler
-                0x00082560                ADC_Handler
-                0x00082560                SMC_Handler
-                0x00082560                RTT_Handler
-                0x00082560                EFC1_Handler
-                0x00082560                RTC_Handler
-                0x00082560                UsageFault_Handler
-                0x00082560                TC6_Handler
-                0x00082560                WDT_Handler
-                0x00082560                CAN0_Handler
-                0x00082560                TC4_Handler
-                0x00082560                TC1_Handler
-                0x00082560                HSMCI_Handler
-                0x00082560                TC3_Handler
-                0x00082560                TWI0_Handler
-                0x00082560                SSC_Handler
-                0x00082560                EFC0_Handler
-                0x00082560                PMC_Handler
-                0x00082560                PWM_Handler
-                0x00082560                CAN1_Handler
-                0x00082560                MemManage_Handler
-                0x00082560                SUPC_Handler
-                0x00082560                TC8_Handler
-                0x00082560                USART2_Handler
-                0x00082560                EMAC_Handler
-                0x00082560                BusFault_Handler
-                0x00082560                RSTC_Handler
-                0x00082560                TC0_Handler
-                0x00082560                TC5_Handler
-                0x00082560                SPI0_Handler
+                0x000824dc       0x38 arduino.ar(WInterrupts.c.o)
+                0x000824dc                PIOD_Handler
+ .text.__halt   0x00082514        0x2 arduino.ar(cortex_handlers.c.o)
+                0x00082514                DACC_Handler
+                0x00082514                DebugMon_Handler
+                0x00082514                DMAC_Handler
+                0x00082514                TRNG_Handler
+                0x00082514                HardFault_Handler
+                0x00082514                TC2_Handler
+                0x00082514                TWI1_Handler
+                0x00082514                NMI_Handler
+                0x00082514                TC7_Handler
+                0x00082514                ADC_Handler
+                0x00082514                SMC_Handler
+                0x00082514                RTT_Handler
+                0x00082514                EFC1_Handler
+                0x00082514                RTC_Handler
+                0x00082514                UsageFault_Handler
+                0x00082514                TC6_Handler
+                0x00082514                WDT_Handler
+                0x00082514                CAN0_Handler
+                0x00082514                TC4_Handler
+                0x00082514                TC1_Handler
+                0x00082514                HSMCI_Handler
+                0x00082514                TC3_Handler
+                0x00082514                TWI0_Handler
+                0x00082514                SSC_Handler
+                0x00082514                EFC0_Handler
+                0x00082514                PMC_Handler
+                0x00082514                PWM_Handler
+                0x00082514                CAN1_Handler
+                0x00082514                MemManage_Handler
+                0x00082514                SUPC_Handler
+                0x00082514                TC8_Handler
+                0x00082514                USART2_Handler
+                0x00082514                EMAC_Handler
+                0x00082514                BusFault_Handler
+                0x00082514                RSTC_Handler
+                0x00082514                TC0_Handler
+                0x00082514                TC5_Handler
+                0x00082514                SPI0_Handler
  .text.SVC_Handler
-                0x00082562        0x4 arduino.ar(cortex_handlers.c.o)
-                0x00082562                SVC_Handler
+                0x00082516        0x4 arduino.ar(cortex_handlers.c.o)
+                0x00082516                SVC_Handler
  .text.PendSV_Handler
-                0x00082566        0x4 arduino.ar(cortex_handlers.c.o)
-                0x00082566                PendSV_Handler
+                0x0008251a        0x4 arduino.ar(cortex_handlers.c.o)
+                0x0008251a                PendSV_Handler
  .text.SysTick_Handler
-                0x0008256a       0x16 arduino.ar(cortex_handlers.c.o)
-                0x0008256a                SysTick_Handler
+                0x0008251e       0x16 arduino.ar(cortex_handlers.c.o)
+                0x0008251e                SysTick_Handler
  .text.__fpclassifyd
-                0x00082580       0x50 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_fpclassify.o)
-                0x00082580                __fpclassifyd
- .text          0x000825d0      0x370 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
-                0x000825d0                __aeabi_drsub
-                0x000825d8                __aeabi_dsub
-                0x000825d8                __subdf3
-                0x000825dc                __aeabi_dadd
-                0x000825dc                __adddf3
-                0x00082854                __floatunsidf
-                0x00082854                __aeabi_ui2d
-                0x00082874                __floatsidf
-                0x00082874                __aeabi_i2d
-                0x00082898                __aeabi_f2d
-                0x00082898                __extendsfdf2
-                0x000828d4                __floatundidf
-                0x000828d4                __aeabi_ul2d
-                0x000828e4                __floatdidf
-                0x000828e4                __aeabi_l2d
- .text          0x00082940      0x424 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_arm_muldivdf3.o)
-                0x00082940                __aeabi_dmul
-                0x00082940                __muldf3
-                0x00082b94                __divdf3
-                0x00082b94                __aeabi_ddiv
- .text          0x00082d64      0x110 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_arm_cmpdf2.o)
-                0x00082d64                __gtdf2
-                0x00082d64                __gedf2
-                0x00082d6c                __ltdf2
-                0x00082d6c                __ledf2
-                0x00082d74                __nedf2
-                0x00082d74                __eqdf2
-                0x00082d74                __cmpdf2
-                0x00082df0                __aeabi_cdrcmple
-                0x00082e00                __aeabi_cdcmpeq
-                0x00082e00                __aeabi_cdcmple
-                0x00082e10                __aeabi_dcmpeq
-                0x00082e24                __aeabi_dcmplt
-                0x00082e38                __aeabi_dcmple
-                0x00082e4c                __aeabi_dcmpge
-                0x00082e60                __aeabi_dcmpgt
- .text          0x00082e74       0x50 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_arm_fixdfsi.o)
-                0x00082e74                __aeabi_d2iz
-                0x00082e74                __fixdfsi
- .text          0x00082ec4      0x21c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubsf3.o)
-                0x00082ec4                __aeabi_frsub
-                0x00082ecc                __subsf3
-                0x00082ecc                __aeabi_fsub
-                0x00082ed0                __aeabi_fadd
-                0x00082ed0                __addsf3
-                0x00083030                __aeabi_ui2f
-                0x00083030                __floatunsisf
-                0x00083038                __aeabi_i2f
-                0x00083038                __floatsisf
-                0x00083054                __aeabi_ul2f
-                0x00083054                __floatundisf
-                0x00083064                __aeabi_l2f
-                0x00083064                __floatdisf
- .text          0x000830e0      0x2a0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_arm_muldivsf3.o)
-                0x000830e0                __mulsf3
-                0x000830e0                __aeabi_fmul
-                0x00083248                __aeabi_fdiv
-                0x00083248                __divsf3
+                0x00082534       0x50 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libm.a(lib_a-s_fpclassify.o)
+                0x00082534                __fpclassifyd
+ .text          0x00082584      0x370 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubdf3.o)
+                0x00082584                __aeabi_drsub
+                0x0008258c                __aeabi_dsub
+                0x0008258c                __subdf3
+                0x00082590                __aeabi_dadd
+                0x00082590                __adddf3
+                0x00082808                __floatunsidf
+                0x00082808                __aeabi_ui2d
+                0x00082828                __floatsidf
+                0x00082828                __aeabi_i2d
+                0x0008284c                __aeabi_f2d
+                0x0008284c                __extendsfdf2
+                0x00082888                __floatundidf
+                0x00082888                __aeabi_ul2d
+                0x00082898                __floatdidf
+                0x00082898                __aeabi_l2d
+ .text          0x000828f4      0x424 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_arm_muldivdf3.o)
+                0x000828f4                __aeabi_dmul
+                0x000828f4                __muldf3
+                0x00082b48                __divdf3
+                0x00082b48                __aeabi_ddiv
+ .text          0x00082d18      0x110 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_arm_cmpdf2.o)
+                0x00082d18                __gtdf2
+                0x00082d18                __gedf2
+                0x00082d20                __ltdf2
+                0x00082d20                __ledf2
+                0x00082d28                __nedf2
+                0x00082d28                __eqdf2
+                0x00082d28                __cmpdf2
+                0x00082da4                __aeabi_cdrcmple
+                0x00082db4                __aeabi_cdcmpeq
+                0x00082db4                __aeabi_cdcmple
+                0x00082dc4                __aeabi_dcmpeq
+                0x00082dd8                __aeabi_dcmplt
+                0x00082dec                __aeabi_dcmple
+                0x00082e00                __aeabi_dcmpge
+                0x00082e14                __aeabi_dcmpgt
+ .text          0x00082e28       0x50 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_arm_fixdfsi.o)
+                0x00082e28                __aeabi_d2iz
+                0x00082e28                __fixdfsi
+ .text          0x00082e78      0x21c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_arm_addsubsf3.o)
+                0x00082e78                __aeabi_frsub
+                0x00082e80                __subsf3
+                0x00082e80                __aeabi_fsub
+                0x00082e84                __aeabi_fadd
+                0x00082e84                __addsf3
+                0x00082fe4                __aeabi_ui2f
+                0x00082fe4                __floatunsisf
+                0x00082fec                __aeabi_i2f
+                0x00082fec                __floatsisf
+                0x00083008                __aeabi_ul2f
+                0x00083008                __floatundisf
+                0x00083018                __aeabi_l2f
+                0x00083018                __floatdisf
+ .text          0x00083094      0x2a0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_arm_muldivsf3.o)
+                0x00083094                __mulsf3
+                0x00083094                __aeabi_fmul
+                0x000831fc                __aeabi_fdiv
+                0x000831fc                __divsf3
  .text.__assert_func
-                0x00083380       0x3c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-assert.o)
-                0x00083380                __assert_func
+                0x00083334       0x3c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-assert.o)
+                0x00083334                __assert_func
  .text.fiprintf
-                0x000833bc       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fiprintf.o)
-                0x000833bc                fiprintf
+                0x00083370       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fiprintf.o)
+                0x00083370                fiprintf
  .text.__libc_init_array
-                0x000833e4       0x50 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-init.o)
-                0x000833e4                __libc_init_array
- .text.iprintf  0x00083434       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-iprintf.o)
-                0x00083434                iprintf
- .text.malloc   0x0008345c       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-malloc.o)
-                0x0008345c                malloc
- .text.free     0x0008346c       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-malloc.o)
-                0x0008346c                free
+                0x00083398       0x50 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-init.o)
+                0x00083398                __libc_init_array
+ .text.iprintf  0x000833e8       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-iprintf.o)
+                0x000833e8                iprintf
+ .text.malloc   0x00083410       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-malloc.o)
+                0x00083410                malloc
+ .text.free     0x00083420       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-malloc.o)
+                0x00083420                free
  .text._malloc_r
-                0x0008347c      0x538 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
-                0x0008347c                _malloc_r
- .text          0x000839b4       0xec c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memcpy.o)
-                0x000839b4                memcpy
- .text.memmove  0x00083aa0       0xcc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memmove.o)
-                0x00083aa0                memmove
- .text.memset   0x00083b6c       0x94 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memset.o)
-                0x00083b6c                memset
+                0x00083430      0x538 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mallocr.o)
+                0x00083430                _malloc_r
+ .text          0x00083968       0xec c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memcpy.o)
+                0x00083968                memcpy
+ .text.memmove  0x00083a54       0xcc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memmove.o)
+                0x00083a54                memmove
+ .text.memset   0x00083b20       0x94 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memset.o)
+                0x00083b20                memset
  .text.__malloc_lock
-                0x00083c00        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mlock.o)
-                0x00083c00                __malloc_lock
+                0x00083bb4        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mlock.o)
+                0x00083bb4                __malloc_lock
  .text.__malloc_unlock
-                0x00083c04        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mlock.o)
-                0x00083c04                __malloc_unlock
- .text.realloc  0x00083c08       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-realloc.o)
-                0x00083c08                realloc
+                0x00083bb8        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mlock.o)
+                0x00083bb8                __malloc_unlock
+ .text.realloc  0x00083bbc       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-realloc.o)
+                0x00083bbc                realloc
  .text._realloc_r
-                0x00083c18      0x3c0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-reallocr.o)
-                0x00083c18                _realloc_r
- .text._sbrk_r  0x00083fd8       0x24 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-sbrkr.o)
-                0x00083fd8                _sbrk_r
- .text.sprintf  0x00083ffc       0x4c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-sprintf.o)
-                0x00083ffc                sprintf
- .text.strcpy   0x00084048       0xbc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-strcpy.o)
-                0x00084048                strcpy
- .text.strlen   0x00084104       0x60 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-strlen.o)
-                0x00084104                strlen
+                0x00083bcc      0x3c0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-reallocr.o)
+                0x00083bcc                _realloc_r
+ .text._sbrk_r  0x00083f8c       0x24 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-sbrkr.o)
+                0x00083f8c                _sbrk_r
+ .text.sprintf  0x00083fb0       0x4c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-sprintf.o)
+                0x00083fb0                sprintf
+ .text.strcpy   0x00083ffc       0xbc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-strcpy.o)
+                0x00083ffc                strcpy
+ .text.strlen   0x000840b8       0x60 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-strlen.o)
+                0x000840b8                strlen
  .text._svfprintf_r
-                0x00084164     0x14e0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfprintf.o)
-                0x00084164                _svfprintf_r
+                0x00084118     0x14e0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfprintf.o)
+                0x00084118                _svfprintf_r
  .text.__sprint_r.part.0
-                0x00085644       0x78 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-vfiprintf.o)
+                0x000855f8       0x78 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-vfiprintf.o)
  .text._vfiprintf_r
-                0x000856bc      0xc54 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-vfiprintf.o)
-                0x000856bc                _vfiprintf_r
+                0x00085670      0xc54 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-vfiprintf.o)
+                0x00085670                _vfiprintf_r
  .text.__sbprintf
-                0x00086310       0x7c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-vfiprintf.o)
+                0x000862c4       0x7c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-vfiprintf.o)
  .text.__swsetup_r
-                0x0008638c       0xc4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-wsetup.o)
-                0x0008638c                __swsetup_r
+                0x00086340       0xc4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-wsetup.o)
+                0x00086340                __swsetup_r
  .text.startup.register_fini
-                0x00086450       0x14 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-__call_atexit.o)
- .text.abort    0x00086464       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-abort.o)
-                0x00086464                abort
- .text.atexit   0x00086474        0xc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-atexit.o)
-                0x00086474                atexit
- .text.quorem   0x00086480      0x134 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-dtoa.o)
- *fill*         0x000865b4        0x4 
- .text._dtoa_r  0x000865b8      0xe38 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-dtoa.o)
-                0x000865b8                _dtoa_r
+                0x00086404       0x14 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-__call_atexit.o)
+ .text.abort    0x00086418       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-abort.o)
+                0x00086418                abort
+ .text.atexit   0x00086428        0xc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-atexit.o)
+                0x00086428                atexit
+ .text.quorem   0x00086434      0x134 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-dtoa.o)
+ .text._dtoa_r  0x00086568      0xe38 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-dtoa.o)
+                0x00086568                _dtoa_r
  .text.__sflush_r
-                0x000873f0      0x148 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fflush.o)
-                0x000873f0                __sflush_r
+                0x000873a0      0x148 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fflush.o)
+                0x000873a0                __sflush_r
  .text._fflush_r
-                0x00087538       0x2c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fflush.o)
-                0x00087538                _fflush_r
+                0x000874e8       0x2c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fflush.o)
+                0x000874e8                _fflush_r
  .text._cleanup_r
-                0x00087564        0xc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-findfp.o)
-                0x00087564                _cleanup_r
- .text.__sinit  0x00087570       0xf4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-findfp.o)
-                0x00087570                __sinit
+                0x00087514        0xc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-findfp.o)
+                0x00087514                _cleanup_r
+ .text.__sinit  0x00087520       0xf4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-findfp.o)
+                0x00087520                __sinit
  .text.__sfp_lock_acquire
-                0x00087664        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-findfp.o)
-                0x00087664                __sfp_lock_acquire
+                0x00087614        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-findfp.o)
+                0x00087614                __sfp_lock_acquire
  .text.__sfp_lock_release
-                0x00087668        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-findfp.o)
-                0x00087668                __sfp_lock_release
+                0x00087618        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-findfp.o)
+                0x00087618                __sfp_lock_release
  .text.__libc_fini_array
-                0x0008766c       0x30 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fini.o)
-                0x0008766c                __libc_fini_array
+                0x0008761c       0x30 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fini.o)
+                0x0008761c                __libc_fini_array
  .text._fputwc_r
-                0x0008769c       0xc0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fputwc.o)
-                0x0008769c                _fputwc_r
+                0x0008764c       0xc0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fputwc.o)
+                0x0008764c                _fputwc_r
  .text._malloc_trim_r
-                0x0008775c       0x9c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-freer.o)
-                0x0008775c                _malloc_trim_r
- .text._free_r  0x000877f8      0x198 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-freer.o)
-                0x000877f8                _free_r
+                0x0008770c       0x9c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-freer.o)
+                0x0008770c                _malloc_trim_r
+ .text._free_r  0x000877a8      0x198 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-freer.o)
+                0x000877a8                _free_r
  .text.__sfvwrite_r
-                0x00087990      0x314 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fvwrite.o)
-                0x00087990                __sfvwrite_r
- .text._fwalk   0x00087ca4       0x48 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fwalk.o)
-                0x00087ca4                _fwalk
+                0x00087940      0x314 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fvwrite.o)
+                0x00087940                __sfvwrite_r
+ .text._fwalk   0x00087c54       0x48 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fwalk.o)
+                0x00087c54                _fwalk
  .text.__locale_charset
-                0x00087cec        0x8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-locale.o)
-                0x00087cec                __locale_charset
+                0x00087c9c        0x8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-locale.o)
+                0x00087c9c                __locale_charset
  .text.__locale_mb_cur_max
-                0x00087cf4        0xc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-locale.o)
-                0x00087cf4                __locale_mb_cur_max
+                0x00087ca4        0xc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-locale.o)
+                0x00087ca4                __locale_mb_cur_max
  .text._localeconv_r
-                0x00087d00        0x8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-locale.o)
-                0x00087d00                _localeconv_r
+                0x00087cb0        0x8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-locale.o)
+                0x00087cb0                _localeconv_r
  .text.__smakebuf_r
-                0x00087d08       0xe0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-makebuf.o)
-                0x00087d08                __smakebuf_r
- .text.memchr   0x00087de8       0x94 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memchr-stub.o)
-                0x00087de8                memchr
- .text._Balloc  0x00087e7c       0x4c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x00087e7c                _Balloc
- .text._Bfree   0x00087ec8       0x14 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x00087ec8                _Bfree
+                0x00087cb8       0xe0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-makebuf.o)
+                0x00087cb8                __smakebuf_r
+ .text.memchr   0x00087d98       0x94 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-memchr-stub.o)
+                0x00087d98                memchr
+ .text._Balloc  0x00087e2c       0x4c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x00087e2c                _Balloc
+ .text._Bfree   0x00087e78       0x14 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x00087e78                _Bfree
  .text.__multadd
-                0x00087edc       0x94 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x00087edc                __multadd
+                0x00087e8c       0x94 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x00087e8c                __multadd
  .text.__hi0bits
-                0x00087f70       0x40 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x00087f70                __hi0bits
+                0x00087f20       0x40 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x00087f20                __hi0bits
  .text.__lo0bits
-                0x00087fb0       0x5c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x00087fb0                __lo0bits
- .text.__i2b    0x0008800c       0x14 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x0008800c                __i2b
+                0x00087f60       0x5c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x00087f60                __lo0bits
+ .text.__i2b    0x00087fbc       0x14 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x00087fbc                __i2b
  .text.__multiply
-                0x00088020      0x13c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x00088020                __multiply
+                0x00087fd0      0x13c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x00087fd0                __multiply
  .text.__pow5mult
-                0x0008815c       0x9c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x0008815c                __pow5mult
+                0x0008810c       0x9c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x0008810c                __pow5mult
  .text.__lshift
-                0x000881f8       0xbc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x000881f8                __lshift
- .text.__mcmp   0x000882b4       0x48 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x000882b4                __mcmp
- .text.__mdiff  0x000882fc       0xd8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x000882fc                __mdiff
- .text.__d2b    0x000883d4       0xbc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x000883d4                __d2b
+                0x000881a8       0xbc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x000881a8                __lshift
+ .text.__mcmp   0x00088264       0x48 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x00088264                __mcmp
+ .text.__mdiff  0x000882ac       0xd8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x000882ac                __mdiff
+ .text.__d2b    0x00088384       0xbc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x00088384                __d2b
  .text._raise_r
-                0x00088490       0x58 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-signal.o)
-                0x00088490                _raise_r
- .text.raise    0x000884e8       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-signal.o)
-                0x000884e8                raise
- .text._kill_r  0x000884f8       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-signalr.o)
-                0x000884f8                _kill_r
+                0x00088440       0x58 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-signal.o)
+                0x00088440                _raise_r
+ .text.raise    0x00088498       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-signal.o)
+                0x00088498                raise
+ .text._kill_r  0x000884a8       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-signalr.o)
+                0x000884a8                _kill_r
  .text._getpid_r
-                0x00088520        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-signalr.o)
-                0x00088520                _getpid_r
- .text.__sread  0x00088524       0x24 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-stdio.o)
-                0x00088524                __sread
+                0x000884d0        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-signalr.o)
+                0x000884d0                _getpid_r
+ .text.__sread  0x000884d4       0x24 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-stdio.o)
+                0x000884d4                __sread
  .text.__swrite
-                0x00088548       0x38 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-stdio.o)
-                0x00088548                __swrite
- .text.__sseek  0x00088580       0x20 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-stdio.o)
-                0x00088580                __sseek
+                0x000884f8       0x38 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-stdio.o)
+                0x000884f8                __swrite
+ .text.__sseek  0x00088530       0x20 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-stdio.o)
+                0x00088530                __sseek
  .text.__sclose
-                0x000885a0        0x8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-stdio.o)
-                0x000885a0                __sclose
+                0x00088550        0x8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-stdio.o)
+                0x00088550                __sclose
  .text.__ssprint_r
-                0x000885a8      0x100 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfiprintf.o)
-                0x000885a8                __ssprint_r
+                0x00088558      0x100 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfiprintf.o)
+                0x00088558                __ssprint_r
  .text.__swbuf_r
-                0x000886a8       0xa8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-wbuf.o)
-                0x000886a8                __swbuf_r
+                0x00088658       0xa8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-wbuf.o)
+                0x00088658                __swbuf_r
  .text._wcrtomb_r
-                0x00088750       0x50 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-wcrtomb.o)
-                0x00088750                _wcrtomb_r
+                0x00088700       0x50 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-wcrtomb.o)
+                0x00088700                _wcrtomb_r
  .text.__ascii_wctomb
-                0x000887a0       0x1c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-wctomb_r.o)
-                0x000887a0                __ascii_wctomb
+                0x00088750       0x1c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-wctomb_r.o)
+                0x00088750                __ascii_wctomb
  .text._write_r
-                0x000887bc       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-writer.o)
-                0x000887bc                _write_r
+                0x0008876c       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-writer.o)
+                0x0008876c                _write_r
  .text.__register_exitproc
-                0x000887e4       0xa8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-__atexit.o)
-                0x000887e4                __register_exitproc
+                0x00088794       0xa8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-__atexit.o)
+                0x00088794                __register_exitproc
  .text._calloc_r
-                0x0008888c       0x60 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-callocr.o)
-                0x0008888c                _calloc_r
+                0x0008883c       0x60 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-callocr.o)
+                0x0008883c                _calloc_r
  .text._close_r
-                0x000888ec       0x24 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-closer.o)
-                0x000888ec                _close_r
+                0x0008889c       0x24 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-closer.o)
+                0x0008889c                _close_r
  .text._fclose_r
-                0x00088910       0x80 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fclose.o)
-                0x00088910                _fclose_r
- .text.fclose   0x00088990       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fclose.o)
-                0x00088990                fclose
+                0x000888c0       0x80 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fclose.o)
+                0x000888c0                _fclose_r
+ .text.fclose   0x00088940       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fclose.o)
+                0x00088940                fclose
  .text._fstat_r
-                0x000889a0       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fstatr.o)
-                0x000889a0                _fstat_r
+                0x00088950       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-fstatr.o)
+                0x00088950                _fstat_r
  .text._isatty_r
-                0x000889c8       0x24 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-isattyr.o)
-                0x000889c8                _isatty_r
+                0x00088978       0x24 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-isattyr.o)
+                0x00088978                _isatty_r
  .text._lseek_r
-                0x000889ec       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-lseekr.o)
-                0x000889ec                _lseek_r
- .text._read_r  0x00088a14       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-readr.o)
-                0x00088a14                _read_r
- .text          0x00088a3c       0x2c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_aeabi_uldivmod.o)
-                0x00088a3c                __aeabi_uldivmod
- .text          0x00088a68       0x60 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(bpabi.o)
-                0x00088a68                __gnu_ldivmod_helper
-                0x00088a98                __gnu_uldivmod_helper
- .text          0x00088ac8        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_dvmd_tls.o)
-                0x00088ac8                __aeabi_idiv0
-                0x00088ac8                __aeabi_ldiv0
- .text          0x00088acc      0x2a0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_divdi3.o)
-                0x00088acc                __divdi3
- .text          0x00088d6c      0x290 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_udivdi3.o)
-                0x00088d6c                __udivdi3
+                0x0008899c       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-lseekr.o)
+                0x0008899c                _lseek_r
+ .text._read_r  0x000889c4       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-readr.o)
+                0x000889c4                _read_r
+ .text          0x000889ec       0x2c c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_aeabi_uldivmod.o)
+                0x000889ec                __aeabi_uldivmod
+ .text          0x00088a18       0x60 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(bpabi.o)
+                0x00088a18                __gnu_ldivmod_helper
+                0x00088a48                __gnu_uldivmod_helper
+ .text          0x00088a78        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_dvmd_tls.o)
+                0x00088a78                __aeabi_idiv0
+                0x00088a78                __aeabi_ldiv0
+ .text          0x00088a7c      0x2a0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_divdi3.o)
+                0x00088a7c                __divdi3
+ .text          0x00088d1c      0x290 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_udivdi3.o)
+                0x00088d1c                __udivdi3
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
  .rodata.str1.1
-                0x00088ffc       0x19 C:/Users/Roberto/Documents/GitHub/SeniorDesign406/DueReadTempsStringOut/Release/core/syscalls_sam3.c.o
- *fill*         0x00089015        0x3 
+                0x00088fac       0x19 C:/Users/Roberto/Documents/GitHub/SeniorDesign406/DueReadTempsStringOut/Release/core/syscalls_sam3.c.o
+ *fill*         0x00088fc5        0x3 
  .rodata._ZL17calibrationOffset
-                0x00089018       0x14 .\.ino.cpp.o
- .rodata._ZL7fanPins
-                0x0008902c       0x10 .\.ino.cpp.o
+                0x00088fc8       0x14 .\.ino.cpp.o
  .rodata.str1.1
                 0x00000000       0x19 .\.ino.cpp.o
                                   0x1 (size before relaxing)
  .rodata._ZL10analogPins
-                0x0008903c       0x14 .\.ino.cpp.o
+                0x00088fdc       0x14 .\.ino.cpp.o
  .rodata._ZL16calibrationScale
-                0x00089050       0x14 .\.ino.cpp.o
+                0x00088ff0       0x14 .\.ino.cpp.o
  .rodata.g_APinDescription
-                0x00089064      0xa2c arduino.ar(variant.cpp.o)
-                0x00089064                g_APinDescription
+                0x00089004      0xa2c arduino.ar(variant.cpp.o)
+                0x00089004                g_APinDescription
  .rodata._ZTV9UARTClass
-                0x00089a90       0x30 arduino.ar(UARTClass.cpp.o)
-                0x00089a90                vtable for UARTClass
+                0x00089a30       0x30 arduino.ar(UARTClass.cpp.o)
+                0x00089a30                vtable for UARTClass
  .rodata._ZTV10USARTClass
-                0x00089ac0       0x30 arduino.ar(USARTClass.cpp.o)
-                0x00089ac0                vtable for USARTClass
+                0x00089a60       0x30 arduino.ar(USARTClass.cpp.o)
+                0x00089a60                vtable for USARTClass
  .rodata.channelToId.9425
-                0x00089af0       0x48 arduino.ar(wiring_analog.c.o)
+                0x00089a90       0x48 arduino.ar(wiring_analog.c.o)
  .rodata.channelToChNo.9422
-                0x00089b38       0x48 arduino.ar(wiring_analog.c.o)
+                0x00089ad8       0x48 arduino.ar(wiring_analog.c.o)
  .rodata.channelToTC.9424
-                0x00089b80       0x48 arduino.ar(wiring_analog.c.o)
+                0x00089b20       0x48 arduino.ar(wiring_analog.c.o)
  .rodata.channelToAB.9423
-                0x00089bc8       0x48 arduino.ar(wiring_analog.c.o)
+                0x00089b68       0x48 arduino.ar(wiring_analog.c.o)
  .rodata.str1.1
-                0x00089c10        0x9 arduino.ar(dtostrf.c.o)
+                0x00089bb0        0x9 arduino.ar(dtostrf.c.o)
  .rodata.STRING_PRODUCT
-                0x00089c19        0xc arduino.ar(USBCore.cpp.o)
-                0x00089c19                STRING_PRODUCT
+                0x00089bb9        0xc arduino.ar(USBCore.cpp.o)
+                0x00089bb9                STRING_PRODUCT
  .rodata.USB_DeviceDescriptor
-                0x00089c25       0x12 arduino.ar(USBCore.cpp.o)
-                0x00089c25                USB_DeviceDescriptor
- *fill*         0x00089c37        0x1 
+                0x00089bc5       0x12 arduino.ar(USBCore.cpp.o)
+                0x00089bc5                USB_DeviceDescriptor
+ *fill*         0x00089bd7        0x1 
  .rodata.STRING_LANGUAGE
-                0x00089c38        0x4 arduino.ar(USBCore.cpp.o)
-                0x00089c38                STRING_LANGUAGE
+                0x00089bd8        0x4 arduino.ar(USBCore.cpp.o)
+                0x00089bd8                STRING_LANGUAGE
  .rodata._ZL18test_packet_buffer
-                0x00089c3c       0x35 arduino.ar(USBCore.cpp.o)
+                0x00089bdc       0x35 arduino.ar(USBCore.cpp.o)
  .rodata.STRING_MANUFACTURER
-                0x00089c71        0xc arduino.ar(USBCore.cpp.o)
-                0x00089c71                STRING_MANUFACTURER
+                0x00089c11        0xc arduino.ar(USBCore.cpp.o)
+                0x00089c11                STRING_MANUFACTURER
  .rodata.USB_DeviceDescriptorA
-                0x00089c7d       0x12 arduino.ar(USBCore.cpp.o)
-                0x00089c7d                USB_DeviceDescriptorA
+                0x00089c1d       0x12 arduino.ar(USBCore.cpp.o)
+                0x00089c1d                USB_DeviceDescriptorA
  .rodata._ZL19USB_DeviceQualifier
-                0x00089c8f        0x9 arduino.ar(USBCore.cpp.o)
+                0x00089c2f        0x9 arduino.ar(USBCore.cpp.o)
  .rodata._ZTV7Serial_
-                0x00089c98       0x28 arduino.ar(CDC.cpp.o)
-                0x00089c98                vtable for Serial_
+                0x00089c38       0x28 arduino.ar(CDC.cpp.o)
+                0x00089c38                vtable for Serial_
  .rodata._ZL18_cdcOtherInterface
-                0x00089cc0       0x42 arduino.ar(CDC.cpp.o)
+                0x00089c60       0x42 arduino.ar(CDC.cpp.o)
  .rodata._ZL13_cdcInterface
-                0x00089d02       0x42 arduino.ar(CDC.cpp.o)
- .rodata        0x00089d44       0x2c C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
+                0x00089ca2       0x42 arduino.ar(CDC.cpp.o)
+ .rodata        0x00089ce4       0x2c C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
  .rodata.__func__.6830
-                0x00089d70       0x15 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
+                0x00089d10       0x15 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
  .rodata.__func__.6841
-                0x00089d85       0x12 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
+                0x00089d25       0x12 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
  .rodata.str1.1
-                0x00089d97      0x1cc C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
+                0x00089d37      0x1cc C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
  .rodata.__func__.6804
-                0x00089f63       0x16 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
+                0x00089f03       0x16 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
  .rodata.__func__.6793
-                0x00089f79       0x17 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
+                0x00089f19       0x17 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(pwmc.o)
  .rodata.__func__.6792
-                0x00089f90        0xd C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
+                0x00089f30        0xd C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
  .rodata.str1.1
-                0x00089f9d       0x54 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
+                0x00089f3d       0x54 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
  .rodata.__func__.6798
-                0x00089ff1        0x9 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
- *fill*         0x00089ffa        0x2 
- .rodata        0x00089ffc       0x40 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
+                0x00089f91        0x9 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(tc.o)
+ *fill*         0x00089f9a        0x2 
+ .rodata        0x00089f9c       0x40 C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(adc.o)
  .rodata.str1.4
-                0x0008a03c       0x3f c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-assert.o)
+                0x00089fdc       0x3f c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-assert.o)
                                  0x44 (size before relaxing)
- *fill*         0x0008a07b        0x1 
+ *fill*         0x0008a01b        0x1 
  .rodata.str1.4
-                0x0008a07c        0x2 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-impure.o)
+                0x0008a01c        0x2 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-impure.o)
                                   0x4 (size before relaxing)
- *fill*         0x0008a07e        0x2 
+ *fill*         0x0008a01e        0x2 
  .rodata._global_impure_ptr
-                0x0008a080        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-impure.o)
-                0x0008a080                _global_impure_ptr
+                0x0008a020        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-impure.o)
+                0x0008a020                _global_impure_ptr
  .rodata.zeroes.6760
-                0x0008a084       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfprintf.o)
+                0x0008a024       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfprintf.o)
  .rodata.str1.4
-                0x0008a094       0x42 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfprintf.o)
+                0x0008a034       0x42 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfprintf.o)
                                  0x44 (size before relaxing)
- *fill*         0x0008a0d6        0x2 
+ *fill*         0x0008a076        0x2 
  .rodata.blanks.6759
-                0x0008a0d8       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfprintf.o)
+                0x0008a078       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-svfprintf.o)
  .rodata.blanks.6717
-                0x0008a0e8       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-vfiprintf.o)
+                0x0008a088       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-vfiprintf.o)
  .rodata.str1.4
                 0x00000000       0x30 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-vfiprintf.o)
  .rodata.zeroes.6718
-                0x0008a0f8       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-vfiprintf.o)
+                0x0008a098       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-vfiprintf.o)
  .rodata.str1.4
-                0x0008a108       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-dtoa.o)
+                0x0008a0a8       0x10 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-dtoa.o)
                                  0x14 (size before relaxing)
  .rodata.str1.4
-                0x0008a118        0xc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-locale.o)
+                0x0008a0b8        0xc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-locale.o)
                                  0x14 (size before relaxing)
- *fill*         0x0008a124        0x4 
+ *fill*         0x0008a0c4        0x4 
  .rodata.__mprec_tens
-                0x0008a128       0xc8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x0008a128                __mprec_tens
+                0x0008a0c8       0xc8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x0008a0c8                __mprec_tens
  .rodata.__mprec_bigtens
-                0x0008a1f0       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
-                0x0008a1f0                __mprec_bigtens
+                0x0008a190       0x28 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x0008a190                __mprec_bigtens
  .rodata.p05.5266
-                0x0008a218        0xc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
+                0x0008a1b8        0xc c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-mprec.o)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0008a224                . = ALIGN (0x4)
+                0x0008a1c4                . = ALIGN (0x4)
  *(.init)
- .init          0x0008a224        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crti.o
-                0x0008a224                _init
- .init          0x0008a228        0x8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtn.o
-                0x0008a230                . = ALIGN (0x4)
-                0x0008a230                __preinit_array_start = .
+ .init          0x0008a1c4        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crti.o
+                0x0008a1c4                _init
+ .init          0x0008a1c8        0x8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtn.o
+                0x0008a1d0                . = ALIGN (0x4)
+                0x0008a1d0                __preinit_array_start = .
  *(.preinit_array)
-                0x0008a230                __preinit_array_end = .
-                0x0008a230                . = ALIGN (0x4)
-                0x0008a230                __init_array_start = .
+                0x0008a1d0                __preinit_array_end = .
+                0x0008a1d0                . = ALIGN (0x4)
+                0x0008a1d0                __init_array_start = .
  *(SORT(.init_array.*))
  .init_array.00000
-                0x0008a230        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-__call_atexit.o)
+                0x0008a1d0        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7-m\libg.a(lib_a-__call_atexit.o)
  *(.init_array)
- .init_array    0x0008a234        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtbegin.o
- .init_array    0x0008a238        0x4 arduino.ar(variant.cpp.o)
- .init_array    0x0008a23c        0x4 arduino.ar(USBCore.cpp.o)
- .init_array    0x0008a240        0x4 arduino.ar(CDC.cpp.o)
-                0x0008a244                __init_array_end = .
-                0x0008a244                . = ALIGN (0x4)
+ .init_array    0x0008a1d4        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtbegin.o
+ .init_array    0x0008a1d8        0x4 arduino.ar(variant.cpp.o)
+ .init_array    0x0008a1dc        0x4 arduino.ar(USBCore.cpp.o)
+ .init_array    0x0008a1e0        0x4 arduino.ar(CDC.cpp.o)
+                0x0008a1e4                __init_array_end = .
+                0x0008a1e4                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x0008a244                . = ALIGN (0x4)
+                0x0008a1e4                . = ALIGN (0x4)
  *(.fini)
- .fini          0x0008a244        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crti.o
-                0x0008a244                _fini
- .fini          0x0008a248        0x8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtn.o
-                0x0008a250                . = ALIGN (0x4)
-                0x0008a250                __fini_array_start = .
+ .fini          0x0008a1e4        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crti.o
+                0x0008a1e4                _fini
+ .fini          0x0008a1e8        0x8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtn.o
+                0x0008a1f0                . = ALIGN (0x4)
+                0x0008a1f0                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x0008a250        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtbegin.o
+ .fini_array    0x0008a1f0        0x4 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x0008a254                __fini_array_end = .
+                0x0008a1f4                __fini_array_end = .
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x0008a254                . = ALIGN (0x4)
-                0x0008a254                _efixed = .
-                0x0008a254                PROVIDE (__exidx_start, .)
+                0x0008a1f4                . = ALIGN (0x4)
+                0x0008a1f4                _efixed = .
+                0x0008a1f4                PROVIDE (__exidx_start, .)
 
-.vfp11_veneer   0x0008a254        0x0
+.vfp11_veneer   0x0008a1f4        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x0008a254        0x0
+.v4_bx          0x0008a1f4        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x0008a254        0x0
+.iplt           0x0008a1f4        0x0
  .iplt          0x00000000        0x0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtbegin.o
 
-.ARM.exidx      0x0008a254        0x8
+.ARM.exidx      0x0008a1f4        0x8
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
- .ARM.exidx     0x0008a254        0x8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_divdi3.o)
- .ARM.exidx     0x0008a25c        0x0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x0008a1f4        0x8 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_divdi3.o)
+ .ARM.exidx     0x0008a1fc        0x0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m\libgcc.a(_udivdi3.o)
                                   0x8 (size before relaxing)
-                0x0008a25c                PROVIDE (__exidx_end, .)
+                0x0008a1fc                PROVIDE (__exidx_end, .)
 
-.eh_frame       0x0008a25c        0x0
- .eh_frame      0x0008a25c        0x0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtbegin.o
+.eh_frame       0x0008a1fc        0x0
+ .eh_frame      0x0008a1fc        0x0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtbegin.o
 
-.rel.dyn        0x0008a25c        0x0
+.rel.dyn        0x0008a1fc        0x0
  .rel.iplt      0x00000000        0x0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtbegin.o
 
-.jcr            0x0008a25c        0x0
- .jcr           0x0008a25c        0x0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtbegin.o
+.jcr            0x0008a1fc        0x0
+ .jcr           0x0008a1fc        0x0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtbegin.o
 
-.igot.plt       0x0008a25c        0x0
+.igot.plt       0x0008a1fc        0x0
  .igot.plt      0x00000000        0x0 c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.3-2014q1/bin/../lib/gcc/arm-none-eabi/4.8.3/armv7-m/crtbegin.o
-                0x0008a25c                . = ALIGN (0x4)
-                0x0008a25c                _etext = .
+                0x0008a1fc                . = ALIGN (0x4)
+                0x0008a1fc                _etext = .
 
-.relocate       0x20070000      0x91c load address 0x0008a25c
+.relocate       0x20070000      0x91c load address 0x0008a1fc
                 0x20070000                . = ALIGN (0x4)
                 0x20070000                _srelocate = .
  *(.ramfunc .ramfunc.*)
@@ -2557,7 +2554,7 @@ LOAD c:/users/roberto/eclipse/arduinoplugin/tools/arduino/arm-none-eabi-gcc/4.8.
                 0x2007091c                . = ALIGN (0x4)
                 0x2007091c                _erelocate = .
 
-.bss            0x2007091c      0xa60 load address 0x0008ab78
+.bss            0x2007091c      0xa60 load address 0x0008ab18
                 0x2007091c                . = ALIGN (0x4)
                 0x2007091c                _sbss = .
                 0x2007091c                _szero = .
@@ -2940,73 +2937,73 @@ OUTPUT(C:/Users/Roberto/Documents/GitHub/SeniorDesign406/DueReadTempsStringOut/R
  .comment       0x00000000       0x71 arduino.ar(WInterrupts.c.o)
  .comment       0x00000000       0x71 arduino.ar(cortex_handlers.c.o)
 
-.debug_info     0x00000000    0x173fc
+.debug_info     0x00000000    0x17320
  .debug_info    0x00000000      0x62b C:/Users/Roberto/Documents/GitHub/SeniorDesign406/DueReadTempsStringOut/Release/core/syscalls_sam3.c.o
- .debug_info    0x0000062b     0x1958 .\.ino.cpp.o
- .debug_info    0x00001f83     0x1a13 arduino.ar(variant.cpp.o)
- .debug_info    0x00003996     0x26d1 arduino.ar(Print.cpp.o)
- .debug_info    0x00006067      0x1f6 arduino.ar(RingBuffer.cpp.o)
- .debug_info    0x0000625d     0x242f arduino.ar(UARTClass.cpp.o)
- .debug_info    0x0000868c      0xbe2 arduino.ar(USARTClass.cpp.o)
- .debug_info    0x0000926e      0x276 arduino.ar(WMath.cpp.o)
- .debug_info    0x000094e4     0x39d1 arduino.ar(WString.cpp.o)
- .debug_info    0x0000ceb5      0x39f arduino.ar(main.cpp.o)
- .debug_info    0x0000d254      0x220 arduino.ar(watchdog.cpp.o)
- .debug_info    0x0000d474      0x4ff arduino.ar(wiring.c.o)
- .debug_info    0x0000d973     0x1d4e arduino.ar(wiring_analog.c.o)
- .debug_info    0x0000f6c1      0xdd0 arduino.ar(wiring_digital.c.o)
- .debug_info    0x00010491      0x157 arduino.ar(dtostrf.c.o)
- .debug_info    0x000105e8     0x2071 arduino.ar(USBCore.cpp.o)
- .debug_info    0x00012659       0x60 arduino.ar(hooks.c.o)
- .debug_info    0x000126b9     0x2e5b arduino.ar(CDC.cpp.o)
- .debug_info    0x00015514      0x6a1 arduino.ar(PluggableUSB.cpp.o)
- .debug_info    0x00015bb5      0x3af arduino.ar(Reset.cpp.o)
- .debug_info    0x00015f64     0x11ee arduino.ar(WInterrupts.c.o)
- .debug_info    0x00017152      0x2aa arduino.ar(cortex_handlers.c.o)
+ .debug_info    0x0000062b     0x187c .\.ino.cpp.o
+ .debug_info    0x00001ea7     0x1a13 arduino.ar(variant.cpp.o)
+ .debug_info    0x000038ba     0x26d1 arduino.ar(Print.cpp.o)
+ .debug_info    0x00005f8b      0x1f6 arduino.ar(RingBuffer.cpp.o)
+ .debug_info    0x00006181     0x242f arduino.ar(UARTClass.cpp.o)
+ .debug_info    0x000085b0      0xbe2 arduino.ar(USARTClass.cpp.o)
+ .debug_info    0x00009192      0x276 arduino.ar(WMath.cpp.o)
+ .debug_info    0x00009408     0x39d1 arduino.ar(WString.cpp.o)
+ .debug_info    0x0000cdd9      0x39f arduino.ar(main.cpp.o)
+ .debug_info    0x0000d178      0x220 arduino.ar(watchdog.cpp.o)
+ .debug_info    0x0000d398      0x4ff arduino.ar(wiring.c.o)
+ .debug_info    0x0000d897     0x1d4e arduino.ar(wiring_analog.c.o)
+ .debug_info    0x0000f5e5      0xdd0 arduino.ar(wiring_digital.c.o)
+ .debug_info    0x000103b5      0x157 arduino.ar(dtostrf.c.o)
+ .debug_info    0x0001050c     0x2071 arduino.ar(USBCore.cpp.o)
+ .debug_info    0x0001257d       0x60 arduino.ar(hooks.c.o)
+ .debug_info    0x000125dd     0x2e5b arduino.ar(CDC.cpp.o)
+ .debug_info    0x00015438      0x6a1 arduino.ar(PluggableUSB.cpp.o)
+ .debug_info    0x00015ad9      0x3af arduino.ar(Reset.cpp.o)
+ .debug_info    0x00015e88     0x11ee arduino.ar(WInterrupts.c.o)
+ .debug_info    0x00017076      0x2aa arduino.ar(cortex_handlers.c.o)
 
-.debug_abbrev   0x00000000     0x3d2c
+.debug_abbrev   0x00000000     0x3d04
  .debug_abbrev  0x00000000      0x19c C:/Users/Roberto/Documents/GitHub/SeniorDesign406/DueReadTempsStringOut/Release/core/syscalls_sam3.c.o
- .debug_abbrev  0x0000019c      0x444 .\.ino.cpp.o
- .debug_abbrev  0x000005e0      0x3fc arduino.ar(variant.cpp.o)
- .debug_abbrev  0x000009dc      0x497 arduino.ar(Print.cpp.o)
- .debug_abbrev  0x00000e73      0x175 arduino.ar(RingBuffer.cpp.o)
- .debug_abbrev  0x00000fe8      0x525 arduino.ar(UARTClass.cpp.o)
- .debug_abbrev  0x0000150d      0x2eb arduino.ar(USARTClass.cpp.o)
- .debug_abbrev  0x000017f8      0x139 arduino.ar(WMath.cpp.o)
- .debug_abbrev  0x00001931      0x43a arduino.ar(WString.cpp.o)
- .debug_abbrev  0x00001d6b      0x196 arduino.ar(main.cpp.o)
- .debug_abbrev  0x00001f01      0x114 arduino.ar(watchdog.cpp.o)
- .debug_abbrev  0x00002015      0x160 arduino.ar(wiring.c.o)
- .debug_abbrev  0x00002175      0x2fb arduino.ar(wiring_analog.c.o)
- .debug_abbrev  0x00002470      0x225 arduino.ar(wiring_digital.c.o)
- .debug_abbrev  0x00002695       0xd8 arduino.ar(dtostrf.c.o)
- .debug_abbrev  0x0000276d      0x6d3 arduino.ar(USBCore.cpp.o)
- .debug_abbrev  0x00002e40       0x47 arduino.ar(hooks.c.o)
- .debug_abbrev  0x00002e87      0x6cd arduino.ar(CDC.cpp.o)
- .debug_abbrev  0x00003554      0x2b4 arduino.ar(PluggableUSB.cpp.o)
- .debug_abbrev  0x00003808      0x14c arduino.ar(Reset.cpp.o)
- .debug_abbrev  0x00003954      0x2d2 arduino.ar(WInterrupts.c.o)
- .debug_abbrev  0x00003c26      0x106 arduino.ar(cortex_handlers.c.o)
+ .debug_abbrev  0x0000019c      0x41c .\.ino.cpp.o
+ .debug_abbrev  0x000005b8      0x3fc arduino.ar(variant.cpp.o)
+ .debug_abbrev  0x000009b4      0x497 arduino.ar(Print.cpp.o)
+ .debug_abbrev  0x00000e4b      0x175 arduino.ar(RingBuffer.cpp.o)
+ .debug_abbrev  0x00000fc0      0x525 arduino.ar(UARTClass.cpp.o)
+ .debug_abbrev  0x000014e5      0x2eb arduino.ar(USARTClass.cpp.o)
+ .debug_abbrev  0x000017d0      0x139 arduino.ar(WMath.cpp.o)
+ .debug_abbrev  0x00001909      0x43a arduino.ar(WString.cpp.o)
+ .debug_abbrev  0x00001d43      0x196 arduino.ar(main.cpp.o)
+ .debug_abbrev  0x00001ed9      0x114 arduino.ar(watchdog.cpp.o)
+ .debug_abbrev  0x00001fed      0x160 arduino.ar(wiring.c.o)
+ .debug_abbrev  0x0000214d      0x2fb arduino.ar(wiring_analog.c.o)
+ .debug_abbrev  0x00002448      0x225 arduino.ar(wiring_digital.c.o)
+ .debug_abbrev  0x0000266d       0xd8 arduino.ar(dtostrf.c.o)
+ .debug_abbrev  0x00002745      0x6d3 arduino.ar(USBCore.cpp.o)
+ .debug_abbrev  0x00002e18       0x47 arduino.ar(hooks.c.o)
+ .debug_abbrev  0x00002e5f      0x6cd arduino.ar(CDC.cpp.o)
+ .debug_abbrev  0x0000352c      0x2b4 arduino.ar(PluggableUSB.cpp.o)
+ .debug_abbrev  0x000037e0      0x14c arduino.ar(Reset.cpp.o)
+ .debug_abbrev  0x0000392c      0x2d2 arduino.ar(WInterrupts.c.o)
+ .debug_abbrev  0x00003bfe      0x106 arduino.ar(cortex_handlers.c.o)
 
-.debug_loc      0x00000000     0x627b
+.debug_loc      0x00000000     0x60ac
  .debug_loc     0x00000000      0x176 C:/Users/Roberto/Documents/GitHub/SeniorDesign406/DueReadTempsStringOut/Release/core/syscalls_sam3.c.o
- .debug_loc     0x00000176      0x558 .\.ino.cpp.o
- .debug_loc     0x000006ce       0x8a arduino.ar(variant.cpp.o)
- .debug_loc     0x00000758     0x11b9 arduino.ar(Print.cpp.o)
- .debug_loc     0x00001911       0x1e arduino.ar(RingBuffer.cpp.o)
- .debug_loc     0x0000192f      0x42b arduino.ar(UARTClass.cpp.o)
- .debug_loc     0x00001d5a      0x230 arduino.ar(USARTClass.cpp.o)
- .debug_loc     0x00001f8a      0x141 arduino.ar(WMath.cpp.o)
- .debug_loc     0x000020cb     0x1fd5 arduino.ar(WString.cpp.o)
- .debug_loc     0x000040a0       0x69 arduino.ar(watchdog.cpp.o)
- .debug_loc     0x00004109       0xfc arduino.ar(wiring.c.o)
- .debug_loc     0x00004205      0x76c arduino.ar(wiring_analog.c.o)
- .debug_loc     0x00004971      0x1eb arduino.ar(wiring_digital.c.o)
- .debug_loc     0x00004b5c       0x8a arduino.ar(dtostrf.c.o)
- .debug_loc     0x00004be6      0xb08 arduino.ar(USBCore.cpp.o)
- .debug_loc     0x000056ee      0x617 arduino.ar(CDC.cpp.o)
- .debug_loc     0x00005d05      0x21e arduino.ar(PluggableUSB.cpp.o)
- .debug_loc     0x00005f23      0x358 arduino.ar(WInterrupts.c.o)
+ .debug_loc     0x00000176      0x389 .\.ino.cpp.o
+ .debug_loc     0x000004ff       0x8a arduino.ar(variant.cpp.o)
+ .debug_loc     0x00000589     0x11b9 arduino.ar(Print.cpp.o)
+ .debug_loc     0x00001742       0x1e arduino.ar(RingBuffer.cpp.o)
+ .debug_loc     0x00001760      0x42b arduino.ar(UARTClass.cpp.o)
+ .debug_loc     0x00001b8b      0x230 arduino.ar(USARTClass.cpp.o)
+ .debug_loc     0x00001dbb      0x141 arduino.ar(WMath.cpp.o)
+ .debug_loc     0x00001efc     0x1fd5 arduino.ar(WString.cpp.o)
+ .debug_loc     0x00003ed1       0x69 arduino.ar(watchdog.cpp.o)
+ .debug_loc     0x00003f3a       0xfc arduino.ar(wiring.c.o)
+ .debug_loc     0x00004036      0x76c arduino.ar(wiring_analog.c.o)
+ .debug_loc     0x000047a2      0x1eb arduino.ar(wiring_digital.c.o)
+ .debug_loc     0x0000498d       0x8a arduino.ar(dtostrf.c.o)
+ .debug_loc     0x00004a17      0xb08 arduino.ar(USBCore.cpp.o)
+ .debug_loc     0x0000551f      0x617 arduino.ar(CDC.cpp.o)
+ .debug_loc     0x00005b36      0x21e arduino.ar(PluggableUSB.cpp.o)
+ .debug_loc     0x00005d54      0x358 arduino.ar(WInterrupts.c.o)
 
 .debug_aranges  0x00000000      0x9d0
  .debug_aranges
@@ -3054,98 +3051,98 @@ OUTPUT(C:/Users/Roberto/Documents/GitHub/SeniorDesign406/DueReadTempsStringOut/R
  .debug_aranges
                 0x00000998       0x38 arduino.ar(cortex_handlers.c.o)
 
-.debug_ranges   0x00000000      0xff0
+.debug_ranges   0x00000000      0xfd8
  .debug_ranges  0x00000000       0x60 C:/Users/Roberto/Documents/GitHub/SeniorDesign406/DueReadTempsStringOut/Release/core/syscalls_sam3.c.o
- .debug_ranges  0x00000060       0x30 .\.ino.cpp.o
- .debug_ranges  0x00000090       0x80 arduino.ar(variant.cpp.o)
- .debug_ranges  0x00000110      0x178 arduino.ar(Print.cpp.o)
- .debug_ranges  0x00000288       0x18 arduino.ar(RingBuffer.cpp.o)
- .debug_ranges  0x000002a0       0xb0 arduino.ar(UARTClass.cpp.o)
- .debug_ranges  0x00000350       0x30 arduino.ar(USARTClass.cpp.o)
- .debug_ranges  0x00000380       0x50 arduino.ar(WMath.cpp.o)
- .debug_ranges  0x000003d0      0x648 arduino.ar(WString.cpp.o)
- .debug_ranges  0x00000a18       0x18 arduino.ar(main.cpp.o)
- .debug_ranges  0x00000a30       0x28 arduino.ar(watchdog.cpp.o)
- .debug_ranges  0x00000a58       0x20 arduino.ar(wiring.c.o)
- .debug_ranges  0x00000a78       0x88 arduino.ar(wiring_analog.c.o)
- .debug_ranges  0x00000b00       0x38 arduino.ar(wiring_digital.c.o)
- .debug_ranges  0x00000b38       0x10 arduino.ar(dtostrf.c.o)
- .debug_ranges  0x00000b48      0x248 arduino.ar(USBCore.cpp.o)
- .debug_ranges  0x00000d90       0x20 arduino.ar(hooks.c.o)
- .debug_ranges  0x00000db0       0xd0 arduino.ar(CDC.cpp.o)
- .debug_ranges  0x00000e80       0xd0 arduino.ar(PluggableUSB.cpp.o)
- .debug_ranges  0x00000f50       0x28 arduino.ar(Reset.cpp.o)
- .debug_ranges  0x00000f78       0x50 arduino.ar(WInterrupts.c.o)
- .debug_ranges  0x00000fc8       0x28 arduino.ar(cortex_handlers.c.o)
+ .debug_ranges  0x00000060       0x18 .\.ino.cpp.o
+ .debug_ranges  0x00000078       0x80 arduino.ar(variant.cpp.o)
+ .debug_ranges  0x000000f8      0x178 arduino.ar(Print.cpp.o)
+ .debug_ranges  0x00000270       0x18 arduino.ar(RingBuffer.cpp.o)
+ .debug_ranges  0x00000288       0xb0 arduino.ar(UARTClass.cpp.o)
+ .debug_ranges  0x00000338       0x30 arduino.ar(USARTClass.cpp.o)
+ .debug_ranges  0x00000368       0x50 arduino.ar(WMath.cpp.o)
+ .debug_ranges  0x000003b8      0x648 arduino.ar(WString.cpp.o)
+ .debug_ranges  0x00000a00       0x18 arduino.ar(main.cpp.o)
+ .debug_ranges  0x00000a18       0x28 arduino.ar(watchdog.cpp.o)
+ .debug_ranges  0x00000a40       0x20 arduino.ar(wiring.c.o)
+ .debug_ranges  0x00000a60       0x88 arduino.ar(wiring_analog.c.o)
+ .debug_ranges  0x00000ae8       0x38 arduino.ar(wiring_digital.c.o)
+ .debug_ranges  0x00000b20       0x10 arduino.ar(dtostrf.c.o)
+ .debug_ranges  0x00000b30      0x248 arduino.ar(USBCore.cpp.o)
+ .debug_ranges  0x00000d78       0x20 arduino.ar(hooks.c.o)
+ .debug_ranges  0x00000d98       0xd0 arduino.ar(CDC.cpp.o)
+ .debug_ranges  0x00000e68       0xd0 arduino.ar(PluggableUSB.cpp.o)
+ .debug_ranges  0x00000f38       0x28 arduino.ar(Reset.cpp.o)
+ .debug_ranges  0x00000f60       0x50 arduino.ar(WInterrupts.c.o)
+ .debug_ranges  0x00000fb0       0x28 arduino.ar(cortex_handlers.c.o)
 
-.debug_line     0x00000000     0x68bb
+.debug_line     0x00000000     0x68b0
  .debug_line    0x00000000      0x475 C:/Users/Roberto/Documents/GitHub/SeniorDesign406/DueReadTempsStringOut/Release/core/syscalls_sam3.c.o
- .debug_line    0x00000475      0x537 .\.ino.cpp.o
- .debug_line    0x000009ac      0x613 arduino.ar(variant.cpp.o)
- .debug_line    0x00000fbf      0x6e7 arduino.ar(Print.cpp.o)
- .debug_line    0x000016a6      0x1c1 arduino.ar(RingBuffer.cpp.o)
- .debug_line    0x00001867      0x634 arduino.ar(UARTClass.cpp.o)
- .debug_line    0x00001e9b      0x4d7 arduino.ar(USARTClass.cpp.o)
- .debug_line    0x00002372      0x1f5 arduino.ar(WMath.cpp.o)
- .debug_line    0x00002567      0xb38 arduino.ar(WString.cpp.o)
- .debug_line    0x0000309f      0x3b7 arduino.ar(main.cpp.o)
- .debug_line    0x00003456      0x3ce arduino.ar(watchdog.cpp.o)
- .debug_line    0x00003824      0x342 arduino.ar(wiring.c.o)
- .debug_line    0x00003b66      0x5d3 arduino.ar(wiring_analog.c.o)
- .debug_line    0x00004139      0x48d arduino.ar(wiring_digital.c.o)
- .debug_line    0x000045c6      0x10f arduino.ar(dtostrf.c.o)
- .debug_line    0x000046d5      0x905 arduino.ar(USBCore.cpp.o)
- .debug_line    0x00004fda       0xaf arduino.ar(hooks.c.o)
- .debug_line    0x00005089      0x7d9 arduino.ar(CDC.cpp.o)
- .debug_line    0x00005862      0x2e7 arduino.ar(PluggableUSB.cpp.o)
- .debug_line    0x00005b49      0x47b arduino.ar(Reset.cpp.o)
- .debug_line    0x00005fc4      0x5b9 arduino.ar(WInterrupts.c.o)
- .debug_line    0x0000657d      0x33e arduino.ar(cortex_handlers.c.o)
+ .debug_line    0x00000475      0x52c .\.ino.cpp.o
+ .debug_line    0x000009a1      0x613 arduino.ar(variant.cpp.o)
+ .debug_line    0x00000fb4      0x6e7 arduino.ar(Print.cpp.o)
+ .debug_line    0x0000169b      0x1c1 arduino.ar(RingBuffer.cpp.o)
+ .debug_line    0x0000185c      0x634 arduino.ar(UARTClass.cpp.o)
+ .debug_line    0x00001e90      0x4d7 arduino.ar(USARTClass.cpp.o)
+ .debug_line    0x00002367      0x1f5 arduino.ar(WMath.cpp.o)
+ .debug_line    0x0000255c      0xb38 arduino.ar(WString.cpp.o)
+ .debug_line    0x00003094      0x3b7 arduino.ar(main.cpp.o)
+ .debug_line    0x0000344b      0x3ce arduino.ar(watchdog.cpp.o)
+ .debug_line    0x00003819      0x342 arduino.ar(wiring.c.o)
+ .debug_line    0x00003b5b      0x5d3 arduino.ar(wiring_analog.c.o)
+ .debug_line    0x0000412e      0x48d arduino.ar(wiring_digital.c.o)
+ .debug_line    0x000045bb      0x10f arduino.ar(dtostrf.c.o)
+ .debug_line    0x000046ca      0x905 arduino.ar(USBCore.cpp.o)
+ .debug_line    0x00004fcf       0xaf arduino.ar(hooks.c.o)
+ .debug_line    0x0000507e      0x7d9 arduino.ar(CDC.cpp.o)
+ .debug_line    0x00005857      0x2e7 arduino.ar(PluggableUSB.cpp.o)
+ .debug_line    0x00005b3e      0x47b arduino.ar(Reset.cpp.o)
+ .debug_line    0x00005fb9      0x5b9 arduino.ar(WInterrupts.c.o)
+ .debug_line    0x00006572      0x33e arduino.ar(cortex_handlers.c.o)
 
-.debug_str      0x00000000     0x52e6
+.debug_str      0x00000000     0x5304
  .debug_str     0x00000000      0x461 C:/Users/Roberto/Documents/GitHub/SeniorDesign406/DueReadTempsStringOut/Release/core/syscalls_sam3.c.o
                                 0x4e5 (size before relaxing)
- .debug_str     0x00000461      0xc2f .\.ino.cpp.o
-                                0xdd2 (size before relaxing)
- .debug_str     0x00001090      0xd97 arduino.ar(variant.cpp.o)
+ .debug_str     0x00000461      0xc37 .\.ino.cpp.o
+                                0xdd3 (size before relaxing)
+ .debug_str     0x00001098      0xd97 arduino.ar(variant.cpp.o)
                                0x1204 (size before relaxing)
- .debug_str     0x00001e27      0x3e6 arduino.ar(Print.cpp.o)
+ .debug_str     0x00001e2f      0x3e6 arduino.ar(Print.cpp.o)
                                 0xfdd (size before relaxing)
- .debug_str     0x0000220d       0x83 arduino.ar(RingBuffer.cpp.o)
+ .debug_str     0x00002215       0x83 arduino.ar(RingBuffer.cpp.o)
                                 0x2a4 (size before relaxing)
- .debug_str     0x00002290      0x684 arduino.ar(UARTClass.cpp.o)
+ .debug_str     0x00002298      0x69a arduino.ar(UARTClass.cpp.o)
                                0x174a (size before relaxing)
- .debug_str     0x00002914      0x23c arduino.ar(USARTClass.cpp.o)
+ .debug_str     0x00002932      0x23c arduino.ar(USARTClass.cpp.o)
                                 0xa40 (size before relaxing)
- .debug_str     0x00002b50      0x10b arduino.ar(WMath.cpp.o)
+ .debug_str     0x00002b6e      0x10b arduino.ar(WMath.cpp.o)
                                 0x2f4 (size before relaxing)
- .debug_str     0x00002c5b      0x3ab arduino.ar(WString.cpp.o)
+ .debug_str     0x00002c79      0x3ab arduino.ar(WString.cpp.o)
                                 0xf1f (size before relaxing)
- .debug_str     0x00003006      0x134 arduino.ar(main.cpp.o)
+ .debug_str     0x00003024      0x134 arduino.ar(main.cpp.o)
                                 0x42a (size before relaxing)
- .debug_str     0x0000313a      0x122 arduino.ar(watchdog.cpp.o)
+ .debug_str     0x00003158      0x122 arduino.ar(watchdog.cpp.o)
                                 0x316 (size before relaxing)
- .debug_str     0x0000325c       0x9c arduino.ar(wiring.c.o)
+ .debug_str     0x0000327a       0x9c arduino.ar(wiring.c.o)
                                 0x374 (size before relaxing)
- .debug_str     0x000032f8      0x7d5 arduino.ar(wiring_analog.c.o)
+ .debug_str     0x00003316      0x7d5 arduino.ar(wiring_analog.c.o)
                                0x1067 (size before relaxing)
- .debug_str     0x00003acd       0xb5 arduino.ar(wiring_digital.c.o)
+ .debug_str     0x00003aeb       0xb5 arduino.ar(wiring_digital.c.o)
                                 0xa18 (size before relaxing)
- .debug_str     0x00003b82       0x7f arduino.ar(dtostrf.c.o)
+ .debug_str     0x00003ba0       0x7f arduino.ar(dtostrf.c.o)
                                 0x23f (size before relaxing)
- .debug_str     0x00003c01      0xe1b arduino.ar(USBCore.cpp.o)
+ .debug_str     0x00003c1f      0xe1b arduino.ar(USBCore.cpp.o)
                                0x134c (size before relaxing)
- .debug_str     0x00004a1c       0x78 arduino.ar(hooks.c.o)
+ .debug_str     0x00004a3a       0x78 arduino.ar(hooks.c.o)
                                 0x13b (size before relaxing)
- .debug_str     0x00004a94      0x4c7 arduino.ar(CDC.cpp.o)
+ .debug_str     0x00004ab2      0x4c7 arduino.ar(CDC.cpp.o)
                                0x1c8a (size before relaxing)
- .debug_str     0x00004f5b       0x9d arduino.ar(PluggableUSB.cpp.o)
+ .debug_str     0x00004f79       0x9d arduino.ar(PluggableUSB.cpp.o)
                                 0x5f4 (size before relaxing)
- .debug_str     0x00004ff8       0xe3 arduino.ar(Reset.cpp.o)
+ .debug_str     0x00005016       0xe3 arduino.ar(Reset.cpp.o)
                                 0x3eb (size before relaxing)
- .debug_str     0x000050db      0x143 arduino.ar(WInterrupts.c.o)
+ .debug_str     0x000050f9      0x143 arduino.ar(WInterrupts.c.o)
                                 0xb9e (size before relaxing)
- .debug_str     0x0000521e       0xc8 arduino.ar(cortex_handlers.c.o)
+ .debug_str     0x0000523c       0xc8 arduino.ar(cortex_handlers.c.o)
                                 0x30a (size before relaxing)
 
 .debug_frame    0x00000000     0x2874
@@ -3399,7 +3396,6 @@ SUPC_Handler                                      arduino.ar(cortex_handlers.c.o
 SVC_Handler                                       arduino.ar(cortex_handlers.c.o)
                                                   C:/Users/Roberto/eclipse/arduinoPlugin/packages/arduino/hardware/sam/1.6.7/variants/arduino_due_x/libsam_sam3x8e_gcc_rel.a(startup_sam3xa.o)
 Serial                                            arduino.ar(variant.cpp.o)
-                                                  .\.ino.cpp.o
 Serial1                                           arduino.ar(variant.cpp.o)
 Serial2                                           arduino.ar(variant.cpp.o)
 Serial3                                           arduino.ar(variant.cpp.o)
@@ -3580,7 +3576,6 @@ UARTClass::available()                            arduino.ar(UARTClass.cpp.o)
                                                   .\.ino.cpp.o
 UARTClass::availableForWrite()                    arduino.ar(UARTClass.cpp.o)
 UARTClass::begin(unsigned long)                   arduino.ar(UARTClass.cpp.o)
-                                                  .\.ino.cpp.o
 UARTClass::begin(unsigned long, UARTClass::UARTModes) arduino.ar(UARTClass.cpp.o)
 UARTClass::end()                                  arduino.ar(UARTClass.cpp.o)
                                                   arduino.ar(USARTClass.cpp.o)
