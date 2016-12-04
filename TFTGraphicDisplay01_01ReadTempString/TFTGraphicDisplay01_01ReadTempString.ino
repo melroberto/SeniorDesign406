@@ -47,6 +47,9 @@ const float KP_HIGH = 0.157849907129745;
 const float KI_HIGH = 8.74057396848225;
 const float KD_HIGH = 0.0;
 
+const int MIN_PWM_REQUEST = 60;
+const int MAX_PWM_REQUEST = 1020;
+
 int LOW_GEAR_UPPER_REGION = 520;
 int MID_GEAR_UPPER_REGION = 620;
 int HIGH_GEAR_LOWER_REGION = 640;
@@ -208,10 +211,10 @@ void loop() {
 			} else {
 				cruiseON = 1;
 				potValue = currentRPM * 3.232;
-        if (potValue > 1020){
-          potValue = 1020;
-        }else if (potValue < 60){
-          potValue = 60;
+        if (potValue > MAX_PWM_REQUEST){
+          potValue = MAX_PWM_REQUEST;
+        }else if (potValue < MIN_PWM_REQUEST){
+          potValue = MIN_PWM_REQUEST;
         }
 				ptr = cruiseOn;
 			}
@@ -222,10 +225,10 @@ void loop() {
 			if (cruiseON) //if safety stop off and cruise on, run command.
 			{
 				potValue += 50;
-				if (potValue > 1020){
-					potValue = 1020;
-				}else if (potValue < 50){
-          potValue = 50;
+				if (potValue > MAX_PWM_REQUEST){
+					potValue = MAX_PWM_REQUEST;
+				}else if (potValue < MIN_PWM_REQUEST){
+          potValue = MIN_PWM_REQUEST;
 				}
 			}
 		}
@@ -233,10 +236,10 @@ void loop() {
 			ptr = decrement;
 			if (cruiseON) {
 				potValue -= 50;
-				if (potValue < 50){
-					potValue = 50;
-				}else if(potValue > 1020) {
-          potValue = 1020;
+				if (potValue < MIN_PWM_REQUEST){
+					potValue = MIN_PWM_REQUEST;
+				}else if(potValue > MAX_PWM_REQUEST) {
+          potValue = MAX_PWM_REQUEST;
 				}
 			}
 		}
@@ -347,7 +350,11 @@ void TC3_Handler() {
 		}
 		
 	} else {
-		potentiometerValue = potValue;
+    if (1 == stopGo){ // not in emergency stop mode
+		  potentiometerValue = potValue;
+    }else{ // emergency stop mode, disable the output
+      potentiometerValue = 0;
+    }
 
 		if(potentiometerValue < 30) potentiometerValue = 0; //kill noise on the potentiometer
 
@@ -361,6 +368,7 @@ void TC3_Handler() {
 		
 		P = Kp * error;
 
+   // only update the I in PID if we have speed data available
     if((abs(oldRPM - currentRPM))>1) {
 		  I += Ki * error * 0.1;
 		  if (I > 1020) I = 1020;

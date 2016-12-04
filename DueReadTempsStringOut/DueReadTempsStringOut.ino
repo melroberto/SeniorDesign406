@@ -1,6 +1,6 @@
 //#include "Arduino.h"
 
-#define DEBUG
+//#define DEBUG
 // set of pins on which the temperature sensors are located
 const int analogPins[] = {A0, A1, A2, A3, A4};
 const int fanPins[] = {8,9,10,11};
@@ -115,7 +115,8 @@ void loop() {
 
   for(int i = 2; i <= 3; i++)
     {
-          int output = map(temperatures[i],MIN_TEMP_DIGITAL_VALUE, MAX_TEMP_DIGITAL_VALUE, 0, 255);
+      //digitalWrite(fanPins[i],(temperatures[i]>MIN_TEMP_DIGITAL_VALUE));
+      int output = map(temperatures[i],MIN_TEMP_DIGITAL_VALUE, MAX_TEMP_DIGITAL_VALUE, 0, 255);
   	  analogWrite(fanPins[i],output);
     }
 }
