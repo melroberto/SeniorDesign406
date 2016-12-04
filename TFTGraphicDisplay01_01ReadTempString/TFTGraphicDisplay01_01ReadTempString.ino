@@ -328,7 +328,7 @@ void TC3_Handler() {
 	if (!cruiseON)  //if cruise off and safety stop off
 	{ //allow reading on analog input
 		analogRead(POT_IN);
-		potentiometerValue = analogRead(POT_IN);
+		potentiometerValue = 0;//analogRead(POT_IN);
 		if (index >= 9) {
 			index = 0;
 			potValue = 0;
@@ -414,7 +414,7 @@ void TC4_Handler() {
 		counter = 0;
 	} else {
 		if ((counter) > oldCounter) {
-			currentRPM = (30 * 1000 / (counter)); //*speedConversionValue;
+			currentRPM = (15 * 1000 / (counter)); //*speedConversionValue;
 		}
 	}
 	TC_GetStatus(TC1, 1);                 //Resets Interrupt
