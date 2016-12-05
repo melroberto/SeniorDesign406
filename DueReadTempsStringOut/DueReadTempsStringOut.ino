@@ -5,10 +5,10 @@
 const int analogPins[] = {A0, A1, A2, A3, A4};
 const int fanPins[] = {8,9,10,11};
 const int HIGH_TEMP_DIGITAL_PIN = 13;
-const float calibrationScale[5] = {0.328,0.328,0.328,0.328,0.328};//{0.4396, 0.4318, 0.4465, 0.4164, 0.4318};
-const float calibrationOffset[5] = {0,0,0,0,0};//{27.459, 27.655, 29.452, 21.762, 26.181};
+const float calibrationScale[5] = {0.4396, 0.4318, 0.4465, 0.4164, 0.4318};//{0.328,0.328,0.328,0.328,0.328};
+const float calibrationOffset[5] = {27.459, 27.655, 29.452, 21.762, 26.181};//{0,0,0,0,0};//
 const int MIN_TEMP_DIGITAL_VALUE = 240;
-const int MAX_TEMP_DIGITAL_VALUE = 244;
+const int MAX_TEMP_DIGITAL_VALUE = 265;
 //volatile int analogPin5 = A6;
 
 // outside leads to ground and +5V
@@ -42,6 +42,10 @@ void setup() {
   {
     pinMode(fanPins[i], OUTPUT);
   }
+  for (int i = 0; i < 4; i++)
+  {
+    digitalWrite(fanPins[i], LOW);
+  }
 
   pinMode(HIGH_TEMP_DIGITAL_PIN, OUTPUT);
 
@@ -50,7 +54,7 @@ void setup() {
 
 void loop() {
   int inByte;
-  maxTemperature = MAX_TEMP_DIGITAL_VALUE - 10;
+  maxTemperature = MIN_TEMP_DIGITAL_VALUE - 10;
   for (int i = 0; i <= 4; i++)
   {
     analogRead(analogPins[i]);
