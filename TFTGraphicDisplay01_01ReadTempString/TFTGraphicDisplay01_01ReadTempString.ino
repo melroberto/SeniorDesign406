@@ -15,6 +15,17 @@
 #define YSTART 383
 #define TOUCH 1
 #define DEBUG
+namespace {
+
+const char* TEMPERATURES_LABEL = "TS0  TS1  TS2  TS3  TS4";
+
+}
+
+namespace {
+
+const double RPM_TO_PWM_SCALE_FACTOR = 3.232;
+
+}
 
 /*      Speed Control variables      */
 float Kp = 1.0, Ki = 0, Kd = 0, P = 0, I = 0, D = 0, PID = 0;
@@ -76,7 +87,7 @@ int cruiseON = 0;
 uint32_t rc = 1;
 static int count = 0;
 static uint8_t recordData = 0;
-static int stopGo = 1;
+static int stopGo;
 static int fwdReverse = 1;
 volatile int pidValue = 0;
 static String temps;
@@ -96,6 +107,8 @@ char recON[] = "REC ON";
 char recOFF[] = "REC OFF";
 char RPMLabel[] = "RPM:   ";
 char SpeedLabel[] = "Speed: ";
+char pedalInputLabel[] = 	"POT In:  ";
+char commandOutputLabel[] = "CMD Out: ";
 
 volatile uint32_t milliseconds = 0;
 volatile byte full_revolutions;
@@ -107,6 +120,9 @@ const int SAFE_STOP = 11;
 const int FWD_REVERSE = 9;
 const int RPM_InterruptPort = 8;
 const int TEMPERATURE_RESET = 12;
+const int MAGNET_MULTIPLIER = 15; //Value is proportional to number of magnets i.e. 4 magnets = 15, 2 magnets = 30
+const int TIME_SCALE_MULTIPLIER = 1000;		//time scaler for TC4 timer interrupt
+const int HIGH_TEMP_STOP_PIN = 17;
 
 const float speedConversionValue = 0.0641;
 
@@ -115,7 +131,7 @@ float currentRPM;
 float temperatures[5];
 
 File myFile;
-
+void highTempStop();
 void startTimer(Tc *tc, uint32_t channel, IRQn_Type irq, uint32_t frequency) {
 	pmc_set_writeprotect(false);         //Disable write protection for register
 	pmc_enable_periph_clk((uint32_t) irq);  //enable clock for the channel
@@ -144,8 +160,11 @@ void setup() {
 	myGLCD.fillScr(VGA_WHITE);
 	myGLCD.setColor(VGA_BLACK);
 	myGLCD.setBackColor(VGA_WHITE);
-	myGLCD.print(RPMLabel, 100, 72);
-	myGLCD.print(SpeedLabel, 100, 144);
+	myGLCD.print(RPMLabel, 50, 72);
+	myGLCD.print(SpeedLabel, 50, 144);
+	myGLCD.print(TEMPERATURES_LABEL, 0, 286);
+	myGLCD.print(pedalInputLabel, 375, 72);
+	myGLCD.print(commandOutputLabel, 375, 145);
 
 #if TOUCH
 	myTouch.InitTouch(LANDSCAPE);
@@ -176,6 +195,7 @@ void setup() {
 	pinMode(SAFE_STOP, OUTPUT);
 	pinMode(FWD_REVERSE, OUTPUT);
 	pinMode(TEMPERATURE_RESET, OUTPUT);
+	pinMode(HIGH_TEMP_STOP_PIN, INPUT);
 
 	delay(1000);
 	digitalWrite(TEMPERATURE_RESET, LOW);
@@ -187,18 +207,20 @@ void setup() {
 	currentRPM = 0;
 	timeold = 0;
 	potentiometerValue = 0;
+	stopGo = 0;
+	fwdReverse = 0;
 	delay(1000);
-
+	attachInterrupt(digitalPinToInterrupt(HIGH_TEMP_STOP_PIN), highTempStop, HIGH);
 }
 
 void loop() {
 	myGLCD.printNumI(count++, 0, 10);
 
-	myGLCD.printNumI(potValue, 400, 72, 5, ' ');
-	myGLCD.printNumI(pidValue, 400, 145, 5, ' ');
-	myGLCD.printNumF(currentRPM, 1, 279, 72, '.', 5, ' ');
+	myGLCD.printNumI(potValue, 675, 72, 4, ' ');
+	myGLCD.printNumI(pidValue, 675, 145, 4, ' ');
+	myGLCD.printNumF(currentRPM, 1, 218, 72, '.', 5, ' ');
 	currentSpeed = (currentRPM * speedConversionValue);
-	myGLCD.printNumF(currentSpeed, 1, 279, 144, '.', 5, ' ');
+	myGLCD.printNumF(currentSpeed, 1, 218, 144, '.', 5, ' ');
 
 #if TOUCH
 	if (myTouch.dataAvailable() == true) {
@@ -210,7 +232,7 @@ void loop() {
 				cruiseON = 0;
 			} else {
 				cruiseON = 1;
-				potValue = currentRPM * 3.232;
+				potValue = currentRPM * RPM_TO_PWM_SCALE_FACTOR;
         if (potValue > MAX_PWM_REQUEST){
           potValue = MAX_PWM_REQUEST;
         }else if (potValue < MIN_PWM_REQUEST){
@@ -264,6 +286,7 @@ void loop() {
 				myButtons.disableButton(choice3, true);
 				stopGo = 0;
 				ptr = stopButton;
+				cruiseON = 0;
 			} else {
 				digitalWrite(SAFE_STOP, LOW); //Go
 				myButtons.enableButton(choice1, true);
@@ -289,8 +312,11 @@ void loop() {
 	}
 #endif
 
-	if (!(count % 100) && stopGo) {
+	if (!(count % 100)) {
+		temps = getTemperatures();
+		myGLCD.print(temps, 0, 335);
 #ifdef DEBUG
+		//Data output for Testing purposes.
 		String streamData = "";
 		streamData += String(milliseconds) + '\t';
 		streamData += String(temps) + '\t';
@@ -301,9 +327,10 @@ void loop() {
 		streamData += String(pidValues) + '\t';
 		Serial.println(streamData);
 #endif
-		temps = getTemperatures();
-		myGLCD.print(temps, 0, 335);
 	}
+
+//	Can be implemented in the future for Data recording instead of the Serial output interface.
+//	Data can be recorded to the SD card on the CTE Shield for the TFT LCD Screen.
 //  if (recordData)
 //  {
 //
@@ -314,19 +341,25 @@ void loop() {
 //temperature acquisition
 String getTemperatures() {
 	static String temperatures;
-	Serial3.write(48);
+	Serial3.write(48);									//Send request for temperatures
 	if (Serial3.available()) {
-		temperatures = Serial3.readStringUntil('\n');
+		temperatures = Serial3.readStringUntil('\n');	//Temperatures, formated as a string, are terminated by a new line character.
 	}
+	temperatures.replace('\t', ' ');
 	return temperatures;
 }
 
+/*******************************************************************************************************************
+ * 										Time Counter 3
+ * Timer will produce an interrupt every 100 ms. This timer interrupt will send commands to the DC Controller as a PWM
+ * signal. The timer also performs PID modifications to the analogWrite command value sent.
+ * ******************************************************************************************************************/
 void TC3_Handler() {
   static float oldRPM;
 	static int potVals[10];
 	static int index = 0;
-	if (!cruiseON)  //if cruise off and safety stop off
-	{ //allow reading on analog input
+	if (!cruiseON)  				//if cruise off and safety stop off
+	{ 								//allow reading on analog input
 		analogRead(POT_IN);
 		potentiometerValue = analogRead(POT_IN);
 		if (index >= 9) {
@@ -340,7 +373,7 @@ void TC3_Handler() {
 		potVals[index++] = potentiometerValue;
 		
 		// clear out the record of error.
-		I = currentRPM * 3.232;
+		I = currentRPM * RPM_TO_PWM_SCALE_FACTOR;
 		// re-scale the input before sending to the motor
 		if((potValue) < 260)
 		{
@@ -362,9 +395,11 @@ void TC3_Handler() {
 		Ki = 0.05; //KI_LOW;
 		Kd = -0.10; //KD_LOW;
 		
-		D = Kd * (potentiometerValue - (currentRPM*3.232) - error) * 10;
+		D = Kd
+				* (potentiometerValue - (currentRPM * RPM_TO_PWM_SCALE_FACTOR)
+						- error) * 10;
 		
-		error = potentiometerValue - (currentRPM*3.232);
+		error = potentiometerValue - (currentRPM * RPM_TO_PWM_SCALE_FACTOR);
 		
 		P = Kp * error;
 
@@ -391,11 +426,17 @@ void TC3_Handler() {
 		pidValue = 0;
 	}
 	
-	analogWrite(POT_OUT, pidValue);
-	TC_GetStatus(TC1, 0);
+	analogWrite(POT_OUT, pidValue);						//Write signal to the DC Controller
+	TC_GetStatus(TC1, 0);								//Resets timer TC3 interrupt
 }
 
-//Time Counter
+
+/*******************************************************************************************************************
+ * 										Time Counter 4
+ * Timer will produce an interrupt every 1 ms. Digital pin 8 on Arduino Due is checked for low level.
+ * This is due to the hall sensor connected to Digital pin 8. Variable currentRPM is modified with every magnet pass.
+ * if the time counter used by the timer is greater than the last pass, the vehicle is slowing down.
+ * ******************************************************************************************************************/
 void TC4_Handler() {
 	static uint32_t counter = 0;
 	static uint32_t oldCounter = 0xFFFFFFFF;
@@ -409,13 +450,25 @@ void TC4_Handler() {
 		rev = 0;
 	}
 	if (rev == 1) {
-		currentRPM = ((15 * 1000) / (counter * 1.0)); //*speedConversionValue;
+		currentRPM = ((MAGNET_MULTIPLIER * TIME_SCALE_MULTIPLIER) /counter);
 		oldCounter = counter;
 		counter = 0;
 	} else {
 		if ((counter) > oldCounter) {
-			currentRPM = (15 * 1000 / (counter)); //*speedConversionValue;
+			currentRPM = (MAGNET_MULTIPLIER * TIME_SCALE_MULTIPLIER /counter);
 		}
 	}
-	TC_GetStatus(TC1, 1);                 //Resets Interrupt
+	TC_GetStatus(TC1, 1);								//Resets TC4 Timer Interrupt
+}
+
+void highTempStop()
+{
+	if(digitalRead(HIGH_TEMP_STOP_PIN))
+	{
+		myGLCD.print("HIGH TEMP!", 334, 216);
+	}
+	else
+	{
+		myGLCD.print("          ", 334, 216);
+	}
 }

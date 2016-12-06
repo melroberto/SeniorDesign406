@@ -2,7 +2,7 @@
 //This is a automatic generated file
 //Please do not modify this file
 //If you touch this file your change will be overwritten during the next build
-//This file has been generated on 2016-12-04 01:04:59
+//This file has been generated on 2016-12-06 17:26:34
 
 #include "Arduino.h"
 #include <SD.h>
@@ -16,6 +16,7 @@ void loop() ;
 String getTemperatures() ;
 void TC3_Handler() ;
 void TC4_Handler() ;
+void highTempStop() ;
 
 #include "TFTGraphicDisplay01_01ReadTempString.ino"
 
